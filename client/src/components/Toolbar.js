@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import PopupButton from "./PopupButton";
 import styled from "@emotion/styled";
+import { Nav, NavItem, Button } from "reactstrap";
 
+{
+  /* Use these Comments to communicate Todos or other info
+   * @Reminder - Readme.md has resources, use it
+   * @Todo
+   *
+   *
+   */
+}
 const Toolbar = ({ ukey }) => {
   // Styles
   const toolbarStyle = {
@@ -9,7 +18,7 @@ const Toolbar = ({ ukey }) => {
     alignself: "stretch",
     backgroundColor: "#FE2E2E",
     padding: "6px 8px",
-    height: "75px",
+    height: "100px",
   };
   const headerStyle = {
     color: "white",
@@ -40,34 +49,46 @@ const Toolbar = ({ ukey }) => {
 
   // Returns the toolbar
   return (
-    <div style={toolbarStyle}>
-      <img
-        className="icon"
-        src="this_is_fine.png"
-        alt="Logo"
-        height="70"
-        width="70"
-      />
+    <header style={toolbarStyle}>
+      <a href='/'>
+        <img
+          className='icon'
+          src='this_is_fine.png'
+          alt='Logo'
+          height='70'
+          width='70'
+        />
+      </a>
       <p style={headerStyle}>Slogan</p>
       <div style={{ flex: 1 }}></div>
-      {!loggedIn ? (
-        <Buttons>
-          <PopupButton button="login" />
-          <PopupButton button="about" />
-          <PopupButton button="contact" />
-        </Buttons>
-      ) : (
-        <div>
+      <div>
+        {loggedIn ? (
+          <Nav>
+            <NavItem>
+              <Button>
+                <a href='/about'>About</a>
+              </Button>
+            </NavItem>
+            <NavItem>
+              <Button>
+                <a href='/contact'>Contact</a>
+              </Button>
+            </NavItem>
+            <NavItem>
+              <PopupButton button='login' />
+            </NavItem>
+          </Nav>
+        ) : (
           <Buttons>
-            <PopupButton button="advsearch" />
-            <PopupButton button="overview" />
-            <PopupButton button="settings" />
+            <PopupButton button='advsearch' />
+            <PopupButton button='overview' />
+            <PopupButton button='settings' />
           </Buttons>
-          <input value={query} onChange={(e) => setQuery(e.target.value)} />
-          <button onClick={(e) => handleSearch(e)}>Search</button>
-        </div>
-      )}
-    </div>
+        )}
+        <input value={query} onChange={(e) => setQuery(e.target.value)} />
+        <Button onClick={(e) => handleSearch(e)}>Search</Button>
+      </div>
+    </header>
   );
 };
 

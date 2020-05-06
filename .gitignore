@@ -1,0 +1,17 @@
+.idea/
+.vscode/
+client/node_modules/
+server/node_modules/
+node_modules/
+client/build
+.DS_Store
+*.tgz
+my-app*
+client/template/src/__tests__/__snapshots__/
+client/lerna-debug.log
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+client/.changelog
+client/.npm/
+client/yarn.lock
