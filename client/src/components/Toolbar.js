@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import PopupButton from "./PopupButton";
 import styled from "@emotion/styled";
-import { Nav, NavItem, Button } from "reactstrap";
+
+import Icon from "./Icon";
+import ButtonPanel from "./ButtonPanel";
 
 {
   /* Use these Comments to communicate Todos or other info
@@ -11,84 +12,33 @@ import { Nav, NavItem, Button } from "reactstrap";
    *
    */
 }
-const Toolbar = ({ ukey }) => {
+const Toolbar = () => {
   // Styles
-  const toolbarStyle = {
-    display: "flex",
-    alignself: "stretch",
-    backgroundColor: "#FE2E2E",
-    padding: "6px 8px",
-    height: "100px",
-  };
-  const headerStyle = {
-    color: "white",
-    alignself: "stretch",
-    fontSize: "40px",
-    paddingLeft: "30px",
-    margin: "auto",
-    fontFamily: "Fira Sans",
-  };
-  const Buttons = styled.div`
+  const Container = styled.div`
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    background: rgb(245, 50, 50);
+    padding: 6px 8px;
+    width: 100%;
+    height: 100px;
+  `;
+  const Slogan = styled.h1`
+    color: white;
+    fontsize: 40px;
+    padding: 10px 20px;
+    margin: auto;
+    fontfamily: Fira Sans;
   `;
 
-  // Handles buttons
-  const loggedIn = ukey == null;
-  const [query, setQuery] = useState("");
-
-  // Get the search, if logged in
-  const handleSearch = (e) => {
-    e.preventDefault();
-    getItem(query);
-  };
-
-  // Database call
-  const getItem = (q, ukey) => {};
+  const ukey = null;
 
   // Returns the toolbar
   return (
-    <header style={toolbarStyle}>
-      <a href='/'>
-        <img
-          className='icon'
-          src='this_is_fine.png'
-          alt='Logo'
-          height='70'
-          width='70'
-        />
-      </a>
-      <p style={headerStyle}>Slogan</p>
+    <Container>
+      <Icon source="./this_is_fine.png" />
+      <Slogan>Slogan</Slogan>
       <div style={{ flex: 1 }}></div>
-      <div>
-        {loggedIn ? (
-          <Nav>
-            <NavItem>
-              <Button>
-                <a href='/about'>About</a>
-              </Button>
-            </NavItem>
-            <NavItem>
-              <Button>
-                <a href='/contact'>Contact</a>
-              </Button>
-            </NavItem>
-            <NavItem>
-              <PopupButton button='login' />
-            </NavItem>
-          </Nav>
-        ) : (
-          <Buttons>
-            <PopupButton button='advsearch' />
-            <PopupButton button='overview' />
-            <PopupButton button='settings' />
-          </Buttons>
-        )}
-        <input value={query} onChange={(e) => setQuery(e.target.value)} />
-        <Button onClick={(e) => handleSearch(e)}>Search</Button>
-      </div>
-    </header>
+      <ButtonPanel ukey={ukey} />
+    </Container>
   );
 };
 
