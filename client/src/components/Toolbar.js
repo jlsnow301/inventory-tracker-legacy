@@ -4,14 +4,12 @@ import styled from "@emotion/styled";
 import Icon from "./Icon";
 import ButtonPanel from "./ButtonPanel";
 
-{
-  /* Use these Comments to communicate Todos or other info
-   * @Reminder - Readme.md has resources, use it
-   * @Todo
-   *
-   *
-   */
-}
+/* Use these Comments to communicate Todos or other info
+ * @Reminder - Readme.md has resources, use it
+ * @Todo
+ *
+ *
+ */
 const Toolbar = () => {
   // Styles
   const Container = styled.div`

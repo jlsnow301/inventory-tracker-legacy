@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import { Button } from "reactstrap";
-import Login from "./login/Login";
 
 const PopupButton = ({ button }) => {
   let title = "";
@@ -11,7 +9,6 @@ const PopupButton = ({ button }) => {
     case "login":
       title = `Login`;
       body = `Enter your login details.`;
-      component = <Login />;
       break;
     case "about":
       title = `About`;
@@ -42,15 +39,15 @@ const PopupButton = ({ button }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
-    <div className='popupButton'>
-      <Button onClick={() => setModalIsOpen(true)}>{title}</Button>
+    <div className="popupButton">
+      <button onClick={() => setModalIsOpen(true)}>{title}</button>
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         <h2>{title}</h2>
         <p>{body}</p>
         <div>This is where we would put a component</div>
         {component}
         <div>
-          <Button onClick={() => setModalIsOpen(false)}>Close</Button>
+          <button onClick={() => setModalIsOpen(false)}>Close</button>
         </div>
       </Modal>
     </div>

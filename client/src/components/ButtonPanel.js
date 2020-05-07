@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
-import { Nav, NavItem, Button } from "reactstrap";
+//import { Nav, NavItem, Button } from "reactstrap";
 
 import PopupButton from "./PopupButton";
 
 const ButtonPanel = ({ ukey }) => {
   const Buttons = styled.div`
     display: flex;
+    padding: 10px 0px;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-start;
   `;
 
   // Handles buttons
@@ -27,21 +28,11 @@ const ButtonPanel = ({ ukey }) => {
   return (
     <div>
       {loggedIn ? (
-        <Nav>
-          <NavItem>
-            <Button>
-              <a href="/about">About</a>
-            </Button>
-          </NavItem>
-          <NavItem>
-            <Button>
-              <a href="/contact">Contact</a>
-            </Button>
-          </NavItem>
-          <NavItem>
-            <PopupButton button="login" />
-          </NavItem>
-        </Nav>
+        <Buttons>
+          <PopupButton button="about" />
+          <PopupButton button="contact" />
+          <PopupButton button="login" />
+        </Buttons>
       ) : (
         <Buttons>
           <PopupButton button="advsearch" />
@@ -50,7 +41,7 @@ const ButtonPanel = ({ ukey }) => {
         </Buttons>
       )}
       <input value={query} onChange={(e) => setQuery(e.target.value)} />
-      <Button onClick={(e) => handleSearch(e)}>Search</Button>
+      <button onClick={(e) => handleSearch(e)}>Search</button>
     </div>
   );
 };

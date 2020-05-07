@@ -8,13 +8,12 @@ const InventoryDisplay = ({ ukey }) => {
     display: flex;
     align-self: stretch;
     flex-wrap: wrap;
-    margin-left: 20%;
-    margin-right: 20%;
     width: 85%;
+    height: 820px;
     background: rgb(235, 235, 235);
     border: 20px white;
     padding: 10px;
-    margin: 0 auto;
+    overflow: auto;
   `;
 
   const [inventoryItems, setInventory] = useState([
@@ -24,11 +23,18 @@ const InventoryDisplay = ({ ukey }) => {
   ]);
 
   const addNewItemHandler = (newItem) => {
-    setInventory(inventoryItems.concat());
+    setInventory((prevInventory) => prevInventory.concat(newItem));
   };
 
   return (
     <Container className="flex-wrap">
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
       <Card />
       <Card />
       <Card />

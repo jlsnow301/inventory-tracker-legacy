@@ -12,14 +12,15 @@ const Card = ({ item }) => {
     height: 300px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: justify;
+    justify-content: flex-start;
     border-radius: 15px;
+    padding: 15px 10px;
   `;
 
   return (
     <Card classname="card">
       <ProductData product={item} />
+      <div style={{ flex: 1 }}></div>
       <ProductImage product={item} />
     </Card>
   );
