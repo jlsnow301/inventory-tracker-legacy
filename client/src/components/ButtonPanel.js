@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 
 import PopupButton from "./PopupButton";
 
-const ButtonPanel = ({ ukey }) => {
+const ButtonPanel = (ukey) => {
   const Buttons = styled.div`
     display: flex;
     padding: 10px 0px;
@@ -13,7 +13,8 @@ const ButtonPanel = ({ ukey }) => {
   `;
 
   // Handles buttons
-  const loggedIn = ukey == null;
+  console.log(ukey);
+  const loggedIn = ukey != null;
   const [query, setQuery] = useState("");
 
   // Get the search, if logged in

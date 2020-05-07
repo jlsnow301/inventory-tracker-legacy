@@ -24,7 +24,7 @@ const Toolbar = () => {
     fontsize: 40px;
     padding: 10px 20px;
     margin: auto;
-    fontfamily: Fira Sans;
+    font-family: "Times New Roman", Times, serif;
   `;
 
   const ukey = null;
