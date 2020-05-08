@@ -12,7 +12,7 @@ import { Nav, NavItem, Button } from "reactstrap";
 
 class Home extends Component {
   render() {
-    return <h1>Home page</h1>;
+    return <h1></h1>;
   }
 }
 

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
 
 const ProductData = ({ product }) => {
   // Pools the tags associated with an item
@@ -25,7 +24,11 @@ const ProductData = ({ product }) => {
 
   return (
     <p>
-      <b>definition.key here:</b>definition.value here
+      <b>key: </b>value
+      <br />
+      <b>key: </b>value
+      <br />
+      <b>key: </b>value
       <br />
     </p>
   );
