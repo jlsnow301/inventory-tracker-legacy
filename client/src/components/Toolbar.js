@@ -16,17 +16,18 @@ const Toolbar = ({ ukey }) => {
   const toolbarStyle = {
     display: "flex",
     alignself: "stretch",
-    backgroundColor: "#FE2E2E",
+    backgroundColor: "#edddd4",
     padding: "6px 8px",
     height: "100px",
+    fontFamily: "Roboto Slab",
+    marginBottom: "20px",
   };
   const headerStyle = {
-    color: "white",
+    color: "#197278",
     alignself: "stretch",
     fontSize: "40px",
     paddingLeft: "30px",
     margin: "auto",
-    fontFamily: "Fira Sans",
   };
 
   const Buttons = styled.div`
@@ -48,6 +49,23 @@ const Toolbar = ({ ukey }) => {
   // Database call
   const getItem = (q, ukey) => {};
 
+  const buttonStyling = {
+    backgroundColor: "#edddd4",
+    border: "none",
+  };
+  const searchButtonStyling = {
+    backgroundColor: "#edddd4",
+    border: "none",
+    color: "#772e25",
+  };
+
+  const buttonLinkStyling = {
+    color: "#772e25",
+    textDecoration: "none",
+    fontSize: "15px",
+    letterSpacing: "1px",
+  };
+
   // Returns the toolbar
   return (
     <header style={toolbarStyle}>
@@ -66,13 +84,17 @@ const Toolbar = ({ ukey }) => {
         {loggedIn ? (
           <Nav>
             <NavItem>
-              <Button>
-                <a href='/about'>About</a>
+              <Button style={buttonStyling}>
+                <a href='/about' style={buttonLinkStyling}>
+                  About
+                </a>
               </Button>
             </NavItem>
             <NavItem>
-              <Button>
-                <a href='/contact'>Contact</a>
+              <Button style={buttonStyling}>
+                <a href='/contact' style={buttonLinkStyling}>
+                  Contact
+                </a>
               </Button>
             </NavItem>
             <NavItem>
@@ -81,13 +103,15 @@ const Toolbar = ({ ukey }) => {
           </Nav>
         ) : (
           <Buttons>
-            <PopupButton button='advsearch' />
-            <PopupButton button='overview' />
-            <PopupButton button='settings' />
+            <PopupButton button='advsearch' style={buttonLinkStyling} />
+            <PopupButton button='overview' style={buttonLinkStyling} />
+            <PopupButton button='settings' style={buttonLinkStyling} />
           </Buttons>
         )}
         <input value={query} onChange={(e) => setQuery(e.target.value)} />
-        <Button onClick={(e) => handleSearch(e)}>Search</Button>
+        <Button onClick={(e) => handleSearch(e)} style={searchButtonStyling}>
+          Search
+        </Button>
       </div>
     </header>
   );

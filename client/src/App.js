@@ -6,6 +6,7 @@ import Route from "react-router-dom/Route";
 import Home from "./components/views/Home";
 import About from "./components/views/About";
 import Contact from "./components/views/Contact";
+//import "../public/css/fonts/fonts.css";
 
 {
   /* @Reminder - Readme.md has resources, use it
@@ -23,7 +24,7 @@ import Contact from "./components/views/Contact";
 class App extends Component {
   render() {
     return (
-      <div>
+      <div style={classStyleBody}>
         <div className='header'>
           <Toolbar />
         </div>
@@ -39,5 +40,9 @@ class App extends Component {
     );
   }
 }
+const classStyleBody = {
+  backgroundColor: "#283d3b",
+  height: "100%",
+};
 
 export default App;

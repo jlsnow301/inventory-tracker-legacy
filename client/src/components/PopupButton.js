@@ -41,9 +41,24 @@ const PopupButton = ({ button }) => {
   }
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  const buttonStyling = {
+    backgroundColor: "#edddd4",
+    border: "none",
+    color: "#772e25",
+  };
+
+  const buttonLinkStyling = {
+    color: "#772e25",
+    textDecoration: "none",
+    fontSize: "15px",
+    letterSpacing: "1px",
+  };
+
   return (
     <div className='popupButton'>
-      <Button onClick={() => setModalIsOpen(true)}>{title}</Button>
+      <Button onClick={() => setModalIsOpen(true)} style={buttonStyling}>
+        {title}
+      </Button>
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         <h2>{title}</h2>
         <p>{body}</p>
