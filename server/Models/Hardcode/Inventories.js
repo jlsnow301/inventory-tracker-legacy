@@ -12,19 +12,30 @@ const INVENTORIES = [
         id: "1",
         name: "John Smith",
       },
+      {
+        id: "2",
+        name: "David Frost",
+      },
+      {
+        id: "3",
+        name: "Kenya Snow",
+      },
     ],
     editAccess: [
       {
-        id: 1,
-        name: "John Smith",
-        email: "this.john@example.com",
-        status: "active",
-      },
-      {
         id: 2,
         name: "David Frost",
-        email: "this.david@example.com",
-        status: "active",
+      },
+      {
+        id: 3,
+        name: "Kenya Snow",
+      },
+    ],
+    DeleteAccess: [
+      {
+        id: 3,
+        name: "Kenya Snow",
+        email: "this.kenya@example.com",
       },
     ],
     items: [
