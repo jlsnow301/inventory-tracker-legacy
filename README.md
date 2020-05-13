@@ -17,7 +17,9 @@ npm i reactstrap bootstrap @emotion/styled @emotion/core react-router-dom
 
 ## For the Server
 
-npm i body-parser concurrently express mongoose nodemon
+npm i body-parser concurrently express mongoose
+
+npm i -D nodemon
 
 NOTE: You will need to edit the **scripts** portion of your package.json in the server
 
@@ -30,3 +32,8 @@ It should look like this:
 When developing and **_needing the server run this command:_**
 
 **npm run server**
+
+# Resources
+
+[Mern CRUD Tutorial](https://www.djamware.com/post/59faec0a80aca7739224ee1f/building-crud-web-application-using-mern-stack)
+[JSON.org](https://www.json.org/json-en.html)

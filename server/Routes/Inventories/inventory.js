@@ -8,13 +8,16 @@
  *
  */
 
-const EXPRESS = require("express");
+const EXPRESS = require('express');
 const ROUTER = EXPRESS.Router();
+const INVENTORIES = require('../../Models/Inventories');
 
 /**
  * @purpose gets all inventories that the user has created/has access too
  */
-ROUTER.get("/", (req, res) => {});
+ROUTER.get('/', (req, res) => {
+  INVENTORIES.find();
+});
 
 /**
  * @purpose gets a single Collection
@@ -22,23 +25,23 @@ ROUTER.get("/", (req, res) => {});
  * @success
  * @failure
  */
-ROUTER.get("/:id", (req, res) => {});
+ROUTER.get('/:id', (req, res) => {});
 
 /**
  * @purpose add a new inventory (group/collection of items)
  * @success
  * @failure
  */
-ROUTER.post("/", (req, res) => {
+ROUTER.post('/', (req, res) => {
   let newMember = {
     id: UUID.v4(),
     name: req.body.name,
     email: req.body.email,
-    status: "active",
+    status: 'active',
   };
 
   if (!newMember.name || !newMember.email) {
-    return res.status(400).json({ msg: "Please include a name and/or email" });
+    return res.status(400).json({ msg: 'Please include a name and/or email' });
   }
 
   MEMBERS.push(newMember);
@@ -53,7 +56,7 @@ ROUTER.post("/", (req, res) => {
  * @success Returns JSON with inventory information
  * @failure sets status to 400 w/ msg: no inventory found with id found
  */
-ROUTER.put("/:id", (req, res) => {
+ROUTER.put('/:id', (req, res) => {
   let found = MEMBERS.some((member) => member.id === parseInt(req.params.id));
 
   if (found) {
@@ -63,7 +66,7 @@ ROUTER.put("/:id", (req, res) => {
         member.name = updMember.name ? updMember.name : member.name;
         member.email = updMember.email ? updMember.email : member.email;
 
-        res.json({ msg: "Member Updated", member });
+        res.json({ msg: 'Member Updated', member });
       }
     });
     res.json(MEMBERS.filter((member) => member.id === parseInt(req.params.id)));
@@ -77,12 +80,12 @@ ROUTER.put("/:id", (req, res) => {
  * @success
  * @failure
  */
-ROUTER.delete("/:id", (req, res) => {
+ROUTER.delete('/:id', (req, res) => {
   let found = MEMBERS.some((member) => member.id === parseInt(req.params.id));
 
   if (found) {
     res.json({
-      msg: "member deleted",
+      msg: 'member deleted',
       members: MEMBERS.filter(
         (member) => member.id !== parseInt(req.params.id)
       ),
