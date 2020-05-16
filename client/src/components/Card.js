@@ -18,7 +18,7 @@ const Card = ({ item }) => {
   `;
 
   return (
-    <Card classname="card">
+    <Card classname='card'>
       <ProductData product={item} />
       <div style={{ flex: 1 }}></div>
       <ProductImage product={item} />
