@@ -9,7 +9,7 @@ import Home from "./components/views/Home";
 import About from "./components/views/About";
 import Contact from "./components/views/Contact";
 
-import InventoryDisplay from "./components/InventoryDisplay";
+import InventoryDisplay from "./components/dashboard/InventoryDisplay";
 
 const Body = styled.div`
   margin: 0 auto;
@@ -27,7 +27,7 @@ const Body = styled.div`
    *   - Settings
    *   - Dashboard
    *   - Quick Start
-   *
+   * <InventoryDisplay />
    */
 }
 class App extends Component {
@@ -44,9 +44,11 @@ class App extends Component {
           <Route path="/about" exact component={About}></Route>
           {/* Browser routing for Contact page */}
           <Route path="/contact" exact component={Contact}></Route>
+          {/* Browser routing for Dashboard */}
+          <Route path="/dashboard" exact component={InventoryDisplay}></Route>
         </Router>
         <Body>
-          <InventoryDisplay />
+          
         </Body>
       </div>
     );

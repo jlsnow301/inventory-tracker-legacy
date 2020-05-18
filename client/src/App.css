@@ -1,6 +1,69 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans&family=Merriweather&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis&family=Hammersmith+One&family=Quicksand:wght@500&display=swap");
 .App {
   margin: 0 auto;
   background-color: rgb(75, 75, 75);
+}
+
+.container {
+  background: white;
+  display: grid;
+  grid-template-columns: 60% 40%;
+}
+
+.content {
+  margin-top: 5rem;
+  font-family: Roboto, Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
+  text-align: justify;
+}
+
+.aside {
+  background: grey;
+  margin-top: 5rem;
+  margin-left: 1rem;
+  font-size: 35px;
+}
+
+.contact-content {
+  margin-top: 7rem;
+  text-align: center;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+}
+
+.contact-container {
+  flex-direction: column;
+  font-family: sans-serif;
+  align-items: center;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  width: 50%;
+  padding: 8px;
+  border: 1px solid rgb(175, 113, 113);
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  resize: vertical;
+}
+input[type="submit"] {
+  background-color: #68c46b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #4d7c4f;
 }
