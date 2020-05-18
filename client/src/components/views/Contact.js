@@ -2,17 +2,32 @@ import React, { Component } from "react";
 import styled from "@emotion/styled";
 import { Nav, NavItem, Button } from "reactstrap";
 
-{
-  /* Use these Comments to communicate Todos or other info
-   * @Reminder - Readme.md has resources, use it
-   * @Todo
-   *
-   */
-}
-
 class Contact extends Component {
   render() {
-    return <h1>Contact page</h1>;
+    return (
+      <div className="contact-container">
+        <div className="contact-content">
+          <h1>We'd love to hear from you </h1>
+          <br></br>
+
+          <div>
+            <label>First Name</label>
+            <br></br>
+            <input type="text" id="fname" name="firstname" />
+            <br></br>
+            <label>Last Name</label>
+            <br></br>
+            <input type="text" id="fname" name="firstname" />
+            <br></br>
+            <label>Email</label>
+            <br></br>
+            <input type="text" id="fname" name="firstname" />
+            <br></br>
+            <input type="submit" value="Submit" />
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
