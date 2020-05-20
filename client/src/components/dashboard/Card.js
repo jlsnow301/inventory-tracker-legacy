@@ -4,23 +4,22 @@ import styled from "@emotion/styled";
 import ProductData from "./ProductData";
 import ProductImage from "./ProductImage";
 
-const Card = ({ item }) => {
+const Card = (item) => {
   const Card = styled.div`
     margin: 20px;
     background: rgb(255, 255, 255);
     width: 22.5%;
     height: 300px;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-around;
     border-radius: 15px;
     padding: 15px 10px;
+    overflow: auto;
   `;
 
   return (
-    <Card classname='card'>
+    <Card classname="card">
       <ProductData product={item} />
-      <div style={{ flex: 1 }}></div>
       <ProductImage product={item} />
     </Card>
   );

@@ -5,10 +5,10 @@ import styled from "@emotion/styled";
 import PopupButton from "./PopupButton";
 
 const ButtonPanel = (ukey) => {
-  const Buttons = styled.div`
+  const Container = styled.div`
     display: flex;
     padding: 10px 0px;
-    flex-direction: row;
+
     justify-content: flex-start;
   `;
 
@@ -29,17 +29,17 @@ const ButtonPanel = (ukey) => {
   return (
     <div>
       {loggedIn ? (
-        <Buttons>
+        <Container>
           <PopupButton button="about" />
           <PopupButton button="contact" />
           <PopupButton button="login" />
-        </Buttons>
+        </Container>
       ) : (
-        <Buttons>
+        <Container>
           <PopupButton button="advsearch" />
           <PopupButton button="overview" />
           <PopupButton button="settings" />
-        </Buttons>
+        </Container>
       )}
       <input value={query} onChange={(e) => setQuery(e.target.value)} />
       <button onClick={(e) => handleSearch(e)}>Search</button>

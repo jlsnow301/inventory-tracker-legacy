@@ -37,18 +37,17 @@ class App extends Component {
         <div className="header">
           <Toolbar />
         </div>
-        <Router>
-          {/* Browser routing for home page */}
-          <Route path="/" exact component={Home}></Route>
-          {/* Browser routing for About page */}
-          <Route path="/about" exact component={About}></Route>
-          {/* Browser routing for Contact page */}
-          <Route path="/contact" exact component={Contact}></Route>
-          {/* Browser routing for Dashboard */}
-          <Route path="/dashboard" exact component={InventoryDisplay}></Route>
-        </Router>
         <Body>
-          
+          <Router>
+            {/* Browser routing for home page */}
+            <Route path="/" exact component={Home}></Route>
+            {/* Browser routing for About page */}
+            <Route path="/about" exact component={About}></Route>
+            {/* Browser routing for Contact page */}
+            <Route path="/contact" exact component={Contact}></Route>
+            {/* Browser routing for Dashboard */}
+            <Route path="/dashboard" exact component={InventoryDisplay}></Route>
+          </Router>
         </Body>
       </div>
     );

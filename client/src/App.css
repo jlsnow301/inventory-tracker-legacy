@@ -6,26 +6,6 @@
   background-color: rgb(75, 75, 75);
 }
 
-.container {
-  background: white;
-  display: grid;
-  grid-template-columns: 60% 40%;
-}
-
-.content {
-  margin-top: 5rem;
-  font-family: Roboto, Georgia, Times, "Times New Roman", serif;
-  font-size: 20px;
-  text-align: justify;
-}
-
-.aside {
-  background: grey;
-  margin-top: 5rem;
-  margin-left: 1rem;
-  font-size: 35px;
-}
-
 .contact-content {
   margin-top: 7rem;
   text-align: center;

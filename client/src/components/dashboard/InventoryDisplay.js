@@ -3,43 +3,46 @@ import styled from "@emotion/styled";
 
 import Card from "./Card";
 
-const InventoryDisplay = ({ ukey }) => {
+const InventoryDisplay = (ukey) => {
   const Container = styled.div`
     display: flex;
     align-self: stretch;
     flex-wrap: wrap;
     width: 85%;
-    height: 820px;
+    height: 800px;
     background: rgb(235, 235, 235);
-    border: 20px white;
     padding: 10px;
     overflow: auto;
   `;
 
-  const [inventoryItems, setInventory] = useState([
-    { id: "cg1", text: "Item one" },
-    { id: "cg2", text: "Item two" },
-    { id: "cg3", text: "Item three" },
-  ]);
+  // Set inventory to null at first
+  const [inventoryItems, setInventory] = useState([]);
 
-  const addNewItemHandler = (newItem) => {
-    setInventory((prevInventory) => prevInventory.concat(newItem));
+  // Pull the inventory based on user
+  const data = async (ukey) => {
+    const apiRes = await fetch(
+      `http://127.0.0.1:8080/api/inventory&ukey=${ukey}`
+    );
+    const resJSON = await apiRes.json();
+    return resJSON;
+  };
+
+  // This sets the inventory initially
+  useEffect(() => {
+    data(ukey).then((res) => {
+      setInventory(res);
+    });
+  }, [inventoryItems]);
+
+  // This iterates through the inventory and posts as cards
+  const displayInventory = (inventoryItems) => {
+    if (!inventoryItems.length) return null;
+
+    return inventoryItems.map((item, index) => <Card item={item.itemID} />);
   };
 
   return (
-    <Container className="flex-wrap">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-    </Container>
+    <Container>{this.displayInventory(this.state.inventoryItems)}</Container>
   );
 };
 
