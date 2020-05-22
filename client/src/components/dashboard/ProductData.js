@@ -1,35 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const ProductData = ({ product }) => {
-  // Pools the tags associated with an item
-  const [definitions, setDefinitions] = useState([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+const ProductData = (product) => {
+  // Styling
 
-  const getDefinitions = async (product) => {
-    setDefinitions(product);
-    setLoading(true);
-    try {
-      const apiRes = await fetch();
-      // Database call here
-      const resJSON = await apiRes.json();
-      setDefinitions({
-        //Set the tags here,
-      });
-    } catch (error) {
-      setError(true);
-    }
-    setLoading(false);
+  // This iterates through the inventory and posts as cards
+  const DisplayDetails = (product) => {
+    return product.map((detail, index) => (
+      <p>
+        {detail}: {detail.value}
+      </p>
+    ));
   };
 
+  // Returns
   return (
     <p>
-      <b>key: </b>value
-      <br />
-      <b>key: </b>value
-      <br />
-      <b>key: </b>value
-      <br />
+      <DisplayDetails />
     </p>
   );
 };

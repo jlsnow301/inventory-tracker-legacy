@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 //import { Nav, NavItem, Button } from "reactstrap";
 
 import PopupButton from "./PopupButton";
 
 const ButtonPanel = (ukey) => {
+  // Styling
   const Container = styled.div`
     display: flex;
     padding: 10px 0px;
@@ -26,6 +27,7 @@ const ButtonPanel = (ukey) => {
   // Database call
   const getItem = (q, ukey) => {};
 
+  // Returns
   return (
     <div>
       {loggedIn ? (

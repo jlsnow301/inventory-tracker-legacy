@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "@emotion/styled";
 
 import ProductData from "./ProductData";
 import ProductImage from "./ProductImage";
 
 const Card = (item) => {
+  // Styling
   const Card = styled.div`
     margin: 20px;
     background: rgb(255, 255, 255);
@@ -17,6 +18,7 @@ const Card = (item) => {
     overflow: auto;
   `;
 
+  // Returns
   return (
     <Card classname="card">
       <ProductData product={item} />

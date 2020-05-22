@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "@emotion/styled";
 
 const Home = () => {
+  // Styling
   const Container = styled.div`
     display: flex;
     flex-direction: row;
@@ -28,6 +29,7 @@ const Home = () => {
     height: 75%;
   `;
 
+  // Returns
   return (
     <Container>
       <Content>

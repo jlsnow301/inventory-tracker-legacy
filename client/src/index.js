@@ -5,12 +5,11 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-{
-  /* Use comments to communicate what needs to be done here or about resources used
-   * @Reminder - Readme.md has resources, use it
-   *
-   */
-}
+/* Use comments to communicate what needs to be done here or about resources used
+ * @Reminder - Readme.md has resources, use it
+ *
+ */
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

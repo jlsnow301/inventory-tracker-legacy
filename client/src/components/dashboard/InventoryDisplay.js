@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import Card from "./Card";
 
 const InventoryDisplay = (ukey) => {
+  // Styling
   const Container = styled.div`
     display: flex;
     align-self: stretch;
@@ -15,7 +16,7 @@ const InventoryDisplay = (ukey) => {
     overflow: auto;
   `;
 
-  // Set inventory to null at first
+  // Initialize inventory object
   const [inventoryItems, setInventory] = useState([]);
 
   // Pull the inventory based on user
@@ -28,21 +29,27 @@ const InventoryDisplay = (ukey) => {
   };
 
   // This sets the inventory initially
-  useEffect(() => {
-    data(ukey).then((res) => {
-      setInventory(res);
-    });
-  }, [inventoryItems]);
+  useEffect(
+    (ukey) => {
+      data(ukey).then((res) => {
+        setInventory(res);
+      });
+    },
+    [inventoryItems]
+  );
 
   // This iterates through the inventory and posts as cards
-  const displayInventory = (inventoryItems) => {
+  const DisplayInventory = (inventoryItems) => {
     if (!inventoryItems.length) return null;
 
     return inventoryItems.map((item, index) => <Card item={item.itemID} />);
   };
 
+  // Returns
   return (
-    <Container>{this.displayInventory(this.state.inventoryItems)}</Container>
+    <Container>
+      <DisplayInventory />
+    </Container>
   );
 };
 
