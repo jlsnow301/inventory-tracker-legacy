@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const ProductData = (product) => {
-  // Pools the tags associated with an item
-  const [definitions, setDefinitions] = useState([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  // Styling
 
   // This iterates through the inventory and posts as cards
-  const displayDetails = (product) => {
-    return inventoryItems.map((item, index) => <Card item={item.itemID} />);
+  const DisplayDetails = (product) => {
+    return product.map((detail, index) => (
+      <p>
+        {detail}: {detail.value}
+      </p>
+    ));
   };
 
+  // Returns
   return (
     <p>
-      <Details />
+      <DisplayDetails />
     </p>
   );
 };

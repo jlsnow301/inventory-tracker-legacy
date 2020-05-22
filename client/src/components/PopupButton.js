@@ -1,50 +1,44 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
+import Login from "./login/Login";
+import About from "./views/About";
+import Contact from "./views/Contact";
 
 const PopupButton = ({ button }) => {
   let title = "";
-  let body = "";
   let component = "";
   switch (button) {
     case "login":
-      title = `Login`;
-      body = `Enter your login details.`;
+      title = "Login";
+      component = <Login />;
       break;
     case "about":
-      title = `About`;
-      body = `Created from the collaborative work of Anthony, Margarita, Selina, Jeremiah!`;
+      title = "About";
+      component = <About />;
       break;
     case "contact":
-      title = `Contact`;
-      body =
-        "You can find us via North Seattle College! Our emails:<br />Anthony: stenbergdigeronimo@gmail.com<br /> " +
-        "Margarita: pearlmargaret2012@gmail.com<br />Selina: selinapn@outlook.com<br />Jeremiah: jlsnow.301@gmail.com ";
+      title = "Contact";
+      component = <Contact />;
       break;
     case "advsearch":
-      title = `Advanced Search`;
-      body = `Type in the specific query details here.`;
       break;
     case "overview":
-      title = `Overview`;
-      body = `Here is today's inventory forecast!`;
       break;
     case "settings":
-      title = `Settings`;
-      body = `User-specific profile settings`;
       break;
 
     default:
       break;
   }
+
+  // Ensures modal can close and open properly
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  // Returns
   return (
     <div className="popupButton">
       <button onClick={() => setModalIsOpen(true)}>{title}</button>
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-        <h2>{title}</h2>
-        <p>{body}</p>
-        <div>This is where we would put a component</div>
         {component}
         <div>
           <button onClick={() => setModalIsOpen(false)}>Close</button>

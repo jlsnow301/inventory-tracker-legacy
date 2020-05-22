@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
 
 import Icon from "./Icon";
@@ -10,8 +10,9 @@ import ButtonPanel from "./ButtonPanel";
  *
  *
  */
+
 const Toolbar = () => {
-  // Styles
+  // Styling
   const Container = styled.div`
     display: flex;
     background: rgb(245, 50, 50);
@@ -29,7 +30,7 @@ const Toolbar = () => {
 
   const ukey = null;
 
-  // Returns the toolbar
+  // Returns
   return (
     <Container>
       <Icon source="./this_is_fine.png" />
