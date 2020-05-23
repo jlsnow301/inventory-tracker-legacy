@@ -14,7 +14,7 @@ const ButtonPanel = (ukey) => {
   `;
 
   // Handles buttons
-  const loggedIn = ukey == null;
+  const loggedIn = ukey != null;
   const [query, setQuery] = useState("");
 
   // Get the search, if logged in
@@ -31,15 +31,15 @@ const ButtonPanel = (ukey) => {
     <div>
       {loggedIn ? (
         <Container>
-          <PopupButton button="about" />
-          <PopupButton button="contact" />
-          <PopupButton button="login" />
-        </Container>
-      ) : (
-        <Container>
           <PopupButton button="advsearch" />
           <PopupButton button="overview" />
           <PopupButton button="settings" />
+        </Container>
+      ) : (
+        <Container>
+          <PopupButton button="about" />
+          <PopupButton button="contact" />
+          <PopupButton button="login" />
         </Container>
       )}
       <input value={query} onChange={(e) => setQuery(e.target.value)} />

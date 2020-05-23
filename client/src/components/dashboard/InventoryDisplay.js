@@ -27,11 +27,9 @@ const InventoryDisplay = (ukey) => {
   //  })
 
   const DisplayInventory = () => {
-    var items = [];
-    Object.keys(data).forEach((item) =>
-      items.push(<Card product={data[item]} />)
-    );
-    return items;
+    var keys = [];
+    Object.keys(data).forEach((key) => keys.push(<Card item={data[key]} />));
+    return keys;
   };
 
   // Returns

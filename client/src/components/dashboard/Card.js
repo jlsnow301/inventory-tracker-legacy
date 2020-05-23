@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const Card = (item) => {
+const Card = (data) => {
   // Styling
   const Container = styled.div`
     display: flex;
@@ -21,17 +21,17 @@ const Card = (item) => {
   `;
 
   const DisplayDetails = () => {
-    var details = [];
-    for (let [key, value] of Object.entries(item.product)) {
+    var entries = [];
+    for (let [key, value] of Object.entries(data.item)) {
       // TODO: Need a more intelligent way to skip over data I don't want to see.
       // In the distant future, when users can create their own data schema, we could
       // make this an array so if key in hidden, continue
       if (key === "id") {
         continue;
       }
-      details.push(<b>{key}: </b>, `${value}`, <br />);
+      entries.push(<b>{key}: </b>, `${value}`, <br />);
     }
-    return details;
+    return entries;
   };
 
   // Returns
