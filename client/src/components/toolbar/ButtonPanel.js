@@ -14,7 +14,6 @@ const ButtonPanel = (ukey) => {
   `;
 
   // Handles buttons
-  console.log(ukey);
   const loggedIn = ukey == null;
   const [query, setQuery] = useState("");
 

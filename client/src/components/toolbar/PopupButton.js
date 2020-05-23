@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import Login from "./login/Login";
-import About from "./views/About";
-import Contact from "./views/Contact";
+import Login from "../login/Login";
+import About from "../views/About";
+import Contact from "../views/Contact";
 
 const PopupButton = ({ button }) => {
   let title = "";

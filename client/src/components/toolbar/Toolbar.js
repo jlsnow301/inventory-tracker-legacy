@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-
 import Icon from "./Icon";
 import ButtonPanel from "./ButtonPanel";
 
@@ -34,7 +33,7 @@ const Toolbar = () => {
   return (
     <Container>
       <Icon source="./this_is_fine.png" />
-      <Slogan>Slogan</Slogan>
+      <Slogan>Inventory Manager v1</Slogan>
       <div style={{ flex: 1 }}></div>
       <ButtonPanel ukey={ukey} />
     </Container>

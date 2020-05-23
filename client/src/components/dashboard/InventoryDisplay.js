@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "@emotion/styled";
-import RouteManager from "../RouteManager";
 import Card from "./Card";
+
+import MockData from "./MockData";
 
 const InventoryDisplay = (ukey) => {
   // Styling
@@ -9,36 +10,27 @@ const InventoryDisplay = (ukey) => {
     display: flex;
     align-self: stretch;
     flex-wrap: wrap;
-    width: 85%;
-    height: 800px;
+    width: 90%;
+    height: 850px;
     background: rgb(235, 235, 235);
+    border: 2px solid rgb(120, 120, 120);
     padding: 10px;
     overflow: auto;
   `;
-  // Commenting this out just to briefly make a test db.
-  const data = {
-    "1": {
-      Name: "Tylenol",
-      Class: "Painkiller",
-      Price: "5",
-    },
-    "2": {
-      Name: "Advil",
-      Class: "Painkiller",
-      Price: "5",
-    },
-    "3": {
-      Name: "Aleve",
-      Class: "Painkiller",
-      Price: "5",
-    },
-  };
+
+  var data = MockData();
+  // TODO: Link the db up here instead of falsely generating it with a local file
+  // axios.get(`http://127.0.0.1:5000/api/inventory`, {ukey})
+  //    .then(res => {
+  //    console.log(res);
+  //    var data = res.data;
+  //  })
 
   const DisplayInventory = () => {
     var items = [];
-    for (let [key, value] of Object.entries(data)) {
-      items.push(<Card product={key} />);
-    }
+    Object.keys(data).forEach((item) =>
+      items.push(<Card product={data[item]} />)
+    );
     return items;
   };
 

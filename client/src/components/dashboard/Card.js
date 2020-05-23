@@ -1,29 +1,44 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import ProductData from "./ProductData";
-import ProductImage from "./ProductImage";
-
-const Card = (itemObj) => {
+const Card = (item) => {
   // Styling
-  const Card = styled.div`
+  const Container = styled.div`
+    display: flex;
     margin: 20px;
     background: rgb(255, 255, 255);
     width: 22.5%;
     height: 300px;
-    display: flex;
-    justify-content: space-around;
-    border-radius: 15px;
-    padding: 15px 10px;
+    justify-content: space-between;
+    border: 2px solid dimgray;
+    border-radius: 8px;
+    padding: 15px 20px;
     overflow: auto;
   `;
+  const Icon = styled.img`
+    max-width: 45%;
+    max-height: 40%;
+  `;
+
+  const DisplayDetails = () => {
+    var details = [];
+    for (let [key, value] of Object.entries(item.product)) {
+      if (key == "id") {
+        continue;
+      }
+      details.push(<b>{key}: </b>, `${value}`, <br />);
+    }
+    return details;
+  };
 
   // Returns
   return (
-    <Card classname="card">
-      <ProductData product={itemObj} />
-      <ProductImage product={itemObj} />
-    </Card>
+    <Container classname="card">
+      <p>
+        <DisplayDetails />
+      </p>
+      <Icon className="icon" src="./bottle.png" alt="Product Icon" />
+    </Container>
   );
 };
 
