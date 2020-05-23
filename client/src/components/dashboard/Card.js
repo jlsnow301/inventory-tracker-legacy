@@ -23,6 +23,9 @@ const Card = (item) => {
   const DisplayDetails = () => {
     var details = [];
     for (let [key, value] of Object.entries(item.product)) {
+      // TODO: Need a more intelligent way to skip over data I don't want to see.
+      // In the distant future, when users can create their own data schema, we could
+      // make this an array so if key in hidden, continue
       if (key == "id") {
         continue;
       }
