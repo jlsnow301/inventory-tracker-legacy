@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
-
+import RouteManager from "../RouteManager";
 import Card from "./Card";
 
 const InventoryDisplay = (ukey) => {
@@ -15,34 +15,31 @@ const InventoryDisplay = (ukey) => {
     padding: 10px;
     overflow: auto;
   `;
-
-  // Initialize inventory object
-  const [inventoryItems, setInventory] = useState([]);
-
-  // Pull the inventory based on user
-  const data = async (ukey) => {
-    const apiRes = await fetch(
-      `http://127.0.0.1:8080/api/inventory&ukey=${ukey}`
-    );
-    const resJSON = await apiRes.json();
-    return resJSON;
+  // Commenting this out just to briefly make a test db.
+  const data = {
+    "1": {
+      Name: "Tylenol",
+      Class: "Painkiller",
+      Price: "5",
+    },
+    "2": {
+      Name: "Advil",
+      Class: "Painkiller",
+      Price: "5",
+    },
+    "3": {
+      Name: "Aleve",
+      Class: "Painkiller",
+      Price: "5",
+    },
   };
 
-  // This sets the inventory initially
-  useEffect(
-    (ukey) => {
-      data(ukey).then((res) => {
-        setInventory(res);
-      });
-    },
-    [inventoryItems]
-  );
-
-  // This iterates through the inventory and posts as cards
-  const DisplayInventory = (inventoryItems) => {
-    if (!inventoryItems.length) return null;
-
-    return inventoryItems.map((item, index) => <Card item={item.itemID} />);
+  const DisplayInventory = () => {
+    var items = [];
+    for (let [key, value] of Object.entries(data)) {
+      items.push(<Card product={key} />);
+    }
+    return items;
   };
 
   // Returns

@@ -21,10 +21,13 @@ const PopupButton = ({ button }) => {
       component = <Contact />;
       break;
     case "advsearch":
+      title = "Adv Search";
       break;
     case "overview":
+      title = "Overview";
       break;
     case "settings":
+      title = "Settings";
       break;
 
     default:

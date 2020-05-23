@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import ProductData from "./ProductData";
 import ProductImage from "./ProductImage";
 
-const Card = (item) => {
+const Card = (itemObj) => {
   // Styling
   const Card = styled.div`
     margin: 20px;
@@ -21,8 +21,8 @@ const Card = (item) => {
   // Returns
   return (
     <Card classname="card">
-      <ProductData product={item} />
-      <ProductImage product={item} />
+      <ProductData product={itemObj} />
+      <ProductImage product={itemObj} />
     </Card>
   );
 };

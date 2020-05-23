@@ -1,23 +1,18 @@
 import React from "react";
 
-const ProductData = (product) => {
+const ProductData = ({ product }) => {
   // Styling
 
-  // This iterates through the inventory and posts as cards
-  const DisplayDetails = (product) => {
-    return product.map((detail, index) => (
-      <p>
-        {detail}: {detail.value}
-      </p>
-    ));
-  };
+  // Ran out of time, this is not compiling
+  // const DisplayDetails = () => {
+  //  Object.keys(product).forEach(function (item) {
+  //    console.log(item); // key
+  //    console.log(product[item]); // value
+  //  });
+  // };
 
   // Returns
-  return (
-    <p>
-      <DisplayDetails />
-    </p>
-  );
+  return <p>Test</p>;
 };
 
 export default ProductData;

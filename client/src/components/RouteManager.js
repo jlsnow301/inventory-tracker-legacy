@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 // Further simplifies any server interactions
-const RouteManager = (request, source, data, ukey) => {
+const RouteManager = (request, source, ukey) => {
   var data = "";
   var source = "";
 
@@ -34,3 +34,5 @@ const RouteManager = (request, source, data, ukey) => {
 
   return data;
 };
+
+export default RouteManager;
