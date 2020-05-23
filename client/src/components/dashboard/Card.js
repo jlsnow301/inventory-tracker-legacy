@@ -26,7 +26,7 @@ const Card = (item) => {
       // TODO: Need a more intelligent way to skip over data I don't want to see.
       // In the distant future, when users can create their own data schema, we could
       // make this an array so if key in hidden, continue
-      if (key == "id") {
+      if (key === "id") {
         continue;
       }
       details.push(<b>{key}: </b>, `${value}`, <br />);
