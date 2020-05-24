@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import InventoryDisplay from "./InventoryDisplay";
+import Home from "../views/Home";
 
 const Dashboard = ({ ukey, devmode }) => {
   const Container = styled.div`
@@ -25,7 +26,8 @@ const Dashboard = ({ ukey, devmode }) => {
   var users = ["Anthony", "Selina", "Margarita", "Jerm"];
   const GetLogin = () => {
     console.log(`Displaying inventory of user: ${ukey}`);
-    return users.indexOf(ukey) >= 0 ? setLogin(true) : setLogin(false);
+    users.indexOf(ukey) >= 0 ? setLogin(true) : setLogin(false);
+    return true;
   };
 
   // Changes the query, which is passed to inventory display.
@@ -35,12 +37,12 @@ const Dashboard = ({ ukey, devmode }) => {
   };
 
   return (
-    <div>
+    <Container>
       <GetLogin />
-      {!login && !devmode ? (
+      {!login && devmode !== "y" ? (
         <Home />
       ) : (
-        <Container>
+        <div>
           <Header>
             <h1>{ukey}'s Inventory</h1>
             <div style={{ flex: 1 }}></div>
@@ -59,9 +61,9 @@ const Dashboard = ({ ukey, devmode }) => {
           <div>
             <InventoryDisplay query={query} devmode={devmode} />
           </div>
-        </Container>
+        </div>
       )}
-    </div>
+    </Container>
   );
 };
 
