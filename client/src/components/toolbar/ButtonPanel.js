@@ -8,7 +8,6 @@ const ButtonPanel = (ukey) => {
   const Container = styled.div`
     display: flex;
     padding: 10px 0px;
-
     justify-content: flex-start;
   `;
 
