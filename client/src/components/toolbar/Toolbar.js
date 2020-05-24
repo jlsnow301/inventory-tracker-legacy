@@ -10,7 +10,7 @@ import ButtonPanel from "./ButtonPanel";
  *
  */
 
-const Toolbar = () => {
+const Toolbar = ({ ukey, devmode }) => {
   // Styling
   const Container = styled.div`
     display: flex;
@@ -18,6 +18,7 @@ const Toolbar = () => {
     padding: 6px 8px;
     width: 100%;
     height: 100px;
+    justify-content: flex-start;
   `;
   const Slogan = styled.h1`
     color: white;
@@ -27,16 +28,13 @@ const Toolbar = () => {
     font-family: "Times New Roman", Times, serif;
   `;
 
-  // TEST -> inserting a userkey
-  const ukey = "joe";
-
   // Returns
   return (
     <Container>
       <Icon source="./this_is_fine.png" />
       <Slogan>Inventory Manager v1</Slogan>
       <div style={{ flex: 1 }}></div>
-      <ButtonPanel ukey={ukey} />
+      <ButtonPanel ukey={ukey} devmode={devmode} />
     </Container>
   );
 };

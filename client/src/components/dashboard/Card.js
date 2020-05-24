@@ -20,13 +20,14 @@ const Card = (data) => {
     max-height: 40%;
   `;
 
+  // For now, we are simply adding "id" to hidden keys
+  var hiddenKeys = [];
+  hiddenKeys += "id";
+
   const DisplayDetails = () => {
     var entries = [];
     for (let [key, value] of Object.entries(data.item)) {
-      // TODO: Need a more intelligent way to skip over data I don't want to see.
-      // In the distant future, when users can create their own data schema, we could
-      // make this an array so if key in hidden, continue
-      if (key === "id") {
+      if (hiddenKeys.indexOf(key) >= 0) {
         continue;
       }
       entries.push(<b>{key}: </b>, `${value}`, <br />);
@@ -36,7 +37,7 @@ const Card = (data) => {
 
   // Returns
   return (
-    <Container classname="card">
+    <Container>
       <p>
         <DisplayDetails />
       </p>
