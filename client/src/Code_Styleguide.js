@@ -39,6 +39,10 @@ const StyleGuide = (parameters) => {
   const SomeMethod = () => {
     console.log("This writes a function to be called in the return block");
     console.log("Think of the return block as the psvm portion in java");
+    if (!loggedIn) {
+      setDisplay("You can make a function switch the state of something else");
+      // If another component was displaying display, it would see the change and re-render
+    }
   };
 
   const DisplayStuff = (likeWhat) => {
