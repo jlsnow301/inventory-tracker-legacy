@@ -26,10 +26,10 @@ const App = () => {
 
   // Validation if there is a user with the user's name
   // For now, unless devmode is enabled, you need one of our names
-  var users = ["Anthony", "Selina", "Margarita", "Jerm"];
+  var users = ["anthony", "selina", "margarita", "jerm"];
 
   // TEST -> inserting a userkey
-  const username = String(prompt("Enter a username: "));
+  const username = String(prompt("Enter a username: ")).toLowerCase();
   const loggedIn = users.indexOf(username) >= 0;
   var devmode = String(prompt("Dev mode? Type Y or N: ")).toLowerCase();
   devmode = devmode === "y";
