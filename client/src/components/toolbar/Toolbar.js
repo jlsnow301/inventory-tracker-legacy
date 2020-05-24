@@ -10,7 +10,7 @@ import ButtonPanel from "./ButtonPanel";
  *
  */
 
-const Toolbar = ({ ukey, devmode }) => {
+const Toolbar = ({ loggedIn, devmode }) => {
   // Styling
   const Container = styled.div`
     display: flex;
@@ -34,7 +34,7 @@ const Toolbar = ({ ukey, devmode }) => {
       <Icon source="./this_is_fine.png" />
       <Slogan>Inventory Manager v1</Slogan>
       <div style={{ flex: 1 }}></div>
-      <ButtonPanel ukey={ukey} devmode={devmode} />
+      <ButtonPanel loggedIn={loggedIn} devmode={devmode} />
     </Container>
   );
 };

@@ -24,19 +24,24 @@ const App = () => {
     justify-content: center;
   `;
 
+  // Validation if there is a user with the user's name
+  // For now, unless devmode is enabled, you need one of our names
+  var users = ["Anthony", "Selina", "Margarita", "Jerm"];
+
   // TEST -> inserting a userkey
-  const ukey = String(prompt("Enter a username: "));
-  var devmode = String(prompt("Dev mode? Type Y or N: "));
-  devmode = devmode.toLowerCase();
+  const username = String(prompt("Enter a username: "));
+  const loggedIn = users.indexOf(username) >= 0;
+  var devmode = String(prompt("Dev mode? Type Y or N: ")).toLowerCase();
+  devmode = devmode === "y";
 
   // Returns
   return (
     <div>
       <div>
-        <Toolbar ukey={ukey} devmode={devmode} />
+        <Toolbar username={username} loggedIn={loggedIn} devmode={devmode} />
       </div>
       <Body>
-        <Dashboard ukey={ukey} devmode={devmode} />
+        <Dashboard username={username} loggedIn={loggedIn} devmode={devmode} />
       </Body>
     </div>
   );

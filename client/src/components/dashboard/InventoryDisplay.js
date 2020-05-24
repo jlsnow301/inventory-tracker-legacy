@@ -48,7 +48,7 @@ const InventoryDisplay = ({ query, devmode }) => {
 
   // Creates a card for each item (key) in the db.
   const DisplayInventory = () => {
-    if (devmode === "y") return TestInventory();
+    if (devmode) return TestInventory();
     var keys = [];
     Object.keys(inventory).forEach((key) =>
       keys.push(<Card item={inventory[key]} />)

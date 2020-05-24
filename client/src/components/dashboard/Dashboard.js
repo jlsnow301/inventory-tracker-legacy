@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import InventoryDisplay from "./InventoryDisplay";
 import Home from "../views/Home";
 
-const Dashboard = ({ ukey, devmode }) => {
+const Dashboard = ({ username, loggedIn, devmode }) => {
   const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -19,16 +19,6 @@ const Dashboard = ({ ukey, devmode }) => {
   // Initial state
   const [query, setQuery] = useState("");
   const inputText = React.createRef();
-  const [login, setLogin] = useState(false);
-
-  // Validation if there is a user with the user's name
-  // For now, unless devmode is enabled, you need one of our names
-  var users = ["Anthony", "Selina", "Margarita", "Jerm"];
-  const GetLogin = () => {
-    console.log(`Displaying inventory of user: ${ukey}`);
-    users.indexOf(ukey) >= 0 ? setLogin(true) : setLogin(false);
-    return true;
-  };
 
   // Changes the query, which is passed to inventory display.
   const handleSearch = (e) => {
@@ -38,13 +28,12 @@ const Dashboard = ({ ukey, devmode }) => {
 
   return (
     <Container>
-      <GetLogin />
-      {!login && devmode !== "y" ? (
+      {!loggedIn && !devmode ? (
         <Home />
       ) : (
         <div>
           <Header>
-            <h1>{ukey}'s Inventory</h1>
+            <h1>{devmode ? "Tester" : username}'s Inventory</h1>
             <div style={{ flex: 1 }}></div>
             <div style={{ paddingTop: 12 }}>
               <form onSubmit={(e) => handleSearch(e)}>

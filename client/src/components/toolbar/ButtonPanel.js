@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 import PopupButton from "./PopupButton";
 
-const ButtonPanel = ({ ukey, devmode }) => {
+const ButtonPanel = ({ loggedIn, devmode }) => {
   // Styling
   const Container = styled.div`
     display: flex;
@@ -18,17 +18,17 @@ const ButtonPanel = ({ ukey, devmode }) => {
   // Returns
   return (
     <div>
-      {devmode === "y" ? (
-        <Container>
-          <PopupButton button="advsearch" />
-          <PopupButton button="overview" />
-          <PopupButton button="settings" />
-        </Container>
-      ) : (
+      {!loggedIn && !devmode ? (
         <Container>
           <PopupButton button="about" />
           <PopupButton button="contact" />
           <PopupButton button="login" />
+        </Container>
+      ) : (
+        <Container>
+          <PopupButton button="advsearch" />
+          <PopupButton button="overview" />
+          <PopupButton button="settings" />
         </Container>
       )}
     </div>
