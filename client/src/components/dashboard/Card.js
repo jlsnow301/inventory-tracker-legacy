@@ -1,29 +1,48 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import ProductData from "./ProductData";
-import ProductImage from "./ProductImage";
-
-const Card = (item) => {
+const Card = (data) => {
   // Styling
-  const Card = styled.div`
+  const Container = styled.div`
+    display: flex;
     margin: 20px;
     background: rgb(255, 255, 255);
     width: 22.5%;
     height: 300px;
-    display: flex;
-    justify-content: space-around;
-    border-radius: 15px;
-    padding: 15px 10px;
+    justify-content: space-between;
+    border: 2px solid dimgray;
+    border-radius: 8px;
+    padding: 15px 20px;
     overflow: auto;
   `;
+  const Icon = styled.img`
+    max-width: 45%;
+    max-height: 40%;
+  `;
+
+  // For now, we are simply adding "id" to hidden keys
+  var hiddenKeys = [];
+  hiddenKeys += "id";
+
+  const DisplayDetails = () => {
+    var entries = [];
+    for (let [key, value] of Object.entries(data.item)) {
+      if (hiddenKeys.indexOf(key) >= 0) {
+        continue;
+      }
+      entries.push(<b>{key}: </b>, `${value}`, <br />);
+    }
+    return entries;
+  };
 
   // Returns
   return (
-    <Card classname="card">
-      <ProductData product={item} />
-      <ProductImage product={item} />
-    </Card>
+    <Container>
+      <p>
+        <DisplayDetails />
+      </p>
+      <Icon className="icon" src="./bottle.png" alt="Product Icon" />
+    </Container>
   );
 };
 

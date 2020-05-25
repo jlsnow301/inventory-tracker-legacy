@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import Login from "./login/Login";
-import About from "./views/About";
-import Contact from "./views/Contact";
+import Login from "../login/Login";
+import About from "../views/About";
+import Contact from "../views/Contact";
 
 const PopupButton = ({ button }) => {
   let title = "";
@@ -21,10 +21,13 @@ const PopupButton = ({ button }) => {
       component = <Contact />;
       break;
     case "advsearch":
+      title = "Adv Search";
       break;
     case "overview":
+      title = "Overview";
       break;
     case "settings":
+      title = "Settings";
       break;
 
     default:

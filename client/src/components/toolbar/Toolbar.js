@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-
 import Icon from "./Icon";
 import ButtonPanel from "./ButtonPanel";
 
@@ -11,7 +10,7 @@ import ButtonPanel from "./ButtonPanel";
  *
  */
 
-const Toolbar = () => {
+const Toolbar = ({ loggedIn, devmode }) => {
   // Styling
   const Container = styled.div`
     display: flex;
@@ -19,6 +18,7 @@ const Toolbar = () => {
     padding: 6px 8px;
     width: 100%;
     height: 100px;
+    justify-content: flex-start;
   `;
   const Slogan = styled.h1`
     color: white;
@@ -28,15 +28,13 @@ const Toolbar = () => {
     font-family: "Times New Roman", Times, serif;
   `;
 
-  const ukey = null;
-
   // Returns
   return (
     <Container>
       <Icon source="./this_is_fine.png" />
-      <Slogan>Slogan</Slogan>
+      <Slogan>Inventory Manager v1</Slogan>
       <div style={{ flex: 1 }}></div>
-      <ButtonPanel ukey={ukey} />
+      <ButtonPanel loggedIn={loggedIn} devmode={devmode} />
     </Container>
   );
 };
