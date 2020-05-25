@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import  Layout  from "./components/Layout";
+import Layout from "./components/Layout";
 import Toolbar from "./components/toolbar/Toolbar";
 import Dashboard from "./components/dashboard/Dashboard";
 
@@ -25,45 +25,6 @@ const App = () => {
     justify-content: center;
   `;
 
-<<<<<<< HEAD
-{
-  /* @Reminder - Readme.md has resources, use it
-   *
-   * @Todo
-   * - Constructor will be needed
-   * - build the views for home, about, contact
-   * - Make the routes and views for:
-   *   - Settings
-   *   - Dashboard
-   *   - Quick Start
-   * <InventoryDisplay />
-   */
-}
-class App extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <div className="header">
-          <Toolbar />
-        </div>
-
-        <Layout>
-          <Router>
-            {/* Browser routing for home page */}
-            <Route path="/" exact component={Home}></Route>
-            {/* Browser routing for About page */}
-            <Route path="/about" exact component={About}></Route>
-            {/* Browser routing for Contact page */}
-            <Route path="/contact" exact component={Contact}></Route>
-            {/* Browser routing for Dashboard */}
-            <Route path="/dashboard" exact component={InventoryDisplay}></Route>
-          </Router>
-        </Layout>
-      </React.Fragment>
-    );
-  }
-}
-=======
   // Validation if there is a user with the user's name
   // For now, unless devmode is enabled, you need one of our names
   var users = ["anthony", "selina", "margarita", "jerm"];
@@ -86,6 +47,5 @@ class App extends Component {
     </div>
   );
 };
->>>>>>> dev
 
 export default App;
