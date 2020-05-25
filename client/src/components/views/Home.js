@@ -10,12 +10,6 @@ const Home = () => {
     padding: 20px;
   `;
 
-  const TextRow = styled.div`
-    display: flex;
-    width: 50%;
-    height: 50%;
-  `;
-
   const Intro = styled.div`
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -29,6 +23,7 @@ const Home = () => {
       "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
     color: #2b2d42;
     text-align: left;
+    margin-bottom: 20px;
   `;
 
   const Main = styled.div`
