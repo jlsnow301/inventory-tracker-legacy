@@ -1,8 +1,16 @@
 import React from "react";
+import styled from "@emotion/styled";
 
 const Contact = () => {
+  const ContactContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    text-align: left;
+    font-family: sans-serif;
+  `;
   return (
-    <div className="contact-container">
+    <ContactContainer>
       <div className="col-6 col-md-6 text-right">
         <h1>turpis nunc eget lorem dolor</h1>
         <p>
@@ -46,7 +54,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </div>
+    </ContactContainer>
   );
 };
 

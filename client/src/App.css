@@ -41,28 +41,3 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #4d5d7c;
 }
-
-/*Home page*/
-
-.container {
-  padding: 20px;
-}
-
-.section-heading h4 {
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-family: Roboto, Georgia, "Times New Roman", Times, serif;
-}
-
-.section-heading h1 {
-  font-family: Roboto, "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-
-.main {
-  padding-top: 20px;
-}
-
-.main h4 {
-  font-family: roboto;
-}

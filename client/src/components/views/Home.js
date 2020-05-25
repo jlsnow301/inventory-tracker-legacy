@@ -4,44 +4,62 @@ import styled from "@emotion/styled";
 const Home = () => {
   // Styling
   const Container = styled.div`
+    display: flex;
+    flex-direction: row;
     padding: 20px;
   `;
 
-  const rowAlign = styled.div`
-    margin: 0 auto;
+  const TextRow = styled.div`
+    display: flex;
+    width: 50%;
+    height: 50%;
+  `;
+
+  const Welcome = styled.div`
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: Roboto, Georgia, "Times New Roman", Times, serif;
+    padding-right: 30px;
+  `;
+
+  const Heading = styled.div`
+    font-family: Roboto, "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    color: #2b2d42;
   `;
 
   // Returns
+
   return (
     <Container>
-      <rowAlign>
-        <div className="col-12 col-md-6 text-center text-md-left">
-          <div className="section-heading mb-3">
-            <h4>Welcome</h4>
-            <h1 className="display-4">This is the landing page</h1>
-          </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
+      <Welcome>
+        <h4>Welcome to the inventory app</h4>
+      </Welcome>
 
-        <imgNew>
-          <img src="./bgCapsules.jpg" alt="Image" height="60px" width="60px" />
-        </imgNew>
-      </rowAlign>
+      <p>
+        <Heading>
+          <h1>This is the landing page</h1>
+        </Heading>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+        in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+        qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
     </Container>
   );
 };
