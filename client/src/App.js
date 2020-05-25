@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import styled from "@emotion/styled";
-
+import { Layout } from "./components/Layout";
+import { Jumbotron } from "./components/Jumbotron";
 import Toolbar from "./components/Toolbar";
 import { BrowserRouter as Router } from "react-router-dom";
 import Route from "react-router-dom/Route";
@@ -10,12 +11,6 @@ import About from "./components/views/About";
 import Contact from "./components/views/Contact";
 
 import InventoryDisplay from "./components/dashboard/InventoryDisplay";
-
-const Body = styled.div`
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-`;
 
 {
   /* @Reminder - Readme.md has resources, use it
@@ -33,11 +28,12 @@ const Body = styled.div`
 class App extends Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <div className="header">
           <Toolbar />
         </div>
-        <Body>
+
+        <Layout>
           <Router>
             {/* Browser routing for home page */}
             <Route path="/" exact component={Home}></Route>
@@ -48,8 +44,8 @@ class App extends Component {
             {/* Browser routing for Dashboard */}
             <Route path="/dashboard" exact component={InventoryDisplay}></Route>
           </Router>
-        </Body>
-      </div>
+        </Layout>
+      </React.Fragment>
     );
   }
 }

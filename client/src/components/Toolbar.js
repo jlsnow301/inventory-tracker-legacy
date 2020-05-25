@@ -17,7 +17,7 @@ const Toolbar = () => {
     background: rgb(245, 50, 50);
     padding: 6px 8px;
     width: 100%;
-    height: 100px;
+    height: 90px;
   `;
   const Slogan = styled.h1`
     color: white;
