@@ -1,34 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "@emotion/styled";
-//import { Nav, NavItem, Button } from "reactstrap";
 
 import PopupButton from "./PopupButton";
 
-const ButtonPanel = (ukey) => {
+const ButtonPanel = ({ loggedIn, devmode }) => {
+  // Styling
   const Container = styled.div`
     display: flex;
     padding: 10px 0px;
-
     justify-content: flex-start;
   `;
 
-  // Handles buttons
-  console.log(ukey);
-  const loggedIn = ukey != null;
-  const [query, setQuery] = useState("");
+  // TODO: Get a button to login or log out
+  // Requires: useState
+  // Change the above var to login, setLogin or similar
 
-  // Get the search, if logged in
-  const handleSearch = (e) => {
-    e.preventDefault();
-    getItem(query);
-  };
-
-  // Database call
-  const getItem = (q, ukey) => {};
-
+  // Returns
   return (
     <div>
-      {loggedIn ? (
+      {!loggedIn && !devmode ? (
         <Container>
           <PopupButton button="about" />
           <PopupButton button="contact" />
@@ -41,8 +31,6 @@ const ButtonPanel = (ukey) => {
           <PopupButton button="settings" />
         </Container>
       )}
-      <input value={query} onChange={(e) => setQuery(e.target.value)} />
-      <button onClick={(e) => handleSearch(e)}>Search</button>
     </div>
   );
 };

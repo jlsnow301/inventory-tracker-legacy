@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
-
 import Icon from "./Icon";
 import ButtonPanel from "./ButtonPanel";
 
@@ -10,14 +9,20 @@ import ButtonPanel from "./ButtonPanel";
  *
  *
  */
-const Toolbar = () => {
-  // Styles
+
+const Toolbar = ({ loggedIn, devmode }) => {
+  // Styling
   const Container = styled.div`
     display: flex;
     background: rgb(245, 50, 50);
     padding: 6px 8px;
     width: 100%;
+<<<<<<< HEAD:client/src/components/Toolbar.js
     height: 90px;
+=======
+    height: 100px;
+    justify-content: flex-start;
+>>>>>>> dev:client/src/components/toolbar/Toolbar.js
   `;
   const Slogan = styled.h1`
     color: white;
@@ -27,15 +32,13 @@ const Toolbar = () => {
     font-family: "Times New Roman", Times, serif;
   `;
 
-  const ukey = null;
-
-  // Returns the toolbar
+  // Returns
   return (
     <Container>
       <Icon source="./this_is_fine.png" />
-      <Slogan>Slogan</Slogan>
+      <Slogan>Inventory Manager v1</Slogan>
       <div style={{ flex: 1 }}></div>
-      <ButtonPanel ukey={ukey} />
+      <ButtonPanel loggedIn={loggedIn} devmode={devmode} />
     </Container>
   );
 };

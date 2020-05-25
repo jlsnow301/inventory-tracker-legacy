@@ -1,3 +1,11 @@
+/**
+ * server/Models/Inventories.js
+ *
+ * @routes /api/inventory
+ * @todos
+ *  - None as of 5/17
+ */
+
 const MONGOOSE = require('mongoose');
 
 const SCHEMA = MONGOOSE.Schema;

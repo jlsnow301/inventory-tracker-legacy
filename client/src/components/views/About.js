@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import styled from "@emotion/styled";
-import { Nav, NavItem, Button } from "reactstrap";
+import React from "react";
 
+<<<<<<< HEAD
 {
   /* Use these Comments to communicate Todos or other info
    * @Reminder - Readme.md has resources, use it
@@ -35,5 +34,18 @@ class About extends Component {
     );
   }
 }
+=======
+/* Use these Comments to communicate Todos or other info
+ * @Reminder - Readme.md has resources, use it
+ * @Todo
+ *
+ */
+const About = () => {
+  // Styling
+
+  // Returns
+  return <h1>About page</h1>;
+};
+>>>>>>> dev
 
 export default About;
