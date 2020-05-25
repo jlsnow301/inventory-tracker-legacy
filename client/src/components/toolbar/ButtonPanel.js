@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-
 import PopupButton from "./PopupButton";
 
 const ButtonPanel = ({ loggedIn, devmode }) => {
