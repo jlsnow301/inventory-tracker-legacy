@@ -17,12 +17,8 @@ const Toolbar = ({ loggedIn, devmode }) => {
     background: rgb(245, 50, 50);
     padding: 6px 8px;
     width: 100%;
-<<<<<<< HEAD:client/src/components/Toolbar.js
-    height: 90px;
-=======
     height: 100px;
     justify-content: flex-start;
->>>>>>> dev:client/src/components/toolbar/Toolbar.js
   `;
   const Slogan = styled.h1`
     color: white;
