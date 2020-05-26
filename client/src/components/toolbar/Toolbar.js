@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import Icon from "./Icon";
 import ButtonPanel from "./ButtonPanel";
@@ -10,29 +10,39 @@ import ButtonPanel from "./ButtonPanel";
  *
  */
 
-const Toolbar = ({ loggedIn, devmode }) => {
+const Toolbar = ({ userImg, loggedIn, devmode }) => {
   // Styling
   const Container = styled.div`
     display: flex;
-    background: rgb(245, 50, 50);
+    background: #bd0028;
     padding: 6px 8px;
     width: 100%;
-    height: 100px;
+    height: 50%;
     justify-content: flex-start;
   `;
   const Slogan = styled.h1`
-    color: white;
+    color: #ffffff;
     fontsize: 40px;
     padding: 10px 20px;
     margin: auto;
     font-family: "Times New Roman", Times, serif;
   `;
 
+  const [userIcon, setUserIcon] = useState("./this_is_fine.png");
+  const [title, setTitle] = useState("Inventory Manager v1");
+
+  useEffect(() => {
+    const userInput = String(prompt("What do you want the title to be?"));
+    setTitle(userInput);
+    console.log(userImg);
+    setUserIcon(userImg);
+  }, [userImg]);
+
   // Returns
   return (
     <Container>
-      <Icon source="./this_is_fine.png" />
-      <Slogan>Inventory Manager v1</Slogan>
+      <Icon source={userIcon} />
+      <Slogan>{title}</Slogan>
       <div style={{ flex: 1 }}></div>
       <ButtonPanel loggedIn={loggedIn} devmode={devmode} />
     </Container>
