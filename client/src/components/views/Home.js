@@ -74,7 +74,7 @@ const Home = () => {
     height: 100%;
     position: center;
     overflow: hidden;
-    filter: grayscale(25%);
+    filter: grayscale(55%);
   `;
 
   const ImgOne = styled.div`
