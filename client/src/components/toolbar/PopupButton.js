@@ -3,8 +3,13 @@ import Modal from "react-modal";
 import Login from "../login/Login";
 import About from "../views/About";
 import Contact from "../views/Contact";
+import styled from "@emotion/styled";
 
 const PopupButton = ({ button }) => {
+  const Container = styled.div`
+    margin-right: 10px;
+  `;
+
   let title = "";
   let component = "";
   switch (button) {
@@ -31,7 +36,7 @@ const PopupButton = ({ button }) => {
       break;
     case "addItem":
       title = "Add Item";
-      component = <AddItem />;
+      // component = <AddItem />;
       break;
 
     default:
@@ -43,7 +48,7 @@ const PopupButton = ({ button }) => {
 
   // Returns
   return (
-    <div className="popupButton">
+    <Container>
       <button onClick={() => setModalIsOpen(true)}>{title}</button>
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         {component}
@@ -51,7 +56,7 @@ const PopupButton = ({ button }) => {
           <button onClick={() => setModalIsOpen(false)}>Close</button>
         </div>
       </Modal>
-    </div>
+    </Container>
   );
 };
 

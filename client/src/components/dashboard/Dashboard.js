@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import InventoryDisplay from "./InventoryDisplay";
 import Home from "../views/Home";
+import PopupButton from "../toolbar/PopupButton";
 
 const Dashboard = ({ username, loggedIn, devmode }) => {
   const Container = styled.div`
@@ -14,6 +15,13 @@ const Dashboard = ({ username, loggedIn, devmode }) => {
     height: 4%;
     font-family: Merriweather;
     padding: 0px 5px;
+  `;
+  const Tools = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 
+    padding-top: 15px;
   `;
 
   // Initial state
@@ -35,7 +43,9 @@ const Dashboard = ({ username, loggedIn, devmode }) => {
           <Header>
             <h1>{devmode ? "Tester" : username}'s Inventory</h1>
             <div style={{ flex: 1 }}></div>
-            <div style={{ paddingTop: 12 }}>
+
+            <Tools>
+              <PopupButton button="addItem" />
               <form onSubmit={(e) => handleSearch(e)}>
                 <input
                   type="text"
@@ -44,7 +54,7 @@ const Dashboard = ({ username, loggedIn, devmode }) => {
                 />
                 <input type="submit" value="Submit" />{" "}
               </form>
-            </div>
+            </Tools>
           </Header>
           <br />
           <div>

@@ -25,15 +25,9 @@ const App = () => {
     justify-content: center;
   `;
 
-  // Validation if there is a user with the user's name
-  // For now, unless devmode is enabled, you need one of our names
-  var users = ["anthony", "selina", "margarita", "jerm"];
-
-  // TEST -> inserting a userkey
-  const username = String(prompt("Enter a username: ")).toLowerCase();
-  const loggedIn = users.indexOf(username) >= 0;
-  var devmode = String(prompt("Dev mode? Type Y or N: ")).toLowerCase();
-  devmode = devmode === "y";
+  const username = "Anthony";
+  const devmode = true;
+  const loggedIn = true;
   const userImg = "./this_is_fine.png";
 
   // Returns

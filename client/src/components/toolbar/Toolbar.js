@@ -32,7 +32,7 @@ const Toolbar = ({ userImg, loggedIn, devmode }) => {
   const [title, setTitle] = useState("Inventory Manager v1");
 
   useEffect(() => {
-    const userInput = String(prompt("What do you want the title to be?"));
+    const userInput = "Inventory Manager v1";
     setTitle(userInput);
     console.log(userImg);
     setUserIcon(userImg);
