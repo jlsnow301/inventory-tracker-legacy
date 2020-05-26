@@ -50,10 +50,10 @@ const Contact = () => {
           <input size="30" type="text" id="fname" name="firstname" />
           <br />
           <label>Last Name: </label>
-          <input size="30" type="text" id="fname" name="firstname" />
+          <input size="30" type="text" id="lname" name="lastname" />
           <br />
           <label>Email: </label>
-          <input size="30" type="text" id="fname" name="firstname" />
+          <input size="30" type="text" id="email" name="email" />
           <br />
           <input type="submit" value="Submit" />
         </div>
