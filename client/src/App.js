@@ -34,13 +34,12 @@ const App = () => {
   const loggedIn = users.indexOf(username) >= 0;
   var devmode = String(prompt("Dev mode? Type Y or N: ")).toLowerCase();
   devmode = devmode === "y";
-  const userImg = "./this_is_fine.png";
 
   // Returns
   return (
     <div>
       <div>
-        <Toolbar userImg={userImg} loggedIn={loggedIn} devmode={devmode} />
+        <Toolbar loggedIn={loggedIn} devmode={devmode} />
       </div>
       <Body>
         <Dashboard username={username} loggedIn={loggedIn} devmode={devmode} />

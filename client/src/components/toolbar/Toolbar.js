@@ -22,27 +22,17 @@ const Toolbar = ({ userImg, loggedIn, devmode }) => {
   `;
   const Slogan = styled.h1`
     color: #ffffff;
-    fontsize: 40px;
+    fontsize: 30px;
     padding: 10px 20px;
     margin: auto;
-    font-family: "Times New Roman", Times, serif;
+
+    font-family: Roboto, "Times New Roman", Times, serif;
   `;
-
-  const [userIcon, setUserIcon] = useState("./this_is_fine.png");
-  const [title, setTitle] = useState("Inventory Manager v1");
-
-  useEffect(() => {
-    const userInput = String(prompt("What do you want the title to be?"));
-    setTitle(userInput);
-    console.log(userImg);
-    setUserIcon(userImg);
-  }, [userImg]);
 
   // Returns
   return (
     <Container>
-      <Icon source={userIcon} />
-      <Slogan>{title}</Slogan>
+      <Slogan>Inventory Manager v1</Slogan>
       <div style={{ flex: 1 }}></div>
       <ButtonPanel loggedIn={loggedIn} devmode={devmode} />
     </Container>
