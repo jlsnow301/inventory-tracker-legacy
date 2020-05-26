@@ -12,6 +12,9 @@ const PopupButton = ({ button }) => {
     margin-right: ${button === "addInventory" ? "20px" : "0px"};
     background: white;
   `;
+  const ModalHeader = styled.div`
+    display: flex;
+  `;
 
   // This switch tells it what modal to return.
   let title = "";
@@ -55,10 +58,22 @@ const PopupButton = ({ button }) => {
     <Container>
       <button onClick={() => setModalIsOpen(true)}>{title}</button>
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+        <ModalHeader>
+          <h1>
+            <u>{title}</u>
+          </h1>
+          <div style={{ flex: 1 }}></div>
+          <div>
+            <button
+              style={{ border: 0, background: "none" }}
+              onClick={() => setModalIsOpen(false)}
+            >
+              <img width="40" src="./x.png" alt="Close" />
+            </button>
+          </div>
+        </ModalHeader>
+
         {component}
-        <div>
-          <button onClick={() => setModalIsOpen(false)}>Close</button>
-        </div>
       </Modal>
     </Container>
   );
