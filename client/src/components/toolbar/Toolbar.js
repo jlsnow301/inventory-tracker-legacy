@@ -22,7 +22,7 @@ const Toolbar = ({ props }) => {
   `;
   const Slogan = styled.h1`
     color: #ffffff;
-    fontsize: 40px;
+    fontsize: 30px;
     padding: 10px 20px;
     margin: auto;
     font-family: "Times New Roman", Times, serif;
