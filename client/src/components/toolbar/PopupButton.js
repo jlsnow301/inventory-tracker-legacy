@@ -6,19 +6,17 @@ import Login from "../login/Login";
 import About from "../views/About";
 import Contact from "../views/Contact";
 
-const PopupButton = ({ button, props }) => {
+const PopupButton = ({ button }) => {
+  // Styling
   const Container = styled.div`
     margin-right: ${button === "addInventory" ? "20px" : "0px"};
     background: white;
   `;
 
+  // This switch tells it what modal to return.
   let title = "";
   let component = "";
   switch (button) {
-    case "login":
-      title = "Login";
-      component = <Login props={props} />;
-      break;
     case "about":
       title = "About";
       component = <About />;
@@ -44,6 +42,7 @@ const PopupButton = ({ button, props }) => {
       title = "Add Inventory";
       // component = <AddItem />;
       break;
+
     default:
       break;
   }

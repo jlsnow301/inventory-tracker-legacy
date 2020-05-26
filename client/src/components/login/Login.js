@@ -10,15 +10,20 @@ import styled from "@emotion/styled";
 const Login = ({ props }) => {
   // Styling
   const Container = styled.div`
+    margin-top: 15px;
     font-family: Merriweather;
   `;
-  const inputText = React.createRef();
+
+  const userText = React.createRef();
+  const passText = React.createRef();
 
   // Changes the query, which is passed to inventory display.
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = {
-      username: inputText.current.value.replace(/^\w/, (c) => c.toUpperCase()),
+      username: userText.current.value
+        .toLowerCase()
+        .replace(/^\w/, (c) => c.toUpperCase()),
       devmode: true,
       userImg: "./memeguy.png",
       loggedIn: true,
@@ -30,10 +35,9 @@ const Login = ({ props }) => {
   // Returns
   return (
     <Container>
-      <h1>Login page</h1>
-      <br />
       <form onSubmit={(e) => handleSubmit(e)}>
-        <input type="text" ref={inputText} placeholder="Enter Username..." />
+        <input type="text" size="10" ref={userText} placeholder="username" />
+        <input type="text" size="10" ref={passText} placeholder="password" />
         <input type="submit" value="Submit" />{" "}
       </form>
     </Container>

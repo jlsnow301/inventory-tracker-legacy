@@ -35,7 +35,7 @@ const Toolbar = ({ props }) => {
     setTitle(t);
   };
 
-  // HOW LONG WILL I GO BEFORE I USE THE THIS KEYWORD
+  // HOW LONG WILL I GO BEFORE I USE THE 'THIS' KEYWORD
   const user = props.user;
   const changeUser = props.changeUser;
   props = { user, changeUser, changeTitle };

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import PopupButton from "./PopupButton";
+import Login from "../login/Login";
 
 const ButtonPanel = ({ props }) => {
   // Styling
@@ -11,8 +12,9 @@ const ButtonPanel = ({ props }) => {
 
   const Buttons = styled.div`
     display: flex;
-    margin: 15px 15px;
+    margin-top: 15px;
     flex-wrap: wrap;
+    justify-content: flex-end;
   `;
   const Greeting = styled.div`
     display: flex;
@@ -31,31 +33,30 @@ const ButtonPanel = ({ props }) => {
     color: white;
   `;
 
-  // TODO: Get a button to login or log out
-  // Requires: useState
-  // Change the above var to login, setLogin or similar
-
-  // Returns
-
-  const logOut = () => {
+  // Logout button
+  const logOut = (e) => {
+    e.preventDefault();
     const user = {
       username: "Visitor",
       devmode: false,
-      userImg: "./this_is_fine.png",
+      userImg: "./drugitol.png",
       loggedIn: false,
     };
-
-    //props.changeUser(user);
+    props.changeTitle("Drugitol Pharmaceuticals");
+    props.changeUser(user);
   };
 
+  // Returns
   return (
     <div>
       {!props.user.loggedIn && !props.user.devmode ? (
-        <Buttons>
-          <PopupButton button="about" />
-          <PopupButton button="contact" />
-          <PopupButton button="login" props={props} />
-        </Buttons>
+        <Container>
+          <Login props={props} />
+          <Buttons>
+            <PopupButton button="about" />
+            <PopupButton button="contact" />
+          </Buttons>
+        </Container>
       ) : (
         <Container>
           <Greeting>
@@ -68,7 +69,7 @@ const ButtonPanel = ({ props }) => {
             <PopupButton button="advsearch" />
             <PopupButton button="overview" />
             <PopupButton button="settings" />
-            <button onClick={logOut()}>Logout</button>
+            <button onClick={(e) => logOut(e)}>Logout</button>
           </Buttons>
         </Container>
       )}

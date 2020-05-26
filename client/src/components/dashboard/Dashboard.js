@@ -5,6 +5,7 @@ import Home from "../views/Home";
 import PopupButton from "../toolbar/PopupButton";
 
 const Dashboard = ({ props }) => {
+  // Styling
   const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -31,6 +32,7 @@ const Dashboard = ({ props }) => {
     setQuery(inputText.current.value);
   };
 
+  // Returns
   return (
     <Container>
       {!props.user.loggedIn && !props.user.devmode ? (
