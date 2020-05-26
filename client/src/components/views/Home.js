@@ -64,21 +64,21 @@ const Home = () => {
 
   const Gallery = styled.div`
     grid-template-columns: repeat(3, 1fr);
-    height: 600px;
+    height: auto;
     width: 95%;
     margin: 80px auto 0px auto;
   `;
 
   const Photos = styled.div`
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    height: auto;
     position: center;
     overflow: hidden;
-    filter: grayscale(55%);
+    filter: grayscale(35%);
   `;
 
   const ImgOne = styled.div`
-    background-size: 160%;
+    background-size: 100%;
     image-align: center;
   `;
 
@@ -123,7 +123,7 @@ const Home = () => {
             <Photos>
               <div>
                 <ImgOne>
-                  <img src="./redBg1.png" alt="" />
+                  <img src="./redBg1.png" width=" 100% " />
                 </ImgOne>
               </div>
             </Photos>
