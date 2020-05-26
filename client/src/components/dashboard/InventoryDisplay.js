@@ -4,7 +4,7 @@ import Card from "./Card";
 import axios from "axios";
 import MockData from "./MockData"; // USE THIS FOR TESTING
 
-const InventoryDisplay = ({ query, devmode }) => {
+const InventoryDisplay = ({ query, props }) => {
   // Styling
   const Container = styled.div`
     display: flex;
@@ -48,7 +48,7 @@ const InventoryDisplay = ({ query, devmode }) => {
 
   // Creates a card for each item (key) in the db.
   const DisplayInventory = () => {
-    if (devmode) return TestInventory();
+    if (props.user.devmode) return TestInventory();
     var keys = [];
     Object.keys(inventory).forEach((key) =>
       keys.push(<Card item={inventory[key]} />)
@@ -58,7 +58,6 @@ const InventoryDisplay = ({ query, devmode }) => {
 
   // Initial render
   useEffect(() => {
-    console.log(`Searching for: ${query}`);
     // It would probably be nice that we did some sanitization before we just jam this in the server
     query.length === "" ? getInventory("") : getInventory(`/${query}`);
   }, [query]);

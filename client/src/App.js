@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
-import Layout from "./components/Layout";
 import Toolbar from "./components/toolbar/Toolbar";
 import Dashboard from "./components/dashboard/Dashboard";
 
@@ -13,7 +12,7 @@ import Dashboard from "./components/dashboard/Dashboard";
  *   - Settings
  *   - Dashboard
  *   - Quick Start
- * <InventoryDisplay />
+ *
  */
 
 const App = () => {
@@ -25,25 +24,34 @@ const App = () => {
     justify-content: center;
   `;
 
-  // Validation if there is a user with the user's name
-  // For now, unless devmode is enabled, you need one of our names
-  var users = ["anthony", "selina", "margarita", "jerm"];
+  // Initial user state
+  const [user, setUser] = useState({
+    username: "Visitor",
+    devmode: false,
+    userImg: "./drugitol.png",
+    loggedIn: false,
+  });
 
-  // TEST -> inserting a userkey
-  const username = String(prompt("Enter a username: ")).toLowerCase();
-  const loggedIn = users.indexOf(username) >= 0;
-  var devmode = String(prompt("Dev mode? Type Y or N: ")).toLowerCase();
-  devmode = devmode === "y";
-  const userImg = "./this_is_fine.png";
+  // This is passed down to login so that the login button works
+  const changeUser = (u) => {
+    setUser(u);
+  };
+
+  // I tried to isolate these two (rather than making a function inside the user object) because
+  // Redefining any variables using setUser would mean redefining the function as well
+  // It's probably possible, but it didn't end well in testing
+  // I could, maybe, make changeUser a little more descriptive of what it's trying to change
+  // So that it doesn't seek to overwrite itsself
+  const props = { user, changeUser };
 
   // Returns
   return (
     <div>
       <div>
-        <Toolbar userImg={userImg} loggedIn={loggedIn} devmode={devmode} />
+        <Toolbar props={props} />
       </div>
       <Body>
-        <Dashboard username={username} loggedIn={loggedIn} devmode={devmode} />
+        <Dashboard props={props} />
       </Body>
     </div>
   );

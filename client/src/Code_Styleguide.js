@@ -1,17 +1,67 @@
 /*  This is a style sheet for coding es6 components
     Subject to change
     Table of contents:
-        1. import statements
-        2. component declaration
-        3. inline styling
-        4. state initialization
-        5. logic
-        6. on-load function
-        7. return statement
-        8. any other micro logic
-        9. export statement
+        1. short examples
+        2  full example with descriptions
+          1. import statements
+          2. component declaration
+          3. inline styling
+          4. state initialization
+          5. logic
+          6. on-load function
+          7. return statement
+          8. any other micro logic
+          9. export statement
 */
 
+//////////////////////////////////////////////////////////////////////////
+// Here is another bare-bones example to show you what's "needed" in an es6 component
+// If we called this elsewhere, <BareBones/>, we would see the empty div it returns
+import React from "react";
+
+const BareBones = () => {
+  return <div></div>;
+};
+
+export default bareBones;
+
+//////////////////////////////////////////////////////////////////////////
+// One with a function
+// Calling this component elswhere would return our div AND h1, because it's in the return
+import React from "react";
+
+const OneFunction = () => {
+  const doesSomething = () => {
+    return <h1>doesSomething</h1>;
+  };
+
+  return (
+    <div>
+      <doesSomething />
+    </div>
+  );
+};
+
+export default oneFunction;
+//////////////////////////////////////////////////////////////////////////
+// We can also run a function within useEffect to make it run on start
+// You don't "need" to have functions in the return, you can set them on-load
+// This can be tricky, some things don't stop reloading
+import React from "react";
+
+const OnLoad = () => {
+  useEffect = () => {
+    // We would see this each render.
+    console.log("Page loaded");
+  };
+
+  return <div></div>;
+};
+
+export default onLoad;
+
+///////////////////////////////////////////////////////////////////////////
+// Full example, broken down
 // We import things here to use them in the document
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";

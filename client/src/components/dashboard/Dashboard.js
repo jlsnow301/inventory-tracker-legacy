@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import InventoryDisplay from "./InventoryDisplay";
 import Home from "../views/Home";
+import PopupButton from "../toolbar/PopupButton";
 
-const Dashboard = ({ username, loggedIn, devmode }) => {
+const Dashboard = ({ props }) => {
+  // Styling
   const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -11,9 +13,13 @@ const Dashboard = ({ username, loggedIn, devmode }) => {
   `;
   const Header = styled.div`
     display: flex;
-    height: 4%;
+    flex-direction: space-around;
     font-family: Merriweather;
-    padding: 0px 5px;
+  `;
+  const Tools = styled.div`
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
   `;
 
   // Initial state
@@ -26,16 +32,23 @@ const Dashboard = ({ username, loggedIn, devmode }) => {
     setQuery(inputText.current.value);
   };
 
+  // Returns
   return (
     <Container>
-      {!loggedIn && !devmode ? (
+      {!props.user.loggedIn && !props.user.devmode ? (
         <Home />
       ) : (
         <div>
           <Header>
-            <h1>{devmode ? "Tester" : username}'s Inventory</h1>
+            <div style={{ paddingTop: 15 }}>
+              <h1>
+                <b>Item View</b>
+              </h1>
+            </div>
             <div style={{ flex: 1 }}></div>
-            <div style={{ paddingTop: 12 }}>
+            <Tools>
+              <PopupButton button="addItem" />
+              <PopupButton button="addInventory" />
               <form onSubmit={(e) => handleSearch(e)}>
                 <input
                   type="text"
@@ -44,11 +57,11 @@ const Dashboard = ({ username, loggedIn, devmode }) => {
                 />
                 <input type="submit" value="Submit" />{" "}
               </form>
-            </div>
+            </Tools>
           </Header>
           <br />
           <div>
-            <InventoryDisplay query={query} devmode={devmode} />
+            <InventoryDisplay query={query} props={props} />
           </div>
         </div>
       )}
