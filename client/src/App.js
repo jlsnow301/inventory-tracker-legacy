@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import Layout from "./components/Layout";
 import Toolbar from "./components/toolbar/Toolbar";
 import Dashboard from "./components/dashboard/Dashboard";
 
@@ -33,12 +34,13 @@ const App = () => {
   const loggedIn = users.indexOf(username) >= 0;
   var devmode = String(prompt("Dev mode? Type Y or N: ")).toLowerCase();
   devmode = devmode === "y";
+  const userImg = "./this_is_fine.png";
 
   // Returns
   return (
     <div>
       <div>
-        <Toolbar username={username} loggedIn={loggedIn} devmode={devmode} />
+        <Toolbar userImg={userImg} loggedIn={loggedIn} devmode={devmode} />
       </div>
       <Body>
         <Dashboard username={username} loggedIn={loggedIn} devmode={devmode} />
