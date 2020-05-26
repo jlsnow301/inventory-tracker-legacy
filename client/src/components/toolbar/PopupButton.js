@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 
 import Modal from "react-modal";
-import Login from "../login/Login";
 import About from "../views/About";
 import Contact from "../views/Contact";
 
@@ -63,14 +62,13 @@ const PopupButton = ({ button }) => {
             <u>{title}</u>
           </h1>
           <div style={{ flex: 1 }}></div>
-          <div>
-            <button
-              style={{ border: 0, background: "none" }}
-              onClick={() => setModalIsOpen(false)}
-            >
-              <img width="40" src="./x.png" alt="Close" />
-            </button>
-          </div>
+
+          <button
+            style={{ border: 10, background: "none" }}
+            onClick={() => setModalIsOpen(false)}
+          >
+            <img width="50" src="./x.png" alt="Close" />
+          </button>
         </ModalHeader>
 
         {component}

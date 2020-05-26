@@ -40,7 +40,7 @@ const Dashboard = ({ props }) => {
       ) : (
         <div>
           <Header>
-            <div style={{ paddingTop: 15 }}>
+            <div style={{ paddingTop: 10 }}>
               <h1>
                 <b>Item View</b>
               </h1>
@@ -59,7 +59,7 @@ const Dashboard = ({ props }) => {
               </form>
             </Tools>
           </Header>
-          <br />
+
           <div>
             <InventoryDisplay query={query} props={props} />
           </div>

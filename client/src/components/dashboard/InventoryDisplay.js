@@ -13,7 +13,7 @@ const InventoryDisplay = ({ query, props }) => {
     flex-wrap: wrap;
     border: 2px solid rgb(120, 120, 120);
     justify-content: space-around;
-    height: 773px;
+    height: 775px;
     overflow: auto;
   `;
 
