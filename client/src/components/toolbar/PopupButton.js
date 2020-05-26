@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 
 import Modal from "react-modal";
-import Login from "../login/Login";
 import About from "../views/About";
 import Contact from "../views/Contact";
 

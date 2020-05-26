@@ -122,7 +122,11 @@ const Home = () => {
             <Photos>
               <div>
                 <ImgOne>
-                  <img src="./redBg1.png" width=" 100% " />
+                  <img
+                    src="./redBg1.png"
+                    width=" 100% "
+                    alt="Pharmaceuticals"
+                  />
                 </ImgOne>
               </div>
             </Photos>
