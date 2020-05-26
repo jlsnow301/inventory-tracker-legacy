@@ -29,7 +29,6 @@ const Home = () => {
   const Main = styled.div`
     text-align: justify;
     postition: relative;
-    z-index: 3;
     overflow: hidden;
     padding: 0px 90px;
   `;
@@ -86,7 +85,7 @@ const Home = () => {
     <Container>
       <Main>
         <Intro>
-          <h3>Welcome to the inventory app</h3>
+          <h3>Welcome to the inventory manager</h3>
         </Intro>
 
         <div>

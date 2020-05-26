@@ -1,17 +1,25 @@
 import React, { useState } from "react";
+import styled from "@emotion/styled";
+
 import Modal from "react-modal";
 import Login from "../login/Login";
 import About from "../views/About";
 import Contact from "../views/Contact";
 
 const PopupButton = ({ button }) => {
+  // Styling
+  const Container = styled.div`
+    margin-right: ${button === "addInventory" ? "20px" : "0px"};
+    background: white;
+  `;
+  const ModalHeader = styled.div`
+    display: flex;
+  `;
+
+  // This switch tells it what modal to return.
   let title = "";
   let component = "";
   switch (button) {
-    case "login":
-      title = "Login";
-      component = <Login />;
-      break;
     case "about":
       title = "About";
       component = <About />;
@@ -29,6 +37,14 @@ const PopupButton = ({ button }) => {
     case "settings":
       title = "Settings";
       break;
+    case "addItem":
+      title = "Add Item";
+      // component = <AddItem />;
+      break;
+    case "addInventory":
+      title = "Add Inventory";
+      // component = <AddItem />;
+      break;
 
     default:
       break;
@@ -39,15 +55,27 @@ const PopupButton = ({ button }) => {
 
   // Returns
   return (
-    <div className="popupButton">
+    <Container>
       <button onClick={() => setModalIsOpen(true)}>{title}</button>
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+        <ModalHeader>
+          <h1>
+            <u>{title}</u>
+          </h1>
+          <div style={{ flex: 1 }}></div>
+          <div>
+            <button
+              style={{ border: 0, background: "none" }}
+              onClick={() => setModalIsOpen(false)}
+            >
+              <img width="40" src="./x.png" alt="Close" />
+            </button>
+          </div>
+        </ModalHeader>
+
         {component}
-        <div>
-          <button onClick={() => setModalIsOpen(false)}>Close</button>
-        </div>
       </Modal>
-    </div>
+    </Container>
   );
 };
 

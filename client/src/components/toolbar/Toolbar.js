@@ -10,7 +10,7 @@ import ButtonPanel from "./ButtonPanel";
  *
  */
 
-const Toolbar = ({ userImg, loggedIn, devmode }) => {
+const Toolbar = ({ props }) => {
   // Styling
   const Container = styled.div`
     display: flex;
@@ -25,16 +25,32 @@ const Toolbar = ({ userImg, loggedIn, devmode }) => {
     fontsize: 30px;
     padding: 10px 20px;
     margin: auto;
-
-    font-family: Roboto, "Times New Roman", Times, serif;
+    font-family: "Times New Roman", Times, serif;
   `;
+
+  const [userIcon, setUserIcon] = useState("");
+  const [title, setTitle] = useState("Drugitol Pharmaceuticals");
+
+  const changeTitle = (t) => {
+    setTitle(t);
+  };
+
+  // HOW LONG WILL I GO BEFORE I USE THE 'THIS' KEYWORD
+  const user = props.user;
+  const changeUser = props.changeUser;
+  props = { user, changeUser, changeTitle };
+
+  useEffect(() => {
+    setUserIcon(user.userImg);
+  }, [user]);
 
   // Returns
   return (
     <Container>
-      <Slogan>Inventory Manager v1</Slogan>
+      <Icon source={userIcon} />
+      <Slogan>{user.loggedIn ? `${title}` : <i>{title}</i>}</Slogan>
       <div style={{ flex: 1 }}></div>
-      <ButtonPanel loggedIn={loggedIn} devmode={devmode} />
+      <ButtonPanel props={props} />
     </Container>
   );
 };
