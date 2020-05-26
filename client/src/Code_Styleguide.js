@@ -93,6 +93,8 @@ const StyleGuide = (parameters) => {
   );
 };
 
-// The export statement allows the entire component to be used elswhere, used in a return block or elsewhere.
+// The export statement allows the entire component to be used elsewhere, used in a return block as a tag <StyleGuide>.
 // React makes functions styled like HTML.
+// exporting it makes it the same as public class StyleGuide{}
+// Calling it as <StyleGuide/> is just StyleGuide();
 export default StyleGuide;
