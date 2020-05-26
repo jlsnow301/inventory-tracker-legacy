@@ -62,14 +62,13 @@ const PopupButton = ({ button }) => {
             <u>{title}</u>
           </h1>
           <div style={{ flex: 1 }}></div>
-          <div>
-            <button
-              style={{ border: 0, background: "none" }}
-              onClick={() => setModalIsOpen(false)}
-            >
-              <img width="40" src="./x.png" alt="Close" />
-            </button>
-          </div>
+
+          <button
+            style={{ border: 10, background: "none" }}
+            onClick={() => setModalIsOpen(false)}
+          >
+            <img width="50" src="./x.png" alt="Close" />
+          </button>
         </ModalHeader>
 
         {component}

@@ -14,18 +14,13 @@ const Contact = () => {
     font-family: Merriweather;
     font-size: 16pt;
     width: 55%;
+    margin-top: 30px;
   `;
 
   const SubmitForm = styled.div`
-    margin: auto;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 5px;
-    flex-wrap: wrap;
-    justify-content: right;
-  `;
-
-  const InputBox = styled.div`
-    width: 100%;
-    clear: both;
   `;
 
   return (
@@ -50,25 +45,18 @@ const Contact = () => {
       </TextBox>
       <SubmitForm>
         <h1>We'd love to hear from you!</h1>
-        <br />
-        <label>First Name</label>
-        <InputBox>
-          <input type="text" id="fname" name="firstname" />
-        </InputBox>
-        <br />
-        <label>Last Name</label>
-        <InputBox>
-          <input type="text" id="fname" name="firstname" />
-        </InputBox>
-        <br />
-        <label>Email</label>
-        <InputBox>
-          <input type="text" id="fname" name="firstname" />
-        </InputBox>
-        <br />
-        <InputBox>
+        <div align="right" width="50%">
+          <label>First Name: </label>
+          <input size="30" type="text" id="fname" name="firstname" />
+          <br />
+          <label>Last Name: </label>
+          <input size="30" type="text" id="fname" name="firstname" />
+          <br />
+          <label>Email: </label>
+          <input size="30" type="text" id="fname" name="firstname" />
+          <br />
           <input type="submit" value="Submit" />
-        </InputBox>
+        </div>
       </SubmitForm>
     </Container>
   );
