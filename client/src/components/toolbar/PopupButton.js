@@ -29,6 +29,10 @@ const PopupButton = ({ button }) => {
     case "settings":
       title = "Settings";
       break;
+    case "addItem":
+      title = "Add Item";
+      component = <AddItem />;
+      break;
 
     default:
       break;
