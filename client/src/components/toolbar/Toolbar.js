@@ -10,7 +10,7 @@ import ButtonPanel from "./ButtonPanel";
  *
  */
 
-const Toolbar = ({ userImg, loggedIn, devmode }) => {
+const Toolbar = ({ props }) => {
   // Styling
   const Container = styled.div`
     display: flex;
@@ -28,23 +28,29 @@ const Toolbar = ({ userImg, loggedIn, devmode }) => {
     font-family: "Times New Roman", Times, serif;
   `;
 
-  const [userIcon, setUserIcon] = useState("./this_is_fine.png");
-  const [title, setTitle] = useState("Inventory Manager v1");
+  const [userIcon, setUserIcon] = useState("");
+  const [title, setTitle] = useState("Drugitol Pharmaceuticals");
+
+  const changeTitle = (t) => {
+    setTitle(t);
+  };
+
+  // HOW LONG WILL I GO BEFORE I USE THE THIS KEYWORD
+  const user = props.user;
+  const changeUser = props.changeUser;
+  props = { user, changeUser, changeTitle };
 
   useEffect(() => {
-    const userInput = "Inventory Manager v1";
-    setTitle(userInput);
-    console.log(userImg);
-    setUserIcon(userImg);
-  }, [userImg]);
+    setUserIcon(user.userImg);
+  }, [user]);
 
   // Returns
   return (
     <Container>
       <Icon source={userIcon} />
-      <Slogan>{title}</Slogan>
+      <Slogan>{user.loggedIn ? `${title}` : <i>{title}</i>}</Slogan>
       <div style={{ flex: 1 }}></div>
-      <ButtonPanel loggedIn={loggedIn} devmode={devmode} />
+      <ButtonPanel props={props} />
     </Container>
   );
 };

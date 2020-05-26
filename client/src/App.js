@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
-import Layout from "./components/Layout";
 import Toolbar from "./components/toolbar/Toolbar";
 import Dashboard from "./components/dashboard/Dashboard";
 
@@ -25,19 +24,27 @@ const App = () => {
     justify-content: center;
   `;
 
-  const username = "Anthony";
-  const devmode = true;
-  const loggedIn = true;
-  const userImg = "./this_is_fine.png";
+  const [user, setUser] = useState({
+    username: "Visitor",
+    devmode: false,
+    userImg: "./drugitol.png",
+    loggedIn: false,
+  });
+
+  const changeUser = (u) => {
+    setUser(u);
+  };
+
+  const props = { user, changeUser };
 
   // Returns
   return (
     <div>
       <div>
-        <Toolbar userImg={userImg} loggedIn={loggedIn} devmode={devmode} />
+        <Toolbar props={props} />
       </div>
       <Body>
-        <Dashboard username={username} loggedIn={loggedIn} devmode={devmode} />
+        <Dashboard props={props} />
       </Body>
     </div>
   );

@@ -4,7 +4,7 @@ import InventoryDisplay from "./InventoryDisplay";
 import Home from "../views/Home";
 import PopupButton from "../toolbar/PopupButton";
 
-const Dashboard = ({ username, loggedIn, devmode }) => {
+const Dashboard = ({ props }) => {
   const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -12,16 +12,13 @@ const Dashboard = ({ username, loggedIn, devmode }) => {
   `;
   const Header = styled.div`
     display: flex;
-    height: 4%;
+    flex-direction: space-around;
     font-family: Merriweather;
-    padding: 0px 5px;
   `;
   const Tools = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    width: 
-    padding-top: 15px;
+    padding-top: 20px;
   `;
 
   // Initial state
@@ -36,16 +33,20 @@ const Dashboard = ({ username, loggedIn, devmode }) => {
 
   return (
     <Container>
-      {!loggedIn && !devmode ? (
+      {!props.user.loggedIn && !props.user.devmode ? (
         <Home />
       ) : (
         <div>
           <Header>
-            <h1>{devmode ? "Tester" : username}'s Inventory</h1>
+            <div style={{ paddingTop: 15 }}>
+              <h1>
+                <b>Item View</b>
+              </h1>
+            </div>
             <div style={{ flex: 1 }}></div>
-
             <Tools>
               <PopupButton button="addItem" />
+              <PopupButton button="addInventory" />
               <form onSubmit={(e) => handleSearch(e)}>
                 <input
                   type="text"
@@ -58,7 +59,7 @@ const Dashboard = ({ username, loggedIn, devmode }) => {
           </Header>
           <br />
           <div>
-            <InventoryDisplay query={query} devmode={devmode} />
+            <InventoryDisplay query={query} props={props} />
           </div>
         </div>
       )}
