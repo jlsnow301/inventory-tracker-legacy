@@ -9,10 +9,9 @@ const ButtonPanel = ({ props }) => {
     display: flex;
     flex-direction: column;
   `;
-
   const Buttons = styled.div`
     display: flex;
-    margin-top: 15px;
+    margin-top: 12px;
     flex-wrap: wrap;
     justify-content: flex-end;
   `;
@@ -20,14 +19,11 @@ const ButtonPanel = ({ props }) => {
     display: flex;
     justify-content: flex-end;
     margin-right: 20px;
-  `;
-  const WelcomeText = styled.text`
+    color: darkgray;
     font-family: Merriweather;
-    color: lightgray;
-    margin-left: 20px;
   `;
 
-  const UserInfo = styled.text`
+  const UserInfo = styled.p`
     font-family: Merriweather;
     margin-left: 12px;
     color: white;
@@ -60,7 +56,7 @@ const ButtonPanel = ({ props }) => {
       ) : (
         <Container>
           <Greeting>
-            <WelcomeText>You are logged in as: </WelcomeText>
+            You are logged in as:
             <UserInfo>
               <u>{props.user.username}</u>
             </UserInfo>

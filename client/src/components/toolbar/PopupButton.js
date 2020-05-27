@@ -55,6 +55,7 @@ const PopupButton = ({ button }) => {
   // Returns
   return (
     <Container>
+      {Modal.setAppElement("body")}
       <button onClick={() => setModalIsOpen(true)}>{title}</button>
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         <ModalHeader>
