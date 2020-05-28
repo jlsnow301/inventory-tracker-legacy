@@ -4,6 +4,19 @@ import InventoryDisplay from "./InventoryDisplay";
 import Home from "../views/Home";
 import PopupButton from "../toolbar/PopupButton";
 
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  `;
+  const Header = styled.div`
+    display: flex;
+    height: 4%;
+    font-family: Merriweather;
+    padding: 0px 5px;
+  `;
+
 const Dashboard = ({ props }) => {
   // Styling
   const Container = styled.div`

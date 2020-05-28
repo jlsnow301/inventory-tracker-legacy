@@ -1,4 +1,5 @@
 import React from "react";
+import Modal from 'react-modal';
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
@@ -9,6 +10,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
  * @Reminder - Readme.md has resources, use it
  *
  */
+
+Modal.setAppElement('#root');
 
 ReactDOM.render(
   <React.StrictMode>
