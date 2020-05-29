@@ -22,7 +22,7 @@ const Card = (data) => {
 
   // For now, we are simply adding "id" to hidden keys
   var hiddenKeys = [];
-  hiddenKeys += "id";
+  hiddenKeys += ["id", "_id", "__v"];
 
   const DisplayDetails = () => {
     var entries = [];
