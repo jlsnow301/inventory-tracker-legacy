@@ -79,7 +79,10 @@ ROUTER.post('/', (req, res) => {
     inventoryCount: req.body.inventoryCount,
     date: req.body.date,
   });
-  newInventory.save().then((inventory) => res.json(inventory));
+  newInventory.save().then((inventory) => res.json({
+    status: "1",
+    message: 'Inventory has been created successfully.'
+}));
 });
 
 /**

@@ -13,6 +13,7 @@ const Dashboard = ({ props }) => {
   `;
   const Header = styled.div`
     display: flex;
+    height: 4%
     flex-direction: space-around;
     font-family: Merriweather;
   `;
