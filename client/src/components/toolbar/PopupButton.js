@@ -4,6 +4,9 @@ import styled from "@emotion/styled";
 import Modal from "react-modal";
 import About from "../views/About";
 import Contact from "../views/Contact";
+import AddItem from '../dashboard/AddItem';
+import AddInventory from '../dashboard/AddInventory';
+
 
 const PopupButton = ({ button }) => {
   // Styling
@@ -38,11 +41,11 @@ const PopupButton = ({ button }) => {
       break;
     case "addItem":
       title = "Add Item";
-      // component = <AddItem />;
+      component = <AddItem />;
       break;
     case "addInventory":
       title = "Add Inventory";
-      // component = <AddItem />;
+      component = <AddInventory />;
       break;
 
     default:
