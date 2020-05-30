@@ -24,7 +24,7 @@ const Login = ({ props }) => {
       username: userText.current.value
         .toLowerCase()
         .replace(/^\w/, (c) => c.toUpperCase()),
-      devmode: true,
+      devmode: false,
       userImg: "./memeguy.png",
       loggedIn: true,
     };

@@ -15,14 +15,14 @@ const Card = (data) => {
     padding: 15px 20px;
     overflow: auto;
   `;
-  const Icon = styled.img`      description: "Cervical disc disorder with myelopathy",
+  const Icon = styled.img`
     max-width: 45%;
     max-height: 40%;
   `;
 
   // For now, we are simply adding "id" to hidden keys
   var hiddenKeys = [];
-  hiddenKeys += "id";
+  hiddenKeys += ["id", "_id", "__v"];
 
   const DisplayDetails = () => {
     var entries = [];
