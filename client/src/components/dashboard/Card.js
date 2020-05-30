@@ -15,7 +15,7 @@ const Card = (data) => {
     padding: 15px 20px;
     overflow: auto;
   `;
-  const Icon = styled.img`      description: "Cervical disc disorder with myelopathy",
+  const Icon = styled.img`
     max-width: 45%;
     max-height: 40%;
   `;
