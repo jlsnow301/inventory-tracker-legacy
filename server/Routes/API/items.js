@@ -35,11 +35,13 @@ const OBJECTID = require('mongodb').ObjectID;
 
 ROUTER.post('/:id', (req, res) => {
   let newItem = new ITEMS({
-    name: req.body.name,
-    description: req.body.description,
-    location: req.body.location,
-    added: req.body.date,
-    quantity: req.body.quantity,
+    name: req.body.itemName,
+    brand: req.body.itemBrand,
+    category: req.body.itemCategory,
+    dosage: req.body.itemDosage,
+    preparation: req.body.itemPreparation,
+    quantity: req.body.itemQuantity,
+    description: req.body.itemDescription,
   });
 
   INVENTORIES.update(
@@ -68,11 +70,13 @@ ROUTER.post('/:id', (req, res) => {
  */
 ROUTER.put('/:id/:itemId', (req, res) => {
   let item = {
-    name: req.body.name,
-    description: req.body.description,
-    location: req.body.location,
-    updated: req.body.updated,
-    quantity: req.body.quantity,
+    name: req.body.itemName,
+    brand: req.body.itemBrand,
+    category: req.body.itemCategory,
+    dosage: req.body.itemDosage,
+    preparation: req.body.itemPreparation,
+    quantity: req.body.itemQuantity,
+    description: req.body.itemDescription,
   };
   /*  'items.name': item[0],
   'items.description': item[1],
@@ -83,7 +87,7 @@ ROUTER.put('/:id/:itemId', (req, res) => {
   console.log(req.params.id);
   console.log(req.params.itemId);
   // findandupdate
-  
+
   ITEMS.findOneAndUpdate({ _id: OBJECTID(req.params.itemId) }, { $set: item })
     .then((theItem) => res.status(200).json(theItem))
     .catch((err) => res.status(404).json({ success: false }));
