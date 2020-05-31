@@ -7,7 +7,7 @@ import Contact from "../views/Contact";
 import AddItem from "../dashboard/AddItem";
 import AddInventory from "../dashboard/AddInventory";
 
-const PopupButton = ({ button }) => {
+const PopupButton = ({ button, props }) => {
   // Styling
   const Container = styled.div`
     margin-right: ${button === "addInventory" ? "20px" : "0px"};
@@ -40,7 +40,7 @@ const PopupButton = ({ button }) => {
       break;
     case "addItem":
       title = "Add Item";
-      component = <AddItem />;
+      component = <AddItem props={props} />;
       break;
     case "addInventory":
       title = "Add Inventory";

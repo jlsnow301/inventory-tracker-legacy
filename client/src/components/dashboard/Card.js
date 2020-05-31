@@ -1,36 +1,39 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const Card = (data) => {
+const Card = ({ index, item }) => {
   // Styling
   const Container = styled.div`
-    display: flex;
-    margin: 20px;
+    margin: 10px;
     background: rgb(255, 255, 255);
     width: 22.5%;
     height: 300px;
-    justify-content: space-between;
     border: 2px solid dimgray;
     border-radius: 8px;
-    padding: 15px 20px;
     overflow: auto;
   `;
-  const Icon = styled.img`
-    max-width: 45%;
-    max-height: 40%;
+  const Header = styled.div`
+    margin-left: 10px;
+    margin-bottom: 5px;
   `;
 
-  // For now, we are simply adding "id" to hidden keys
+  index = parseInt(index) + 1;
+  // For now, we are simply adding mongodb defaults to hidden keys
   var hiddenKeys = [];
   hiddenKeys += ["id", "_id", "__v"];
 
   const DisplayDetails = () => {
     var entries = [];
-    for (let [key, value] of Object.entries(data.item)) {
+    for (let [key, value] of Object.entries(item)) {
       if (hiddenKeys.indexOf(key) >= 0) {
         continue;
       }
-      entries.push(<b>{key}: </b>, `${value}`, <br />);
+      entries.push(
+        <li key={key}>
+          <b>{key}: </b>
+          {value}
+        </li>
+      );
     }
     return entries;
   };
@@ -38,10 +41,23 @@ const Card = (data) => {
   // Returns
   return (
     <Container>
-      <p>
+      <Header>
+        <u>
+          <b>Item #</b>
+          {index}
+        </u>
+        <div style={{ flex: 1 }} />
+        <img
+          align="right"
+          width="30%"
+          height="40%"
+          src="./bottle.png"
+          alt="Product Icon"
+        />
+      </Header>
+      <ol>
         <DisplayDetails />
-      </p>
-      <Icon className="icon" src="./bottle.png" alt="Product Icon" />
+      </ol>
     </Container>
   );
 };
