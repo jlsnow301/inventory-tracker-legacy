@@ -4,9 +4,8 @@ import styled from "@emotion/styled";
 import Modal from "react-modal";
 import About from "../views/About";
 import Contact from "../views/Contact";
-import AddItem from '../dashboard/AddItem';
-import AddInventory from '../dashboard/AddInventory';
-
+import AddItem from "../dashboard/AddItem";
+import AddInventory from "../dashboard/AddInventory";
 
 const PopupButton = ({ button }) => {
   // Styling
@@ -14,7 +13,7 @@ const PopupButton = ({ button }) => {
     margin-right: ${button === "addInventory" ? "20px" : "0px"};
     background: white;
   `;
-  const ModalHeader = styled.div`
+  const Header = styled.div`
     display: flex;
   `;
 
@@ -61,7 +60,7 @@ const PopupButton = ({ button }) => {
       {Modal.setAppElement("body")}
       <button onClick={() => setModalIsOpen(true)}>{title}</button>
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-        <ModalHeader>
+        <Header>
           <h1>
             <u>{title}</u>
           </h1>
@@ -73,7 +72,7 @@ const PopupButton = ({ button }) => {
           >
             <img width="50" src="./x.png" alt="Close" />
           </button>
-        </ModalHeader>
+        </Header>
 
         {component}
       </Modal>
