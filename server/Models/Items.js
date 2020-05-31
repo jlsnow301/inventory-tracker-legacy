@@ -18,20 +18,24 @@ const ITEM = new SCHEMA({
     type: String,
     required: true,
   },
-  location: {
+  category: {
     type: String,
     required: true,
   },
-  added: {
-    type: String,
+  dosage: {
+    type: Number,
     required: true,
-  },
-  updated: {
-    type: String,
-    required: false,
   },
   quantity: {
     type: Number,
+    required: true,
+  },
+  preparation: {
+    type: String,
+    required: true,
+  },
+  brand: {
+    type: String,
     required: true,
   },
 });
