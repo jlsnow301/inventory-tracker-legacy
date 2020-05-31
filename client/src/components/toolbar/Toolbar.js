@@ -31,26 +31,27 @@ const Toolbar = ({ props }) => {
   const [userIcon, setUserIcon] = useState("");
   const [title, setTitle] = useState("Drugitol Pharmaceuticals");
 
+  // Set the title to the user's name and inventory
   const changeTitle = (t) => {
     setTitle(t);
   };
 
-  // HOW LONG WILL I GO BEFORE I USE THE 'THIS' KEYWORD
+  // Set the icon to the user's portrait
+  useEffect(() => {
+    setUserIcon(props.user.userImg);
+  }, [props.user]);
+
+  // Props for child components
   const user = props.user;
   const changeUser = props.changeUser;
-  props = { user, changeUser, changeTitle };
-
-  useEffect(() => {
-    setUserIcon(user.userImg);
-  }, [user]);
-
+  const newProps = { user, changeUser, changeTitle };
   // Returns
   return (
     <Container>
       <Icon source={userIcon} />
       <Slogan>{user.loggedIn ? `${title}` : <i>{title}</i>}</Slogan>
       <div style={{ flex: 1 }}></div>
-      <ButtonPanel props={props} />
+      <ButtonPanel props={newProps} />
     </Container>
   );
 };

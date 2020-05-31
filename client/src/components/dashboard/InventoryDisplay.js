@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import Card from "./Card";
 import GetHttp from "./AxiosHttp";
 
-const InventoryDisplay = ({ query, props }) => {
+const InventoryDisplay = (props) => {
   // Styling
   const Container = styled.div`
     display: flex;
@@ -18,30 +18,25 @@ const InventoryDisplay = ({ query, props }) => {
 
   // Initial states.
   const [inventory, setInventory] = useState([]);
+  // const [cards, setCards] = useState([]); Might need state for this later if we're deleting items
+  const updateLabels = props.updateLabels;
 
-  // Get the inventory
-  const getInventory = (q) => {
-    setInventory(GetHttp("inventory", q));
-  };
-
-  // Creates a card for each item (key) in the db.
-  const DisplayInventory = () => {
-    var keys = [];
+  const GetInventory = () => {
+    let cards = [];
     Object.keys(inventory).forEach((key) =>
-      keys.push(<Card item={inventory[key]} />)
+      cards.push(<Card key={key} index={key} item={inventory[key]} />)
     );
-    return keys;
+    return cards;
   };
 
-  // Initial render
   useEffect(() => {
-    query.length === "" ? getInventory(null) : getInventory(`/${query}`);
-  }, [query]);
+    setInventory(GetHttp("inventory", props.query));
+  }, [props.query]);
 
   // Returns
   return (
     <Container>
-      <DisplayInventory />
+      <GetInventory />
     </Container>
   );
 };
