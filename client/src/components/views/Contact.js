@@ -16,21 +16,25 @@ const Contact = () => {
     margin-right: 30px
     width: 20%;
     align: center
-    margin-top: 40px;
+    margin-top: 20px;
   `;
 
   const SubmitForm = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: 60px;
-    margin-right: 90px;
+    margin-top: 30px;
+    margin-right: 20%;
   `;
 
   const ImgTwo = styled.div`
     width: 55%;
-    height: 40%;
-    margin-left: 60px;
+    height: 20%;
+    margin-left: 30%;
     margin-right: 0;
+  `;
+
+  const ContactInfo = styled.div`
+    width: 50%;
   `;
 
   return (
@@ -61,6 +65,22 @@ const Contact = () => {
           ></textarea>
           <input type="submit" value="Submit" />
         </div>
+
+        <ContactInfo>
+          <ul class="list-unstyled mb-4">
+            <li>
+              <p>Seattle, WA 98118, USA</p>
+            </li>
+
+            <li>
+              <p>1-800-123-4567</p>
+            </li>
+
+            <li>
+              <p>contact@inventory.com</p>
+            </li>
+          </ul>
+        </ContactInfo>
       </SubmitForm>
     </Container>
   );
