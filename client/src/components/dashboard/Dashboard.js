@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import InventoryDisplay from "./InventoryDisplay";
 import Home from "../views/Home";
+import InventoryDisplay from "./InventoryDisplay";
 import PopupButton from "../toolbar/PopupButton";
 
-const Dashboard = ({ props }) => {
+const Dashboard = ({ props: { user } }) => {
   // Styling
   const Container = styled.div`
     display: flex;
@@ -25,7 +25,13 @@ const Dashboard = ({ props }) => {
 
   // Initial state
   const [query, setQuery] = useState("");
+  const [labels, setLabels] = useState([]);
   const inputText = React.createRef();
+
+  // This gets the labels from card components and passes to addItem
+  const updateLabels = (arr) => {
+    setLabels(arr);
+  };
 
   // Changes the query, which is passed to inventory display.
   const handleSearch = (e) => {
@@ -33,19 +39,19 @@ const Dashboard = ({ props }) => {
     setQuery(inputText.current.value);
   };
 
+  // Props for child components
+  const newProps = { query, updateLabels };
   // Returns
   return (
     <Container>
-      {!props.user.loggedIn && !props.user.devmode ? (
+      {!user.loggedIn && !user.devmode ? (
         <Home />
       ) : (
         <div>
           <Header>
-            <div style={{ paddingTop: 10 }}>
-              <h1>
-                <b>Item View</b>
-              </h1>
-            </div>
+            <h1>
+              <b>Item View</b>
+            </h1>
             <div style={{ flex: 1 }}></div>
             <Tools>
               <PopupButton button="addItem" />
@@ -62,7 +68,7 @@ const Dashboard = ({ props }) => {
           </Header>
 
           <div>
-            <InventoryDisplay query={query} props={props} />
+            <InventoryDisplay props={newProps} />
           </div>
         </div>
       )}
