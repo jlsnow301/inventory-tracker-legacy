@@ -25,7 +25,7 @@ const Login = ({ props }) => {
         .toLowerCase()
         .replace(/^\w/, (c) => c.toUpperCase()),
       devmode: false,
-      userImg: "./memeguy.png",
+      userImg: "./logo1.png",
       loggedIn: true,
     };
     props.changeUser(user);

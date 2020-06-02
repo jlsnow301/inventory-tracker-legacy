@@ -28,7 +28,7 @@ const App = () => {
   const [user, setUser] = useState({
     username: "Visitor",
     devmode: false,
-    userImg: "./drugitol.png",
+    userImg: "./logo1.png",
     loggedIn: false,
   });
 

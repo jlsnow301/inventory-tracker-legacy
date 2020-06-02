@@ -22,14 +22,14 @@ const Toolbar = ({ props }) => {
   `;
   const Slogan = styled.h1`
     color: #ffffff;
-    fontsize: 30px;
+    fontsize: 25px;
     padding: 10px 20px;
     margin: auto;
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Heebo", sans-serif;
   `;
 
   const [userIcon, setUserIcon] = useState("");
-  const [title, setTitle] = useState("Drugitol Pharmaceuticals");
+  const [title, setTitle] = useState(" ");
 
   // Set the title to the user's name and inventory
   const changeTitle = (t) => {
@@ -49,7 +49,7 @@ const Toolbar = ({ props }) => {
   return (
     <Container>
       <Icon source={userIcon} />
-      <Slogan>{user.loggedIn ? `${title}` : <i>{title}</i>}</Slogan>
+
       <div style={{ flex: 1 }}></div>
       <ButtonPanel props={newProps} />
     </Container>
