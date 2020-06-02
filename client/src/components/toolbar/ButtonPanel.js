@@ -35,7 +35,7 @@ const ButtonPanel = ({ props }) => {
     const user = {
       username: "Visitor",
       devmode: false,
-      userImg: "./drugitol.png",
+      userImg: "./logo1.png",
       loggedIn: false,
     };
     props.changeTitle("Drugitol Pharmaceuticals");
