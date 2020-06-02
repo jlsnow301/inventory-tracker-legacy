@@ -54,7 +54,6 @@ const Contact = () => {
       </TextBox>
 
       <SubmitForm>
-        <h1>GET IN TOUCH </h1>
         <div align="right" width="50%">
           <label>First Name: </label>
           <input size="40" type="text" id="fname" name="firstname" />

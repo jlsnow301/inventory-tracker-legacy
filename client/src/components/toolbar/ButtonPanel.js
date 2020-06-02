@@ -11,22 +11,26 @@ const ButtonPanel = ({ props }) => {
   `;
   const Buttons = styled.div`
     display: flex;
-    margin-top: 12px;
+    margin-top: 10px;
+    padding: 0px 30px;
+    border-radius: 5px
     flex-wrap: wrap;
+    
     justify-content: flex-end;
   `;
   const Greeting = styled.div`
     display: flex;
     justify-content: flex-end;
-    margin-right: 20px;
-    color: darkgray;
-    font-family: Merriweather;
+    margin-right: 25px;
+    color: #00000;
+    font-size: 35px
+    font-family: "Roboto", serif;
   `;
 
   const UserInfo = styled.p`
-    font-family: Merriweather;
+    font-family: "Roboto", serif;
     margin-left: 12px;
-    color: white;
+    color: #2b2d42;
   `;
 
   // Logout button
@@ -57,9 +61,7 @@ const ButtonPanel = ({ props }) => {
         <Container>
           <Greeting>
             You are logged in as:
-            <UserInfo>
-              <u>{props.user.username}</u>
-            </UserInfo>
+            <UserInfo>{props.user.username}</UserInfo>
           </Greeting>
           <Buttons>
             <PopupButton button="advsearch" />
