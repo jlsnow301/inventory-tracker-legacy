@@ -22,21 +22,29 @@ const Contact = () => {
   const SubmitForm = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-right: 20%;
   `;
 
   const ImgTwo = styled.div`
     width: 55%;
-    height: 20%;
+    height: 25%;
     margin-left: 30%;
     margin-right: 0;
+    filter: grayscale(35%);
   `;
 
   const ContactInfo = styled.div`
-    width: 50%;
+    width: 100%;
   `;
 
+  const Icon = styled.div`
+    font-size: 30px;
+  `;
+
+  const List = styled.div`
+    margin-top: 20px;
+  `;
   return (
     <Container>
       <TextBox>
@@ -67,19 +75,32 @@ const Contact = () => {
         </div>
 
         <ContactInfo>
-          <ul class="list-unstyled mb-4">
-            <li>
-              <p>Seattle, WA 98118, USA</p>
-            </li>
+          <List>
+            <ul class="list-unstyled mb-4">
+              <li>
+                <p>
+                  <Icon>
+                    <ion-icon name="location-outline"></ion-icon>
+                  </Icon>
+                  Seattle, WA 98118, USA
+                </p>
+              </li>
 
-            <li>
-              <p>1-800-123-4567</p>
-            </li>
+              <li>
+                <Icon>
+                  <ion-icon name="call-outline"></ion-icon>
+                </Icon>
+                <p>1-800-123-4567</p>
+              </li>
 
-            <li>
-              <p>contact@inventory.com</p>
-            </li>
-          </ul>
+              <li>
+                <Icon>
+                  <ion-icon name="mail-outline"></ion-icon>
+                </Icon>
+                <p>contact@inventory.com</p>
+              </li>
+            </ul>
+          </List>
         </ContactInfo>
       </SubmitForm>
     </Container>
