@@ -20,13 +20,6 @@ const Toolbar = ({ props }) => {
     height: 50%;
     justify-content: flex-start;
   `;
-  const Slogan = styled.h1`
-    color: #ffffff;
-    fontsize: 25px;
-    padding: 10px 20px;
-    margin: auto;
-    font-family: "Heebo", sans-serif;
-  `;
 
   const [userIcon, setUserIcon] = useState("");
   const [title, setTitle] = useState(" ");
