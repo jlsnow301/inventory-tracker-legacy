@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import Toolbar from "./components/toolbar/Toolbar";
 import Dashboard from "./components/dashboard/Dashboard";
+import Footer from "./components/footer/Footer";
 
 /* @Reminder - Readme.md has resources, use it
  *
@@ -48,6 +49,9 @@ const App = () => {
       <Body>
         <Dashboard props={newProps} />
       </Body>
+      <div>
+        <Footer props={newProps} />
+      </div>
     </div>
   );
 };
