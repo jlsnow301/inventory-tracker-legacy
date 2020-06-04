@@ -20,6 +20,9 @@ const About = () => {
     width: 100%;
   `;
 
+  const Icon = styled.div`
+    font-size: 30px;
+  `;
   return (
     <Container>
       <Grid divided="vertically">
@@ -69,6 +72,17 @@ const About = () => {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </p>
+            <Icon>
+              <a href=" ">
+                <ion-Icon name="mail-outline"></ion-Icon>
+              </a>
+              <a href=" ">
+                <ion-Icon name="logo-twitter"></ion-Icon>
+              </a>
+              <a href=" ">
+                <ion-Icon name="logo-github"></ion-Icon>
+              </a>
+            </Icon>
           </Grid.Column>
           <Grid.Column>
             <ImgBox>
@@ -83,6 +97,17 @@ const About = () => {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </p>
+            <Icon>
+              <a href=" ">
+                <ion-Icon name="mail-outline"></ion-Icon>
+              </a>
+              <a href=" ">
+                <ion-Icon name="logo-twitter"></ion-Icon>
+              </a>
+              <a href=" ">
+                <ion-Icon name="logo-github"></ion-Icon>
+              </a>
+            </Icon>
           </Grid.Column>
           <Grid.Column>
             <ImgBox>
@@ -97,6 +122,17 @@ const About = () => {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </p>
+            <Icon>
+              <a href=" ">
+                <ion-Icon name="mail-outline"></ion-Icon>
+              </a>
+              <a href=" ">
+                <ion-Icon name="logo-twitter"></ion-Icon>
+              </a>
+              <a href=" ">
+                <ion-Icon name="logo-github"></ion-Icon>
+              </a>
+            </Icon>
           </Grid.Column>
           <Grid.Column>
             <ImgBox>
@@ -111,6 +147,17 @@ const About = () => {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </p>
+            <Icon>
+              <a href=" ">
+                <ion-Icon name="mail-outline"></ion-Icon>
+              </a>
+              <a href=" ">
+                <ion-Icon name="logo-twitter"></ion-Icon>
+              </a>
+              <a href=" ">
+                <ion-Icon name="logo-github"></ion-Icon>
+              </a>
+            </Icon>
           </Grid.Column>
         </Grid.Row>
       </Grid>
