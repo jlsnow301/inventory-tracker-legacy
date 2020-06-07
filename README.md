@@ -17,9 +17,11 @@ npm i reactstrap bootstrap @emotion/styled @emotion/core react-router-dom
 
 ## For the Server
 
-npm i body-parser concurrently express mongoose
+npm i body-parser concurrently express mongoose @sendgrid/mail
 
 npm i -D nodemon
+
+[sendgrid/Mail Documentation](https://www.npmjs.com/package/@sendgrid/mail)
 
 NOTE: You will need to edit the **scripts** portion of your package.json in the server
 

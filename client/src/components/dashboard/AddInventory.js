@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import Modal from "react-modal";
+import Modal from 'react-modal';
 
 const AddInventory = () => {
   /******/

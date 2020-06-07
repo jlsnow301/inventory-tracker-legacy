@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import styled from "@emotion/styled";
-import Home from "../views/Home";
-import InventoryDisplay from "./InventoryDisplay";
-import PopupButton from "../toolbar/PopupButton";
+import React, { useState } from 'react';
+import styled from '@emotion/styled';
+import Home from '../views/Home';
+import InventoryDisplay from './InventoryDisplay';
+import PopupButton from '../toolbar/PopupButton';
 
 const Dashboard = ({ props: { user } }) => {
   // Styling
@@ -13,7 +13,7 @@ const Dashboard = ({ props: { user } }) => {
   `;
   const Header = styled.div`
     display: flex;
-    height: 4%
+    height: 4%;
     flex-direction: space-around;
     font-family: Merriweather;
   `;
@@ -24,7 +24,7 @@ const Dashboard = ({ props: { user } }) => {
   `;
 
   // Initial state
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [labels, setLabels] = useState([]);
   const inputText = React.createRef();
 
@@ -54,15 +54,15 @@ const Dashboard = ({ props: { user } }) => {
             </h1>
             <div style={{ flex: 1 }}></div>
             <Tools>
-              <PopupButton button="addItem" />
-              <PopupButton button="addInventory" />
+              <PopupButton button='addItem' />
+              <PopupButton button='addInventory' />
               <form onSubmit={(e) => handleSearch(e)}>
                 <input
-                  type="text"
+                  type='text'
                   ref={inputText}
-                  placeholder="Enter keywords..."
+                  placeholder='Enter keywords...'
                 />
-                <input type="submit" value="Submit" />{" "}
+                <input type='submit' value='Submit' />{' '}
               </form>
             </Tools>
           </Header>

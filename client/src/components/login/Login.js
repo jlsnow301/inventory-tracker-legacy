@@ -11,7 +11,7 @@ const Login = ({ props }) => {
   // Styling
   const Container = styled.div`
     margin-top: 15px;
-    font-family: Merriweather;
+    font-family: "Roboto", Merriweather;
   `;
 
   const userText = React.createRef();
@@ -36,8 +36,8 @@ const Login = ({ props }) => {
   return (
     <Container>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <input type="text" size="10" ref={userText} placeholder="username" />
-        <input type="text" size="10" ref={passText} placeholder="password" />
+        <input type="text" size="12" ref={userText} placeholder="username" />
+        <input type="text" size="12" ref={passText} placeholder="password" />
         <input type="submit" value="Submit" />{" "}
       </form>
     </Container>
