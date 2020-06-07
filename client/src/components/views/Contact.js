@@ -1,7 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
+import Axios from "axios";
+import Modal from "react-modal";
 
 const Contact = () => {
+  const [contactFirstName, setContactFirstName] = useState("");
+  const [contactLastName, setContactLastName] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactMessage, setContactMessage] = useState("");
+
+  /******/
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [successModalMsg, setSuccessModalMsg] = useState("");
+
+  // Changes the query, which is passed to inventory display.
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    Axios.post("http://localhost:5000/api/contact", {
+      firstname: contactFirstName,
+      lastname: contactLastName,
+      email: contactEmail,
+      message: contactMessage,
+    }).then((res) => {
+      if (res.data.status === "1") {
+        setSuccessModalMsg(res.data.message);
+        setIsSuccessModalOpen(true);
+      }
+    });
+
+    setContactFirstName("");
+    setContactLastName("");
+    setContactEmail("");
+    setContactMessage("");
+  };
+
   const Container = styled.div`
     display: flex;
     flex-direction: row;
@@ -13,25 +45,20 @@ const Contact = () => {
   const TextBox = styled.div`
     font-family: Merriweather;
     font-size: 30pt;
-    margin-right: 30px
     width: 20%;
-    align: center
-    margin-top: 20px;
+    align: center;
+    margin-bottom: 50px;
   `;
 
   const SubmitForm = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
-    margin-right: 20%;
+    margin-top: 20px;
   `;
 
   const ImgTwo = styled.div`
-    width: 55%;
-    height: 25%;
-    margin-left: 30%;
-    margin-right: 0;
     filter: grayscale(35%);
+    width: 27rem;
   `;
 
   const ContactInfo = styled.div`
@@ -45,6 +72,7 @@ const Contact = () => {
   const List = styled.div`
     margin-top: 20px;
   `;
+
   return (
     <Container>
       <TextBox>
@@ -54,25 +82,46 @@ const Contact = () => {
       </TextBox>
 
       <SubmitForm>
-        <div align="right" width="50%">
-          <label>First Name: </label>
-          <input size="40" type="text" id="fname" name="firstname" />
-          <br />
-          <label>Last Name: </label>
-          <input size="40" type="text" id="lname" name="lastname" />
-          <br />
-          <label>Email: </label>
-          <input size="40" type="text" id="email" name="email" />
-          <br />
-          <br />
-          <textarea
-            className="form-control"
-            id="exampleFormControlTextarea1"
-            rows="3"
-          ></textarea>
-          <input type="submit" value="Submit" />
-        </div>
-
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div align="right" width="50%">
+            <label>First Name: </label>
+            <input
+              size="40"
+              type="text"
+              id="fname"
+              value={contactFirstName}
+              onChange={(e) => setContactFirstName(e.target.value)}
+            />
+            <br />
+            <label>Last Name: </label>
+            <input
+              size="40"
+              type="text"
+              id="lname"
+              value={contactLastName}
+              onChange={(e) => setContactLastName(e.target.value)}
+            />
+            <br />
+            <label>Email: </label>
+            <input
+              size="40"
+              type="text"
+              id="email"
+              value={contactEmail}
+              onChange={(e) => setContactEmail(e.target.value)}
+            />
+            <br />
+            <br />
+            <textarea
+              className="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              value={contactMessage}
+              onChange={(e) => setContactMessage(e.target.value)}
+            ></textarea>
+            <input type="submit" value="Submit" />
+          </div>
+        </form>
         <ContactInfo>
           <List>
             <ul class="list-unstyled mb-4">
@@ -102,6 +151,15 @@ const Contact = () => {
           </List>
         </ContactInfo>
       </SubmitForm>
+      <Modal
+        isOpen={isSuccessModalOpen}
+        onRequestClose={() => setIsSuccessModalOpen(false)}
+      >
+        <div>
+          <button onClick={() => setIsSuccessModalOpen(false)}>Close</button>
+        </div>
+        <p>{successModalMsg}</p>
+      </Modal>
     </Container>
   );
 };

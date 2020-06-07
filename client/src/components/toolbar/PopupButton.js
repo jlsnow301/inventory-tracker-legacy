@@ -66,7 +66,7 @@ const PopupButton = ({ button, props }) => {
             style={{ border: 10, background: "none" }}
             onClick={() => setModalIsOpen(false)}
           >
-            <img width="50" src="./x.png" alt="Close" />
+            <img width="60" src="./exit.png" alt="Close" />
           </button>
         </Header>
 
