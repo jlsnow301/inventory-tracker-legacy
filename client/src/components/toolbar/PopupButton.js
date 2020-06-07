@@ -62,7 +62,6 @@ const PopupButton = ({ button, props }) => {
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         <Header>
           <div style={{ flex: 1 }}></div>
-
           <button
             style={{ border: 10, background: "none" }}
             onClick={() => setModalIsOpen(false)}
