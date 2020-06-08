@@ -11,7 +11,7 @@ const About = () => {
     align: center;
   `;
   const ImgIcon = styled.div`
-    width: 150px;
+    width: 100px;
     margin-left: 20%;
     margin-bottom: 15%;
   `;
@@ -42,7 +42,14 @@ const About = () => {
               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              sunt in culpa qui officia deserunt mollit anim id est laborum.Duis
+              aute irure dolor in reprehenderit in voluptate velit esse cillum
+              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+              non proident, sunt in culpa qui officia deserunt mollit anim id
+              est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+              aliqua. Tincidunt lobortis feugiat vivamus at. Et malesuada fames
+              ac turpis egestas.
             </p>
           </Grid.Column>
           <Grid.Column>
@@ -69,9 +76,10 @@ const About = () => {
             <h1>Anthony</h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris
+              in aliquam sem fringilla ut morbi tincidunt augue interdum.
+              Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit
+              amet.
             </p>
             <Icon>
               <a href=" ">
@@ -94,9 +102,9 @@ const About = () => {
             <h1>Margarita</h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Et
+              pharetra pharetra massa massa ultricies mi quis hendrerit. Nunc
+              vel risus commodo viverra maecenas accumsan lacus.
             </p>
             <Icon>
               <a href=" ">
@@ -144,9 +152,9 @@ const About = () => {
             <h1>Selina</h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Tincidunt lobortis feugiat vivamus at. Et malesuada fames ac
+              turpis egestas.
             </p>
             <Icon>
               <a href=" ">
