@@ -85,18 +85,23 @@ const Contact = () => {
     font-size: 35px;
   `;
 
+  const Intro = styled.div`
+    margin-left: 35px;
+  `;
   return (
     <Container>
       <Grid divided="vertically">
         <Grid.Row columns={1}>
-          <ContactIntro>
-            <h1>Get in contact with us!</h1>
-          </ContactIntro>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi
-            tincidunt augue interdum velit euismod.{" "}
-          </p>
+          <Intro>
+            <ContactIntro>
+              <h1>Get in contact with us!</h1>
+            </ContactIntro>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi
+              tincidunt augue interdum velit euismod.{" "}
+            </p>
+          </Intro>
         </Grid.Row>
 
         <Grid.Row columns={3}>
