@@ -3,18 +3,17 @@ import React, { useState, useContext } from "react";
 import Input from "../UIElements/FormElements/Input";
 import Button from "../UIElements/FormElements/Button";
 import Card from "../UIElements/Card";
-import { AuthContext } from "../Functions/auth-context";
-import { useForm } from "../Hooks/form-hook";
 import {
   VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
   VALIDATOR_REQUIRE,
 } from "../Functions/validators";
+import { useForm } from "../Hooks/form-hook";
+import { AuthContext } from "../Functions/auth-context";
 
 import "./Login.css";
 
-const Login = ({ props }) => {
-  // Initial States
+const Login = () => {
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
 
@@ -32,7 +31,6 @@ const Login = ({ props }) => {
     false
   );
 
-  // Switch between sign up and log in
   const switchModeHandler = () => {
     if (!isLoginMode) {
       setFormData(
@@ -57,17 +55,15 @@ const Login = ({ props }) => {
     setIsLoginMode((prevMode) => !prevMode);
   };
 
-  // Changes the query, which is passed to inventory display.
-  const authSubmitHandler = (e) => {
-    e.preventDefault();
+  const authSubmitHandler = (event) => {
+    event.preventDefault();
     console.log(formState.inputs);
     auth.login();
   };
 
-  // Returns
   return (
     <Card className="authentication">
-      <h2>Please Log In To Continue</h2>
+      <h2>Please Log In.</h2>
       <hr />
       <form onSubmit={authSubmitHandler}>
         {!isLoginMode && (
