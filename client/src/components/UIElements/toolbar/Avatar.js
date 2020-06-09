@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const Icon = ({ source }) => {
+const Avatar = ({ source }) => {
   // Styling
   const Icon = styled.img`
     width: 29rem;
@@ -12,4 +12,4 @@ const Icon = ({ source }) => {
   return <Icon className="icon" src={source} alt="Icon" />;
 };
 
-export default Icon;
+export default Avatar;

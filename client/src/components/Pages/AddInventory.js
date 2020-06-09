@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import PostHttp from "./AxiosHttp";
-import Modal from "react-modal";
+
+import PostHttp from "../Functions/AxiosHttp";
+import { useForm } from "../Hooks/form-hook";
 
 const AddInventory = (props) => {
   //Styling
@@ -66,16 +67,6 @@ const AddInventory = (props) => {
         <br />
         <button>Add Inventory</button>
       </form>
-
-      <Modal
-        isOpen={isSuccessModalOpen}
-        onRequestClose={() => setIsSuccessModalOpen(false)}
-      >
-        <div>
-          <button onClick={() => setIsSuccessModalOpen(false)}>Close</button>
-        </div>
-        <p>Success!</p>
-      </Modal>
     </div>
   );
 };
