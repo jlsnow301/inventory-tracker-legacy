@@ -48,10 +48,10 @@ const App = () => {
         <Route path="/" exact>
           <Dashboard />
         </Route>
-        <Route path="/addItem">
+        <Route path="/:userId/addItem">
           <AddItem />
         </Route>
-        <Route path="/addInventory">
+        <Route path="/:userId/addInventory">
           <AddInventory />
         </Route>
         <Redirect to="/" />
