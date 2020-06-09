@@ -1,83 +1,124 @@
-import React, { useState } from "react";
+import React from "react";
 
+import Input from "../UIElements/FormElements/Input";
+import Button from "../UIElements/FormElements/Button";
+import {
+  VALIDATOR_REQUIRE,
+  VALIDATOR_MINLENGTH,
+} from "../Functions/validators";
 import PostHttp from "../Functions/AxiosHttp";
 import { useForm } from "../Hooks/form-hook";
 
+import "./AddForm.css";
+
 const AddItem = (props) => {
-  // Styling
-
-  // Initial state
-  const [item, setItem] = useState({
-    name: "",
-    description: "",
-    owner: "",
-    history: "",
-    items: "",
-    access: "",
-    inventoryCount: "",
-    date: "",
-  });
-  const [labels, setLabels] = useState([
-    `name`,
-    `description`,
-    `owner`,
-    `history`,
-    `items`,
-    `access`,
-    `inventoryCount`,
-    `date`,
-  ]);
-
-  const GetLabels = () => {
-    var forms = [];
-    // Not using object.keys here because I wanted to iterate through an array of keys it receives from props
-    for (let label of labels) {
-      forms.push(
-        <div>
-          <label>{label}</label>
-          <div className="control">
-            <input
-              type="text"
-              onChange={changeHandler}
-              name={label}
-              value={item[label]}
-            />
-          </div>
-        </div>
-      );
-    }
-    return forms;
-  };
+  const [formState, inputHandler] = useForm(
+    {
+      name: {
+        value: "",
+        isValid: false,
+      },
+      description: {
+        value: "",
+        isValid: false,
+      },
+      category: {
+        value: "",
+        isValid: false,
+      },
+      dosage: {
+        value: "",
+        isValid: false,
+      },
+      quantity: {
+        value: "",
+        isValid: false,
+      },
+      preparation: {
+        value: "",
+        isValid: false,
+      },
+      brand: {
+        value: "",
+        isValid: false,
+      },
+    },
+    false
+  );
 
   // Takes the item and updates an individual attribute
-  const changeHandler = (e) => {
-    const { name, value } = e.target;
-    setItem((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  // Notice how addItem and addInventory look almost identical, this makes me want to just make a form
-  // creator for both that receive a prop
-  const onSubmitItem = (e) => {
-    e.preventDefault();
-    console.log(`Sending package:`);
-    console.log(item);
-    PostHttp(`items`, item);
+  const itemSubmitHandler = (event) => {
+    event.preventDefault();
+    console.log(formState.inputs);
+    //post axios here
   };
 
   // Returns
   return (
-    <div>
-      <form onSubmit={(e) => onSubmitItem(e)}>
-        <div className="field">
-          <GetLabels />
-        </div>
-        <br />
-        <button>Add Item</button>
-      </form>
-    </div>
+    <form className="add-form" onSubmit={itemSubmitHandler}>
+      <Input
+        id="name"
+        element="input"
+        type="text"
+        label="Name"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter a valid name."
+        onInput={inputHandler}
+      />
+      <Input
+        id="description"
+        element="textarea"
+        label="Description"
+        validators={[VALIDATOR_MINLENGTH(5)]}
+        errorText="Please enter a valid description (at least 5 characters)."
+        onInput={inputHandler}
+      />
+      <Input
+        id="category"
+        element="textarea"
+        label="Category"
+        validators={[VALIDATOR_MINLENGTH(5)]}
+        errorText="Please enter a valid category (at least 5 characters)."
+        onInput={inputHandler}
+      />
+      <Input
+        id="dosage"
+        element="input"
+        type="text"
+        label="Dosage"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter a number."
+        onInput={inputHandler}
+      />
+      <Input
+        id="quantity"
+        element="input"
+        type="text"
+        label="Quantity"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter a number."
+        onInput={inputHandler}
+      />
+      <Input
+        id="preparation"
+        element="textarea"
+        label="Preparation"
+        validators={[VALIDATOR_MINLENGTH(5)]}
+        errorText="Please enter a valid preparation (at least 5 characters)."
+        onInput={inputHandler}
+      />
+      <Input
+        id="brand"
+        element="textarea"
+        label="Brand Name"
+        validators={[VALIDATOR_MINLENGTH(3)]}
+        errorText="Please enter a valid brand name (at least 3 characters)."
+        onInput={inputHandler}
+      />
+      <Button type="submit" disabled={!formState.isValid}>
+        ADD ITEM
+      </Button>
+    </form>
   );
 };
 

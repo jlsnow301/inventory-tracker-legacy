@@ -1,73 +1,137 @@
-import React, { useState } from "react";
+import React from "react";
 
+import Input from "../UIElements/FormElements/Input";
+import Button from "../UIElements/FormElements/Button";
+import {
+  VALIDATOR_REQUIRE,
+  VALIDATOR_MINLENGTH,
+} from "../Functions/validators";
 import PostHttp from "../Functions/AxiosHttp";
 import { useForm } from "../Hooks/form-hook";
 
+import "./AddForm.css";
+
 const AddInventory = (props) => {
-  //Styling
+  // Initial states
+  const [formState, inputHandler] = useForm(
+    {
+      name: {
+        value: "",
+        isValid: false,
+      },
+      description: {
+        value: "",
+        isValid: false,
+      },
+      owner: {
+        value: "",
+        isValid: false,
+      },
+      history: {
+        value: "",
+        isValid: false,
+      },
+      items: {
+        value: "",
+        isValid: false,
+      },
+      access: {
+        value: "",
+        isValid: false,
+      },
+      inventoryCount: {
+        value: "",
+        isValid: false,
+      },
+      date: {
+        value: "",
+        isValid: false,
+      },
+    },
+    false
+  );
 
-  // Initial state
-  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
-  // Need to convert to reducer
-  const [inventory, setInventory] = useState({
-    name: "",
-    access: "",
-    date: "",
-    count: "",
-    items: [],
-    owner: "",
-    history: "",
-    description: "",
-  });
-
-  // We could probably make this a component somewhere else and use it in any addX
-  const GetForm = () => {
-    var arr = [];
-    Object.keys(inventory).forEach((key) =>
-      arr.push(
-        <div key={key} className="field">
-          <label>{key}</label>
-          <div className="control">
-            <input
-              type="text"
-              required
-              onChange={changeHandler}
-              name={key}
-              value={inventory[key]}
-            />
-          </div>
-        </div>
-      )
-    );
-    return arr;
-  };
-
-  // Takes the inventory and updates an individual attribute
-  const changeHandler = (e) => {
-    const { name, value } = e.target;
-    setInventory((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  // Submit form
-  const onSubmitInventory = (e) => {
-    e.preventDefault();
-    console.log(`Sending package:`);
-    console.log(inventory);
-    PostHttp(`inventory`, inventory);
+  // Takes the item and updates an individual attribute
+  const inventorySubmitHandler = (event) => {
+    event.preventDefault();
+    console.log(formState.inputs);
+    //post axios here
   };
 
   // Returns
   return (
-    <div>
-      <form onSubmit={(e) => onSubmitInventory(e)}>
-        <GetForm />
-        <br />
-        <button>Add Inventory</button>
-      </form>
-    </div>
+    <form className="add-form" onSubmit={inventorySubmitHandler}>
+      <Input
+        id="name"
+        element="input"
+        type="text"
+        label="Name"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter a valid name."
+        onInput={inputHandler}
+      />
+      <Input
+        id="description"
+        element="textarea"
+        label="Description"
+        validators={[VALIDATOR_MINLENGTH(5)]}
+        errorText="Please enter a valid description (at least 5 characters)."
+        onInput={inputHandler}
+      />
+      <Input
+        id="owner"
+        element="textarea"
+        label="Owner"
+        validators={[]}
+        errorText="Placeholder."
+        onInput={inputHandler}
+      />
+      <Input
+        id="history"
+        element="input"
+        type="text"
+        label="History"
+        validators={[]}
+        errorText="Placeholder."
+        onInput={inputHandler}
+      />
+      <Input
+        id="items"
+        element="input"
+        type="text"
+        label="Items"
+        validators={[]}
+        errorText="Placeholder."
+        onInput={inputHandler}
+      />
+      <Input
+        id="access"
+        element="textarea"
+        label="Access Level"
+        validators={[]}
+        errorText="Placeholder."
+        onInput={inputHandler}
+      />
+      <Input
+        id="inventoryCount"
+        element="textarea"
+        label="Inventory Count"
+        validators={[]}
+        errorText="Placeholder."
+        onInput={inputHandler}
+      />
+      <Input
+        id="date"
+        element="textarea"
+        label="Date"
+        validators={[]}
+        errorText="Placeholder."
+        onInput={inputHandler}
+      />
+      <Button type="submit" disabled={!formState.isValid}>
+        ADD INVENTORY
+      </Button>
+    </form>
   );
 };
 
