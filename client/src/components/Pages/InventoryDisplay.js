@@ -13,7 +13,7 @@ const InventoryDisplay = (props) => {
     flex-wrap: wrap;
     border: 2px solid rgb(120, 120, 120);
     justify-content: space-around;
-    height: 800px;
+    height: 775px;
     overflow: auto;
   `;
 

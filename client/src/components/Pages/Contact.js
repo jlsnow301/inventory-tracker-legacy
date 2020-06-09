@@ -47,6 +47,7 @@ const Contact = () => {
 
   const ContactIntro = styled.h1`
     color: #8d99ae;
+    margin-right: 10px;
   `;
 
   const SubmitForm = styled.div`
@@ -68,11 +69,6 @@ const Contact = () => {
     margin-top: 20px;
   `;
 
-  const Banner = styled.div`
-    width: 100%;
-    filter: grayscale(35%);
-  `;
-
   const TextForm = styled.div`
     width: 50%;
   `;
@@ -89,9 +85,7 @@ const Contact = () => {
     <Container>
       <Grid divided="vertically">
         <Grid.Row columns={1}>
-          <ContactIntro>
-            <h1>Get in contact with us!</h1>
-          </ContactIntro>
+          <ContactIntro>Get in contact with us!</ContactIntro>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi
@@ -160,32 +154,26 @@ const Contact = () => {
           <Grid.Column>
             <ContactInfo>
               <List>
-                <ul class="list-unstyled mb-4">
+                <ul className="list-unstyled mb-4">
                   <li>
-                    <p>
-                      <Icon>
-                        <ion-icon name="location-outline"></ion-icon>
-                      </Icon>
-                      Seattle, WA 98118, USA
-                    </p>
+                    <Icon>
+                      <ion-icon name="location-outline"></ion-icon>
+                    </Icon>
+                    Seattle, WA 98118, USA
                   </li>
                   <br />
                   <li>
-                    <p>
-                      <Icon>
-                        <ion-icon name="call-outline"></ion-icon>
-                      </Icon>
-                      1-800-123-4567
-                    </p>
+                    <Icon>
+                      <ion-icon name="call-outline"></ion-icon>
+                    </Icon>
+                    1-800-123-4567
                   </li>
                   <br />
                   <li>
-                    <p>
-                      <Icon>
-                        <ion-icon name="mail-outline"></ion-icon>
-                      </Icon>
-                      contact@inventory.com
-                    </p>
+                    <Icon>
+                      <ion-icon name="mail-outline"></ion-icon>
+                    </Icon>
+                    contact@inventory.com
                   </li>
                 </ul>
               </List>

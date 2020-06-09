@@ -6,7 +6,7 @@ import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,
 } from "../Functions/validators";
-import PostHttp from "../Functions/AxiosHttp";
+//import PostHttp from "../Functions/AxiosHttp";
 import { useForm } from "../Hooks/form-hook";
 
 import "./AddForm.css";

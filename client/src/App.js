@@ -5,12 +5,9 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-import styled from "@emotion/styled";
 
 // Main UI
 import Toolbar from "./components/UIElements/toolbar/Toolbar";
-// Leaving out the footer for now because I don't know how to do it :(
-import Footer from "./components/UIElements/footer/Footer";
 // Auth Routes
 import AddItem from "./components/Pages/AddItem";
 import AddInventory from "./components/Pages/AddInventory";
@@ -24,14 +21,6 @@ import Login from "./components/Pages/Login";
 import { AuthContext } from "./components/Functions/auth-context";
 
 const App = () => {
-  // Styling
-  const Body = styled.div`
-    display: flex;
-    margin: 0 auto;
-    padding: 10px 0px;
-    justify-content: center;
-  `;
-
   // Initial login states
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const login = useCallback(() => {
@@ -83,7 +72,7 @@ const App = () => {
     >
       <Router>
         <Toolbar />
-        <Body>{routes}</Body>
+        <main>{routes}</main>
       </Router>
     </AuthContext.Provider>
   );

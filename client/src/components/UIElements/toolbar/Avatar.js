@@ -4,8 +4,7 @@ import styled from "@emotion/styled";
 const Avatar = ({ source }) => {
   // Styling
   const Icon = styled.img`
-    width: 29rem;
-    height: 6.5rem;
+    height: 5rem;
   `;
 
   // Returns

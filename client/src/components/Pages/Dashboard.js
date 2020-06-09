@@ -8,15 +8,16 @@ const Dashboard = (props) => {
   // Styling
   const Container = styled.div`
     display: flex;
+    margin-top: 10px;
     flex-direction: column;
-    width: 90%;
+    padding: 20px;
   `;
   const Header = styled.div`
     display: flex;
     height: 4%;
     flex-direction: space-around;
     font-family: Merriweather;
-    margin-bottom: 10px;
+    margin: 10px;
   `;
   const Tools = styled.div`
     display: flex;

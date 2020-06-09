@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import styled from "@emotion/styled";
 import Avatar from "./Avatar";
-import ButtonPanel from "./ButtonPanel";
+import NavLinks from "./NavLinks";
 import { AuthContext } from "../../Functions/auth-context";
 
 const Toolbar = (props) => {
@@ -21,7 +21,7 @@ const Toolbar = (props) => {
     justify-content: row;
   `;
   const DummyAvatar = styled.img`
-    width: 10%;
+    width: 15%;
     height: 100%;
   `;
   const DummyInfo = styled.div`
@@ -39,7 +39,7 @@ const Toolbar = (props) => {
         <React.Fragment>
           <Avatar source={`./logo1.png`} />
           <div style={{ flex: 1 }} />
-          <ButtonPanel />
+          <NavLinks />
         </React.Fragment>
       ) : (
         <React.Fragment>
@@ -50,7 +50,7 @@ const Toolbar = (props) => {
             </DummyInfo>
           </UserInfo>
           <div style={{ flex: 1 }} />
-          <ButtonPanel />
+          <NavLinks />
         </React.Fragment>
       )}
     </Container>
