@@ -9,7 +9,7 @@ import {
 //import PostHttp from "../Functions/AxiosHttp";
 import { useForm } from "../Hooks/form-hook";
 
-import "./AddForm.css";
+import "../../css/AddForm.css";
 
 const AddInventory = (props) => {
   // Initial states

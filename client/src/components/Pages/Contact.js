@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import Axios from "axios";
 import Modal from "react-modal";
 import { Grid } from "semantic-ui-react";
-import "./Contact.css";
+import "../../css/Contact.css";
 
 const Contact = () => {
   const [contactFirstName, setContactFirstName] = useState("");
