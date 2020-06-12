@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Axios from "axios";
 import Modal from "react-modal";
 import { Grid } from "semantic-ui-react";
+import "../../css/Contact.css";
 
 const Contact = () => {
   const [contactFirstName, setContactFirstName] = useState("");
@@ -10,11 +11,9 @@ const Contact = () => {
   const [contactEmail, setContactEmail] = useState("");
   const [contactMessage, setContactMessage] = useState("");
 
-  /******/
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [successModalMsg, setSuccessModalMsg] = useState("");
 
-  // Changes the query, which is passed to inventory display.
   const handleSubmit = (e) => {
     e.preventDefault();
     Axios.post("http://localhost:5000/api/contact", {
@@ -35,57 +34,13 @@ const Contact = () => {
     setContactMessage("");
   };
 
-  const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-top: 0px;
-    margin-left: 30px;
-
-    font-family: sans-serif;
-  `;
-
-  const ContactIntro = styled.h1`
-    color: #8d99ae;
-    margin-right: 10px;
-  `;
-
-  const SubmitForm = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-  `;
-
-  const ContactInfo = styled.div`
-    width: 100%;
-    margin-left: 30px;
-  `;
-
-  const Icon = styled.div`
-    font-size: 30px;
-  `;
-
-  const List = styled.div`
-    margin-top: 20px;
-  `;
-
-  const TextForm = styled.div`
-    width: 50%;
-  `;
-
-  const Social = styled.div`
-    margin-left: 14px;
-  `;
-
-  const IconSocial = styled.div`
-    font-size: 35px;
-  `;
-
   return (
-    <Container>
+    <div class="container">
       <Grid divided="vertically">
         <Grid.Row columns={1}>
-          <ContactIntro>Get in contact with us!</ContactIntro>
+          <div class="ContactIntro">
+            <h1>Get in contact with us!</h1>
+          </div>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi
@@ -95,10 +50,10 @@ const Contact = () => {
 
         <Grid.Row columns={3}>
           <Grid.Column>
-            <SubmitForm>
+            <div class="SubmitForm">
               <form onSubmit={(e) => handleSubmit(e)}>
-                <div align="right" width="50%">
-                  <label>First Name: </label>
+                <div align="left" width="50%">
+                  <div class="label">First Name: </div>
                   <input
                     size="40"
                     type="text"
@@ -107,7 +62,7 @@ const Contact = () => {
                     onChange={(e) => setContactFirstName(e.target.value)}
                   />
                   <br />
-                  <label>Last Name: </label>
+                  <div class="label">Last Name: </div>
                   <input
                     size="40"
                     type="text"
@@ -116,7 +71,8 @@ const Contact = () => {
                     onChange={(e) => setContactLastName(e.target.value)}
                   />
                   <br />
-                  <label>Email: </label>
+                  <div class="label">Email: </div>
+
                   <input
                     size="40"
                     type="text"
@@ -126,7 +82,7 @@ const Contact = () => {
                   />
                   <br />
                   <br />
-                  <TextForm>
+                  <div class="TextForm">
                     <textarea
                       className="form-control"
                       id="exampleFormControlTextarea1"
@@ -135,10 +91,10 @@ const Contact = () => {
                       onChange={(e) => setContactMessage(e.target.value)}
                     ></textarea>
                     <input type="submit" value="Submit" />
-                  </TextForm>
+                  </div>
                 </div>
               </form>
-            </SubmitForm>
+            </div>
             <Modal
               isOpen={isSuccessModalOpen}
               onRequestClose={() => setIsSuccessModalOpen(false)}
@@ -152,39 +108,39 @@ const Contact = () => {
             </Modal>
           </Grid.Column>
           <Grid.Column>
-            <ContactInfo>
-              <List>
+            <div class="ContactInfo">
+              <div class="List">
                 <ul className="list-unstyled mb-4">
                   <li>
-                    <Icon>
+                    <div class="Icon">
                       <ion-icon name="location-outline"></ion-icon>
-                    </Icon>
+                    </div>
                     Seattle, WA 98118, USA
                   </li>
                   <br />
                   <li>
-                    <Icon>
+                    <div class="Icon">
                       <ion-icon name="call-outline"></ion-icon>
-                    </Icon>
+                    </div>
                     1-800-123-4567
                   </li>
                   <br />
                   <li>
-                    <Icon>
+                    <div class="Icon">
                       <ion-icon name="mail-outline"></ion-icon>
-                    </Icon>
+                    </div>
                     contact@inventory.com
                   </li>
                 </ul>
-              </List>
-            </ContactInfo>
+              </div>
+            </div>
           </Grid.Column>
 
           <Grid.Column>
-            <Social>
+            <div class="Social">
               <h4>Connect:</h4>
 
-              <IconSocial>
+              <div class="IconSocial">
                 <a href=" ">
                   <ion-Icon name="mail-outline"></ion-Icon>
                 </a>
@@ -195,12 +151,12 @@ const Contact = () => {
                 <a href=" ">
                   <ion-Icon name="logo-google"></ion-Icon>
                 </a>
-              </IconSocial>
-            </Social>
+              </div>
+            </div>
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    </Container>
+    </div>
   );
 };
 

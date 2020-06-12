@@ -11,7 +11,7 @@ import {
 import { useForm } from "../Hooks/form-hook";
 import { AuthContext } from "../Functions/auth-context";
 
-import "./Login.css";
+import "../../css/Login.css";
 
 const Login = () => {
   const auth = useContext(AuthContext);

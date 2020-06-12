@@ -29,16 +29,13 @@ const footer = ({ props }) => {
               <p>
                 Duis aute irure dolor in reprehenderit in voluptate velit esse
                 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident. Excepteur sint occaecat cupidatat non
-                proident. Duis aute irure dolor in reprehenderit Duis aute irure
-                dolor in reprehenderit
+                cupidatat non proident.
               </p>
             </Grid.Column>
             <Grid.Column>
               <h3>Help</h3>
               <p>Lorem</p>
               <p>cupidatat reprehenderit</p>
-              <p>fugiat Excepteur</p>
             </Grid.Column>
             <Grid.Column>
               <h4>Connect</h4>

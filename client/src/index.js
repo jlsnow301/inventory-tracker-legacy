@@ -1,7 +1,7 @@
 import React from "react";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./css/index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -11,7 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
  *
  */
 
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 
 ReactDOM.render(
   <React.StrictMode>
