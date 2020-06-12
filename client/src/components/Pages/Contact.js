@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import Axios from "axios";
 import Modal from "react-modal";
-import { Grid, Image } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 
 const Contact = () => {
   const [contactFirstName, setContactFirstName] = useState("");
@@ -10,11 +10,9 @@ const Contact = () => {
   const [contactEmail, setContactEmail] = useState("");
   const [contactMessage, setContactMessage] = useState("");
 
-  /******/
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [successModalMsg, setSuccessModalMsg] = useState("");
 
-  // Changes the query, which is passed to inventory display.
   const handleSubmit = (e) => {
     e.preventDefault();
     Axios.post("http://localhost:5000/api/contact", {
@@ -47,6 +45,7 @@ const Contact = () => {
 
   const ContactIntro = styled.h1`
     color: #8d99ae;
+    margin-right: 10px;
   `;
 
   const SubmitForm = styled.div`
@@ -68,11 +67,6 @@ const Contact = () => {
     margin-top: 20px;
   `;
 
-  const Banner = styled.div`
-    width: 100%;
-    filter: grayscale(35%);
-  `;
-
   const TextForm = styled.div`
     width: 50%;
   `;
@@ -85,23 +79,16 @@ const Contact = () => {
     font-size: 35px;
   `;
 
-  const Intro = styled.div`
-    margin-left: 35px;
-  `;
   return (
     <Container>
       <Grid divided="vertically">
         <Grid.Row columns={1}>
-          <Intro>
-            <ContactIntro>
-              <h1>Get in contact with us!</h1>
-            </ContactIntro>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi
-              tincidunt augue interdum velit euismod.{" "}
-            </p>
-          </Intro>
+          <ContactIntro>Get in contact with us!</ContactIntro>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi
+            tincidunt augue interdum velit euismod.{" "}
+          </p>
         </Grid.Row>
 
         <Grid.Row columns={3}>
@@ -165,32 +152,26 @@ const Contact = () => {
           <Grid.Column>
             <ContactInfo>
               <List>
-                <ul class="list-unstyled mb-4">
+                <ul className="list-unstyled mb-4">
                   <li>
-                    <p>
-                      <Icon>
-                        <ion-icon name="location-outline"></ion-icon>
-                      </Icon>
-                      Seattle, WA 98118, USA
-                    </p>
+                    <Icon>
+                      <ion-icon name="location-outline"></ion-icon>
+                    </Icon>
+                    Seattle, WA 98118, USA
                   </li>
                   <br />
                   <li>
-                    <p>
-                      <Icon>
-                        <ion-icon name="call-outline"></ion-icon>
-                      </Icon>
-                      1-800-123-4567
-                    </p>
+                    <Icon>
+                      <ion-icon name="call-outline"></ion-icon>
+                    </Icon>
+                    1-800-123-4567
                   </li>
                   <br />
                   <li>
-                    <p>
-                      <Icon>
-                        <ion-icon name="mail-outline"></ion-icon>
-                      </Icon>
-                      contact@inventory.com
-                    </p>
+                    <Icon>
+                      <ion-icon name="mail-outline"></ion-icon>
+                    </Icon>
+                    contact@inventory.com
                   </li>
                 </ul>
               </List>

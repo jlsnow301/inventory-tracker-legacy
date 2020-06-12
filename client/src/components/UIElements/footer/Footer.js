@@ -3,6 +3,8 @@ import styled from "@emotion/styled";
 import { Grid, Image } from "semantic-ui-react";
 
 const Container = styled.div`
+  position: absolute;
+  bottom: 0;
   width: auto;
   background: #edf2f4;
 `;
