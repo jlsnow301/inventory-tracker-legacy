@@ -10,10 +10,10 @@
  *
  */
 
-const EXPRESS = require('express');
+const EXPRESS = require("express");
 const ROUTER = EXPRESS.Router();
-const EMAIL = require('../../config/keys').sendGridURI;
-const SGMAIL = require('@sendgrid/mail');
+const EMAIL = require("../../config/keys").sendGridURI;
+const SGMAIL = require("@sendgrid/mail");
 /**
  * @purpose Handles Activity for the contact form! YAY CONTACT!
  * @complete --> NO
@@ -29,27 +29,20 @@ const SGMAIL = require('@sendgrid/mail');
 // This
 // Anthony
 // Message
-ROUTER.post('/', (req, res) => {
+ROUTER.post("/", (req, res) => {
   SGMAIL.setApiKey(EMAIL);
   console.log(req.body);
-  /* const msg = {
-    To: 'stenbergdigeronimo@gmail.com',
-    From: req.body.email,
-    Subject: 'Inventory Contact testing',
-    Text:
-      req.body.firstname +
-      ' ' +
-      req.body.lastname +
-      ' says ' +
-      req.body.message,
-  };*/
+  // FROM has to be stenbergdigeronimo@gmail.com
+  // how the API works is that the email needs to be approved.
+  // This can be from a domain!
   const msg = {
-    to: 'test@example.com',
-    from: 'test@example.com',
-    subject: 'Sending with Twilio SendGrid is Fun',
-    text: 'and easy to do anywhere, even with Node.js',
-    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+    to: "stenbergdigeronimo@gmail.com",
+    from: "stenbergdigeronimo@gmail.com",
+    subject: "Inventory Contact Form Submission",
+    text: `${req.body.firstname} ${req.body.lastname} sent the following message ${req.body.message} and asked to be emailed back at ${req.body.email}`,
+    html: `<p>${req.body.firstname} ${req.body.lastname} sent the following message <br> ${req.body.message} <br> and asked to be emailed back at ${req.body.email}</p>`,
   };
+
   SGMAIL.send(msg)
     .then((result) => {
       res.status(200).json({
@@ -57,7 +50,7 @@ ROUTER.post('/', (req, res) => {
       });
     })
     .catch((error) => {
-      console.log('errors: ' + error);
+      console.log("errors: " + error);
       res.status(401).json({
         success: false,
       });
