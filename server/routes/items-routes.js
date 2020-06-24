@@ -15,11 +15,11 @@
  *
  */
 
-const EXPRESS = require('express');
-const ROUTER = EXPRESS.Router();
-const INVENTORIES = require('../../Models/Inventories');
-const ITEMS = require('../../Models/Items');
-const OBJECTID = require('mongodb').ObjectID;
+const express = require("express");
+const router = express.Router();
+const inventories = require("../models/inventories");
+const items = require("../Models/Items");
+const objectId = require("mongodb").ObjectID;
 
 /**
  * @purpose Adds an item to an inventory
@@ -33,7 +33,7 @@ const OBJECTID = require('mongodb').ObjectID;
  *  - Should add action to history
  */
 
-ROUTER.post('/:id', (req, res) => {
+router.post("/:id", (req, res) => {
   let newItem = new ITEMS({
     name: req.body.itemName,
     brand: req.body.itemBrand,
@@ -68,7 +68,7 @@ ROUTER.post('/:id', (req, res) => {
  *  - Add Notes about Success and information for Failure. Res needs to happen
  *  - Should add action to history
  */
-ROUTER.put('/:id/:itemId', (req, res) => {
+ROUTER.put("/:id/:itemId", (req, res) => {
   let item = {
     name: req.body.itemName,
     brand: req.body.itemBrand,
@@ -104,7 +104,7 @@ ROUTER.put('/:id/:itemId', (req, res) => {
  *  - Add Notes about Success and information for Failure
  *  - Should add action to history
  */
-ROUTER.delete('/item/:id', (req, res) => {
+ROUTER.delete("/item/:id", (req, res) => {
   INVENTORIES.deleteOne({ _id: OBJECTID(req.params.id) })
     .then((inventory) => res.json(inventory))
     .catch((err) => res.status(404).json({ success: false }));

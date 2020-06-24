@@ -14,10 +14,10 @@
  *
  */
 
-const EXPRESS = require('express');
+const EXPRESS = require("express");
 const ROUTER = EXPRESS.Router();
-const USERS = require('../../Models/Users');
-const OBJECTID = require('mongodb').ObjectID;
+const USERS = require("../Models/Users");
+const OBJECTID = require("mongodb").ObjectID;
 
 /**
  * @purpose gets all members of an organization
@@ -30,7 +30,7 @@ const OBJECTID = require('mongodb').ObjectID;
  *      currently it does just by /This Dot Org
  *  - form handling, may need to convert to lowercase
  */
-ROUTER.get('/:org', (req, res, next) => {
+ROUTER.get("/:org", (req, res, next) => {
   // the :org param is the name from the field.
   USERS.find({ organization: req.params.org })
     .sort()
@@ -48,7 +48,7 @@ ROUTER.get('/:org', (req, res, next) => {
  *  - if used as part of login, make sure to check active status
  *
  */
-ROUTER.get('/single/:id', (req, res) => {
+ROUTER.get("/single/:id", (req, res) => {
   USERS.find({ _id: OBJECTID(req.params.id) }).then((user) =>
     res
       .json(user)
@@ -65,7 +65,7 @@ ROUTER.get('/single/:id', (req, res) => {
  *
  * @todos
  */
-ROUTER.post('/', (req, res) => {
+ROUTER.post("/", (req, res) => {
   let newMember = new USERS({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -84,7 +84,7 @@ ROUTER.post('/', (req, res) => {
   ) {
     return res
       .status(400)
-      .json({ msg: 'Please complete the form in its entirety' });
+      .json({ msg: "Please complete the form in its entirety" });
   }
 
   newMember
@@ -107,7 +107,7 @@ ROUTER.post('/', (req, res) => {
  *  - should be using this to deactivate users so they can't login
  *
  */
-ROUTER.put('/single/:id', (req, res) => {
+ROUTER.put("/single/:id", (req, res) => {
   //let found = USERS.findById((member) => member.id === parseInt(req.params.id));
 
   let userInfo = {
@@ -129,7 +129,7 @@ ROUTER.put('/single/:id', (req, res) => {
         console.log(err);
       } else {
         //res.status(200).json(userInfo);
-        console.log('it worked');
+        console.log("it worked");
       }
     }
   );
@@ -145,7 +145,7 @@ ROUTER.put('/single/:id', (req, res) => {
  * @todos
  *
  */
-ROUTER.delete('/:id', (req, res) => {
+ROUTER.delete("/:id", (req, res) => {
   USERS.deleteOne({ _id: OBJECTID(req.params.id) })
     .then((user) => res.json(user))
     .catch((err) => res.status(404).json({ success: false }));

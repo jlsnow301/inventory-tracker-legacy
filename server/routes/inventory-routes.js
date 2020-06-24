@@ -19,7 +19,7 @@
 
 const EXPRESS = require("express");
 const ROUTER = EXPRESS.Router();
-const INVENTORIES = require("../../Models/Inventories");
+const INVENTORIES = require("../Models/Inventories");
 const OBJECTID = require("mongodb").ObjectID;
 
 /**

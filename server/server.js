@@ -1,66 +1,80 @@
-const EXPRESS = require('express');
-const MONGOOSE = require('mongoose');
-const BODYPARSER = require('body-parser');
-const CORS = require('cors');
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
+const contactRoutes = require("./routes/contact");
+const inventoryRoutes = require("./routes/inventory");
+const itemsRoutes = require("./routes/items");
+const usersRoutes = require("./routes/users");
+const HttpError = require("./models/http-error");
 
-const APP = EXPRESS();
+const app = express();
 
 // bodyparser middleware
-APP.use(BODYPARSER.json());
+app.use(bodyParser.json());
 
 // Cross site request frogery
 // this here... I Really LIke this!
 // Wish Ed would have taught this!
-const WHITELIST = ['http://localhost:3000'];
+const whiteList = ["http://localhost:3000"];
 
 // +++++ comment this out to do testing through postman +++++
 // +++++ you wont be able to test with postman if you dont +++++
 
-const CORSOPTIONS = {
+const corsOptions = {
   origin: function (origin, callback) {
-    if (WHITELIST.indexOf(origin) > -1) {
+    if (whiteList.indexOf(origin) > -1) {
       callback(null, true);
     } else {
-      callback(new Error('Blocked by cors'));
+      callback(new Error("Blocked by cors"));
     }
   },
 };
 
-APP.use(CORS(CORSOPTIONS));
+app.use(cors(corsOptions));
 
 // DB config
 // If you make your keys public one more time...
 // THe config should be set up to export mongoURI
-const DB = require('./config/keys').mongoURI;
+const db = require("./config/keys").mongoURI;
 
-// connect to mongo
-MONGOOSE.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true }) // connect to MongoDB
-  .then(() => console.log('MongoDB Connected...')) // If successfull display this message
+// Mongoose config
+mongoose
+  .connect(DB, { useNewUrlParser: true, useUnifiedTopology: true }) // connect to MongoDB
+  .then(() => console.log("MongoDB Connected...")) // If successfull display this message
   .catch((err) => console.log(err)); // if not show error
 
-// setting up headers
-APP.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+// Header config
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PUT, PATCH, DELETE'
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE"
   );
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
-/**
- *  API ROUTES
- */
 
-// members API routes
-APP.use('/api/users', require('./Routes/Users/Users'));
-// Inventory routes
-APP.use('/api/inventory', require('./Routes/API/Inventory'));
-// Items routes
-APP.use('/api/items', require('./Routes/API/Items'));
-// Contact routes
-APP.use('/api/contact', require('./Routes/API/Contact'));
+// API Routes
+app.use("/api/contact", require("./Routes/Contact"));
+app.use("/api/inventory", require("./Routes/Inventory"));
+app.use("/api/items", require("./Routes/Items"));
+app.use("/api/users", require("./Routes/Users"));
+
+// Catch Errors
+app.use((req, res, next) => {
+  const error = new HttpError("Could not find this route.", 404);
+  throw error;
+});
+
+app.use((error, req, res, next) => {
+  if (res.headerSent) {
+    return next(error);
+  }
+  res.status(error.code || 500);
+  res.json({ message: error.message || "An unknown error has occured." });
+});
 
 const port = process.env.PORT || 5000;
-APP.listen(port, () => console.log(`Server started on port ${port}`));
+app.listen(port, () => console.log(`Server started on port ${port}`));
