@@ -1,0 +1,47 @@
+// Module imports
+const mongoose = require("mongoose");
+
+const Schema = mongoose.Schema;
+
+const itemSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  category: {
+    type: String,
+    required: true,
+  },
+  dosage: {
+    type: Number,
+    required: true,
+  },
+  quantity: {
+    type: Number,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: false,
+  },
+  owner: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
+  inventory: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: "Inventory",
+  },
+  date: {
+    type: Date,
+    default: Date.now(),
+  },
+});
+
+module.exports = mongoose.model("Items", itemSchema);
