@@ -20,14 +20,14 @@ router.get("/user/:userId", inventoryControllers.getInventoriesByUserId);
 //POST///////////////////////////////////////////////////////////////////////////////
 router.post(
   "/",
-  [check("name").not().isEmpty(), check("description").isLength({ min: 5 })],
+  [check("name").notEmpty(), check("description").isLength({ min: 5 })],
   inventoryControllers.createInventory
 );
 
 //PATCH//////////////////////////////////////////////////////////////////////////////
 router.patch(
   "/:invId",
-  [check("name").not().isEmpty(), check("description").isLength({ min: 5 })],
+  [check("name").notEmpty(), check("description").isLength({ min: 5 })],
   inventoryControllers.updateInventory
 );
 

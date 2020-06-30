@@ -25,7 +25,7 @@ router.post(
   [
     check("name").notEmpty(),
     check("description").isLength({ min: 5 }),
-    check("category").notEmpty().isLength({ min: 5 }),
+    check("category").isLength({ min: 3 }),
     check("dosage").notEmpty().isNumeric(),
     check("quantity").notEmpty().isNumeric(),
   ],
@@ -38,7 +38,7 @@ router.patch(
   [
     check("name").notEmpty(),
     check("description").isLength({ min: 5 }),
-    check("category").notEmpty().isLength({ min: 5 }),
+    check("category").isLength({ min: 3 }),
     check("dosage").notEmpty().isNumeric(),
     check("quantity").notEmpty().isNumeric(),
   ],
