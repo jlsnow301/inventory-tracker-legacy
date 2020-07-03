@@ -3,7 +3,7 @@ const express = require("express");
 const { check } = require("express-validator");
 
 // Local imports
-const inventoryControllers = require("../controllers/inventory-controllers");
+const inventoryControllers = require("../controllers/inventories-controllers");
 const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();

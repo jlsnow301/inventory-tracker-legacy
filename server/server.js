@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 
 // Local imports
 // const contactRoutes = require("./routes/contact-routes");
-const inventoryRoutes = require("./routes/inventory-routes");
+const inventoryRoutes = require("./routes/inventories-routes");
 const itemsRoutes = require("./routes/items-routes");
 const usersRoutes = require("./routes/users-routes");
 const HttpError = require("./models/http-error");

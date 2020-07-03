@@ -22,10 +22,6 @@ const inventorySchema = new Schema({
     required: true,
     ref: "Item",
   },
-  date: {
-    type: Date,
-    default: Date.now(),
-  },
 });
 
-module.exports = mongoose.model("Inventories", inventorySchema);
+module.exports = mongoose.model("Inventory", inventorySchema);

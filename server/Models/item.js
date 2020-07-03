@@ -38,10 +38,6 @@ const itemSchema = new Schema({
     required: true,
     ref: "Inventory",
   },
-  date: {
-    type: Date,
-    default: Date.now(),
-  },
 });
 
-module.exports = mongoose.model("Items", itemSchema);
+module.exports = mongoose.model("Item", itemSchema);
