@@ -18,7 +18,7 @@ const signup = async (req, res, next) => {
     );
   }
 
-  const { firstName, lastName, email, password } = req.body;
+  const { name, email, password } = req.body;
 
   let existingUser;
   try {
@@ -51,8 +51,7 @@ const signup = async (req, res, next) => {
   }
 
   const createdUser = new User({
-    firstName,
-    lastName,
+    name,
     email,
     password: hashedPassword,
     image: req.file.path,
