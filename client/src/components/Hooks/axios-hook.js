@@ -1,4 +1,4 @@
-import MockData from "./MockData";
+import MockData from "../Functions/MockData";
 import axios from "axios";
 
 // Returns data from server based on query.

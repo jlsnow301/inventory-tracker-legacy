@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "@emotion/styled";
 import Axios from "axios";
 import Modal from "react-modal";
 import { Grid } from "semantic-ui-react";
@@ -35,10 +34,10 @@ const Contact = () => {
   };
 
   return (
-    <div class="container">
+    <div className="container">
       <Grid divided="vertically">
         <Grid.Row columns={1}>
-          <div class="ContactIntro">
+          <div className="ContactIntro">
             <h1>Get in contact with us!</h1>
           </div>
           <p>
@@ -50,10 +49,10 @@ const Contact = () => {
 
         <Grid.Row columns={3}>
           <Grid.Column>
-            <div class="SubmitForm">
+            <div className="SubmitForm">
               <form onSubmit={(e) => handleSubmit(e)}>
                 <div align="left" width="50%">
-                  <div class="label">First Name: </div>
+                  <div className="label">First Name: </div>
                   <input
                     size="40"
                     type="text"
@@ -62,7 +61,7 @@ const Contact = () => {
                     onChange={(e) => setContactFirstName(e.target.value)}
                   />
                   <br />
-                  <div class="label">Last Name: </div>
+                  <div className="label">Last Name: </div>
                   <input
                     size="40"
                     type="text"
@@ -71,7 +70,7 @@ const Contact = () => {
                     onChange={(e) => setContactLastName(e.target.value)}
                   />
                   <br />
-                  <div class="label">Email: </div>
+                  <div className="label">Email: </div>
 
                   <input
                     size="40"
@@ -82,7 +81,7 @@ const Contact = () => {
                   />
                   <br />
                   <br />
-                  <div class="TextForm">
+                  <div className="TextForm">
                     <textarea
                       className="form-control"
                       id="exampleFormControlTextarea1"
@@ -108,25 +107,25 @@ const Contact = () => {
             </Modal>
           </Grid.Column>
           <Grid.Column>
-            <div class="ContactInfo">
-              <div class="List">
+            <div className="ContactInfo">
+              <div className="List">
                 <ul className="list-unstyled mb-4">
                   <li>
-                    <div class="Icon">
+                    <div className="Icon">
                       <ion-icon name="location-outline"></ion-icon>
                     </div>
                     Seattle, WA 98118, USA
                   </li>
                   <br />
                   <li>
-                    <div class="Icon">
+                    <div className="Icon">
                       <ion-icon name="call-outline"></ion-icon>
                     </div>
                     1-800-123-4567
                   </li>
                   <br />
                   <li>
-                    <div class="Icon">
+                    <div className="Icon">
                       <ion-icon name="mail-outline"></ion-icon>
                     </div>
                     contact@inventory.com
@@ -137,10 +136,10 @@ const Contact = () => {
           </Grid.Column>
 
           <Grid.Column>
-            <div class="Social">
+            <div className="Social">
               <h4>Connect:</h4>
 
-              <div class="IconSocial">
+              <div className="IconSocial">
                 <a href=" ">
                   <ion-Icon name="mail-outline"></ion-Icon>
                 </a>

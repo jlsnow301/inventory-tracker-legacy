@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import styled from "@emotion/styled";
 import InventoryCard from "../UIElements/InventoryCard";
-import GetHttp from "../Functions/AxiosHttp";
+import ErrorModal from "../UIElements/ErrorModal";
+import LoadingSpinner from "../UIElements/LoadingSpinner";
+import { useHttpClient } from "../Hooks/http-hook";
 
 const InventoryDisplay = (props) => {
   // Styling
@@ -19,6 +22,8 @@ const InventoryDisplay = (props) => {
 
   // Initial states.
   const [inventory, setInventory] = useState([]);
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const userId = useParams().userId;
 
   const GetInventory = () => {
     let cards = [];
@@ -28,15 +33,45 @@ const InventoryDisplay = (props) => {
     return cards;
   };
 
+  // Initially sets the user inventories on display
   useEffect(() => {
-    setInventory(GetHttp("inventory", `/${props.query}`));
-  }, [props.query]);
+    const fetchInventories = async () => {
+      try {
+        const responseData = await sendRequest(
+          `http://localhost:5000/api/inventory/user/${userId}`
+        );
+        setInventory(responseData.inventories);
+      } catch (err) {}
+    };
+    fetchInventories();
+  }, [sendRequest, userId]);
+
+  // Sets the inventories based on search (currently by ID only)
+  useEffect(() => {
+    const fetchQuery = async () => {
+      try {
+        const responseData = await sendRequest(
+          `http://localhost:5000/api/inventory/${props.query}`
+        );
+        setInventory(responseData);
+      } catch (err) {}
+    };
+    fetchQuery();
+  }, [sendRequest, props.query]);
 
   // Returns
   return (
-    <Container>
-      <GetInventory />
-    </Container>
+    <React.Fragment>
+      <ErrorModal error={error} onClear={clearError} />
+      <Container>
+        {isLoading && (
+          <div className="center">
+            <LoadingSpinner />
+          </div>
+        )}
+        {!isLoading && inventory && <GetInventory />}
+      </Container>
+    </React.Fragment>
   );
 };
 

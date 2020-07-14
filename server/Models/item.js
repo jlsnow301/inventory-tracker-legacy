@@ -1,15 +1,9 @@
-/**
- * server/Models/Items.js
- *
- * @routes /api/inventories
- * @todos
- *
- */
-const MONGOOSE = require('mongoose');
+// Module imports
+const mongoose = require("mongoose");
 
-const SCHEMA = MONGOOSE.Schema;
+const Schema = mongoose.Schema;
 
-const ITEM = new SCHEMA({
+const itemSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -30,14 +24,20 @@ const ITEM = new SCHEMA({
     type: Number,
     required: true,
   },
-  preparation: {
+  image: {
     type: String,
-    required: true,
+    required: false,
   },
-  brand: {
-    type: String,
+  owner: {
+    type: mongoose.Types.ObjectId,
     required: true,
+    ref: "User",
+  },
+  inventory: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: "Inventory",
   },
 });
 
-module.exports = Items = MONGOOSE.model('Items', ITEM);
+module.exports = mongoose.model("Item", itemSchema);
