@@ -74,9 +74,8 @@ const createInventory = async (req, res, next) => {
   const createdInventory = new Inventory({
     name,
     description,
-    owner: req.userData.userId,
+    creator: req.userData.userId,
     items: [],
-    date: Date.now(),
   });
 
   let user;

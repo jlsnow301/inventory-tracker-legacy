@@ -5,11 +5,9 @@ const { check } = require("express-validator");
 // Local imports
 const usersController = require("../controllers/users-controllers");
 const fileUpload = require("../middleware/file-upload");
+const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();
-
-//GET///////////////////////////////////////////////////////////////////////////////
-router.get("/", usersController.getUsers);
 
 //POST//////////////////////////////////////////////////////////////////////////////
 router.post(
@@ -24,5 +22,9 @@ router.post(
 );
 
 router.post("/login", usersController.login);
+
+//GET///////////////////////////////////////////////////////////////////////////////
+router.use(checkAuth);
+router.get("/", usersController.getUsers);
 
 module.exports = router;

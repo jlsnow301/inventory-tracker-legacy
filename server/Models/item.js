@@ -28,16 +28,18 @@ const itemSchema = new Schema({
     type: String,
     required: false,
   },
-  owner: {
+  creator: {
     type: mongoose.Types.ObjectId,
     required: true,
     ref: "User",
   },
-  inventory: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-    ref: "Inventory",
-  },
+  inventory: [
+    {
+      type: mongoose.Types.ObjectId,
+      required: true,
+      ref: "Inventory",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Item", itemSchema);
