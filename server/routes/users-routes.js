@@ -5,7 +5,6 @@ const { check } = require("express-validator");
 // Local imports
 const usersController = require("../controllers/users-controllers");
 const fileUpload = require("../middleware/file-upload");
-const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();
 
@@ -14,7 +13,7 @@ router.post(
   "/signup",
   fileUpload.single("image"),
   [
-    check("name").not().isEmpty(),
+    check("name").notEmpty(),
     check("email").normalizeEmail().isEmail(),
     check("password").isLength({ min: 6 }),
   ],
@@ -22,10 +21,5 @@ router.post(
 );
 
 router.post("/login", usersController.login);
-
-//GET////////////////////////////////////////////////////////////////////////////////
-// Prevent unauthorized access
-router.use(checkAuth);
-router.get("/", usersController.getUsers);
 
 module.exports = router;

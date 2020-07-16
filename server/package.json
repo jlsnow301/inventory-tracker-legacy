@@ -1,11 +1,11 @@
 {
   "name": "server",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "this will run the server side of inventory Tracker",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "server": "nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "author": "Group E",
   "license": "MIT",

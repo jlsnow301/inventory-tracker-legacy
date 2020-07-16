@@ -17,11 +17,13 @@ const inventorySchema = new Schema({
     required: true,
     ref: "User",
   },
-  items: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-    ref: "Item",
-  },
+  items: [
+    {
+      type: mongoose.Types.ObjectId,
+      required: true,
+      ref: "Item",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Inventory", inventorySchema);

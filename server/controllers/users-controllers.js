@@ -53,15 +53,14 @@ const signup = async (req, res, next) => {
   const createdUser = new User({
     name,
     email,
+    image: "req.file.path",
     password: hashedPassword,
-    image: req.file.path,
     inventories: [],
   });
 
   try {
     await createdUser.save();
   } catch (err) {
-    console.log(createdUser);
     const error = new HttpError(
       "Signing up failed, please try again later.",
       500
