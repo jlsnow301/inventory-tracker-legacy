@@ -12,7 +12,7 @@ const inventorySchema = new Schema({
     type: String,
     required: true,
   },
-  owner: {
+  creator: {
     type: mongoose.Types.ObjectId,
     required: true,
     ref: "User",
