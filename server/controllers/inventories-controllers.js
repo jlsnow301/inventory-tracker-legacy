@@ -49,10 +49,8 @@ const getInventoriesByUserId = async (req, res, next) => {
     return next(error);
   }
 
-  if (!inventoryOwner || inventoryOwner.inventories.length === 0) {
-    return next(
-      new HttpError("Could not find inventories for the provided user id.", 404)
-    );
+  if (!inventoryOwner) {
+    return next(new HttpError("Could not find the provided user id.", 404));
   }
 
   res.json({

@@ -81,7 +81,12 @@ const Login = () => {
             "Content-Type": "application/json",
           }
         );
-        auth.login(responseData.userId, responseData.token);
+        auth.login(
+          responseData.userId,
+          responseData.token,
+          responseData.name,
+          responseData.image
+        );
       } catch (err) {}
     } else {
       try {
@@ -96,7 +101,12 @@ const Login = () => {
           formData
         );
 
-        auth.login(responseData.userId, responseData.token);
+        auth.login(
+          responseData.userId,
+          responseData.token,
+          responseData.name,
+          responseData.image
+        );
       } catch (err) {}
     }
   };

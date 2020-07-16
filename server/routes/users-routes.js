@@ -25,6 +25,6 @@ router.post("/login", usersController.login);
 
 //GET///////////////////////////////////////////////////////////////////////////////
 router.use(checkAuth);
-router.get("/", usersController.getUsers);
+router.get("/", usersController.getUser);
 
 module.exports = router;

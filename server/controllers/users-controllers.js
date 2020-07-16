@@ -10,18 +10,19 @@ const serverToken = require("../config/keys").serverToken;
 
 // Route controllers
 //GET///////////////////////////////////////////////////////////////////////////////
-const getUsers = async (req, res, next) => {
-  let users;
+const getUser = async (req, res, next) => {
+  let user;
+
   try {
     users = await User.find({}, "-password");
   } catch (err) {
     const error = new HttpError(
-      "Fetching users failed, please try again later.",
+      "Fetching user failed, please try again later.",
       500
     );
     return next(error);
   }
-  res.json({ users: users.map((user) => user.toObject({ getters: true })) });
+  res.json(user.toObject({ getters: true }));
 };
 
 //POST//////////////////////////////////////////////////////////////////////////////
@@ -98,9 +99,13 @@ const signup = async (req, res, next) => {
     return next(error);
   }
 
-  res
-    .status(201)
-    .json({ userId: createdUser.id, email: createdUser.email, token: token });
+  res.status(201).json({
+    userId: createdUser.id,
+    email: createdUser.email,
+    name: createdUser.name,
+    image: createdUser.image,
+    token: token,
+  });
 };
 
 const login = async (req, res, next) => {
@@ -162,11 +167,12 @@ const login = async (req, res, next) => {
 
   res.json({
     userId: existingUser.id,
-    email: existingUser.email,
+    name: existingUser.name,
+    image: existingUser.image,
     token: token,
   });
 };
 
-exports.getUsers = getUsers;
+exports.getUser = getUser;
 exports.signup = signup;
 exports.login = login;

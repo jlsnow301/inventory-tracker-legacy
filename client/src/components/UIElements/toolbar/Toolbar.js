@@ -1,59 +1,45 @@
-import React, { useContext } from "react";
-
-import styled from "@emotion/styled";
-import Avatar from "./Avatar";
+// Module imports
+import React from "react";
+//Local imports
 import NavLinks from "./NavLinks";
-import { AuthContext } from "../../Functions/auth-context";
+import { useAuth } from "../../Hooks/auth-hook";
+
+// Styling
+import "../../../css/Toolbar.css";
 
 const Toolbar = (props) => {
-  // Styling
-  const Container = styled.div`
-    display: flex;
-    background: #bd0028;
-    padding: 6px 8px;
-    width: 100%;
-    height: 50%;
-    justify-content: flex-start;
-  `;
-  const UserInfo = styled.div`
-    height: 60px;
-    display: flex;
-    justify-content: row;
-  `;
-  const DummyAvatar = styled.img`
-    width: 15%;
-    height: 100%;
-  `;
-  const DummyInfo = styled.div`
-    margin-left: 10px;
-    margin-top: 10px;
-    align: center;
-  `;
-
-  const auth = useContext(AuthContext);
+  // Initial states
+  const { token, name, image } = useAuth();
+  console.log(image);
 
   // Returns
   return (
-    <Container>
-      {!auth.isLoggedIn ? (
-        <React.Fragment>
-          <Avatar source={`./logo1.png`} />
+    <React.Fragment>
+      {!token ? (
+        <div className="toolbar-container">
+          <div className="toolbar-info">
+            <img
+              className="toolbar-company"
+              src={`./logo1.png`}
+              alt="Company"
+            />
+          </div>
           <div style={{ flex: 1 }} />
           <NavLinks />
-        </React.Fragment>
+        </div>
       ) : (
-        <React.Fragment>
-          <UserInfo>
-            <DummyAvatar src="./memeguy.png" alt="User" />
-            <DummyInfo>
-              <h2>Tester's Inventory</h2>
-            </DummyInfo>
-          </UserInfo>
+        <div className="toolbar-container">
+          <div className="toolbar-info">
+            <img className="toolbar-avatar" src="./memeguy.png" alt="User" />
+            <div className="toolbar-name">
+              <h2>{name.toString()}'s Inventory</h2>
+            </div>
+          </div>
           <div style={{ flex: 1 }} />
           <NavLinks />
-        </React.Fragment>
+        </div>
       )}
-    </Container>
+    </React.Fragment>
   );
 };
 
