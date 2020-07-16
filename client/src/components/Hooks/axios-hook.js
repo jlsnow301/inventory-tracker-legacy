@@ -2,7 +2,7 @@ import MockData from "../Functions/MockData";
 import axios from "axios";
 
 // Returns data from server based on query.
-const GetHttp = (source, query) => {
+export const GetHttp = (source, query) => {
   let data = "";
   let error = false;
 
@@ -27,20 +27,19 @@ const GetHttp = (source, query) => {
 
 export const PostHttp = (target, data) => {
   let error = false;
-  console.log("Test");
   axios
     .post(`http://localhost:5000/api/${target}`, data)
     .then((res) => {
       if (res.data.status === "1") {
         console.log("Axios returned no errors.");
       }
+      return res.data;
     })
     .catch((error) => {
       console.log("Axios returned an error:");
       console.log(error);
-      error = true;
+      throw error;
     });
-  return error;
 };
 
-export default GetHttp;
+export default { GetHttp, PostHttp };
