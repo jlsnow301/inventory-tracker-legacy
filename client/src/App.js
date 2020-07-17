@@ -20,6 +20,8 @@ import Login from "./components/Pages/Login";
 // Context
 import { AuthContext } from "./components/Functions/auth-context";
 import { useAuth } from "./components/Hooks/auth-hook";
+// Styling
+import "./css/App.css";
 
 const App = () => {
   // Initial login states
@@ -32,10 +34,10 @@ const App = () => {
         <Route path="/" exact>
           <Dashboard />
         </Route>
-        <Route path="/items/:inventoryId/addItem" exact>
+        <Route path="/items/:inventoryId/add" exact>
           <AddItem />
         </Route>
-        <Route path="/inventories/:userId/addInventory" exact>
+        <Route path="/inventories/:userId/add" exact>
           <AddInventory />
         </Route>
         <Redirect to="/" exact />
