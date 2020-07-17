@@ -4,41 +4,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const itemSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  category: {
-    type: String,
-    required: true,
-  },
-  dosage: {
-    type: Number,
-    required: true,
-  },
-  quantity: {
-    type: Number,
-    required: true,
-  },
-  image: {
-    type: String,
-    required: false,
-  },
-  creator: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-    ref: "User",
-  },
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  category: { type: String, required: true },
+  dosage: { type: Number, required: true },
+  quantity: { type: Number, required: true },
+  image: { type: String, required: false },
   inventory: [
-    {
-      type: mongoose.Types.ObjectId,
-      required: true,
-      ref: "Inventory",
-    },
+    { type: mongoose.Types.ObjectId, required: true, ref: "Inventory" },
   ],
 });
 

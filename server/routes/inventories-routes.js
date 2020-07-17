@@ -9,7 +9,7 @@ const checkAuth = require("../middleware/check-auth");
 const router = express.Router();
 
 // Prevent unauthorized access
-//router.use(checkAuth);
+router.use(checkAuth);
 
 // Route controllers
 //GET////////////////////////////////////////////////////////////////////////////////
