@@ -26,8 +26,8 @@ router.post(
     check("name").notEmpty(),
     check("description").isLength({ min: 5 }),
     check("category").isLength({ min: 3 }),
-    check("dosage").notEmpty().isNumeric(),
-    check("quantity").notEmpty().isNumeric(),
+    check("dosage").isNumeric(),
+    check("quantity").isNumeric(),
   ],
   itemControllers.createItem
 );
@@ -39,8 +39,8 @@ router.patch(
     check("name").notEmpty(),
     check("description").isLength({ min: 5 }),
     check("category").isLength({ min: 3 }),
-    check("dosage").notEmpty().isNumeric(),
-    check("quantity").notEmpty().isNumeric(),
+    check("dosage").isNumeric(),
+    check("quantity").isNumeric(),
   ],
   itemControllers.updateItem
 );

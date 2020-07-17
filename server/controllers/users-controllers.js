@@ -9,7 +9,23 @@ const User = require("../models/user");
 const serverToken = require("../config/keys").serverToken;
 
 // Route controllers
-//SIGNUP///////////////////////////////////////////////////////////////////////////
+//GET///////////////////////////////////////////////////////////////////////////////
+const getUser = async (req, res, next) => {
+  let user;
+
+  try {
+    users = await User.find({}, "-password");
+  } catch (err) {
+    const error = new HttpError(
+      "Fetching user failed, please try again later.",
+      500
+    );
+    return next(error);
+  }
+  res.json(user.toObject({ getters: true }));
+};
+
+//POST//////////////////////////////////////////////////////////////////////////////
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -53,15 +69,14 @@ const signup = async (req, res, next) => {
   const createdUser = new User({
     name,
     email,
-    password: hashedPassword,
     image: req.file.path,
+    password: hashedPassword,
     inventories: [],
   });
 
   try {
     await createdUser.save();
   } catch (err) {
-    console.log(createdUser);
     const error = new HttpError(
       "Signing up failed, please try again later.",
       500
@@ -84,12 +99,15 @@ const signup = async (req, res, next) => {
     return next(error);
   }
 
-  res
-    .status(201)
-    .json({ userId: createdUser.id, email: createdUser.email, token: token });
+  res.status(201).json({
+    userId: createdUser.id,
+    email: createdUser.email,
+    name: createdUser.name,
+    image: createdUser.image,
+    token: token,
+  });
 };
 
-//LOGIN////////////////////////////////////////////////////////////////////////////
 const login = async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -149,26 +167,12 @@ const login = async (req, res, next) => {
 
   res.json({
     userId: existingUser.id,
-    email: existingUser.email,
+    name: existingUser.name,
+    image: existingUser.image,
     token: token,
   });
 };
 
-//GET////////////////////////////////////////////////////////////////////////////////
-const getUsers = async (req, res, next) => {
-  let users;
-  try {
-    users = await User.find({}, "-password");
-  } catch (err) {
-    const error = new HttpError(
-      "Fetching users failed, please try again later.",
-      500
-    );
-    return next(error);
-  }
-  res.json({ users: users.map((user) => user.toObject({ getters: true })) });
-};
-
+exports.getUser = getUser;
 exports.signup = signup;
 exports.login = login;
-exports.getUsers = getUsers;

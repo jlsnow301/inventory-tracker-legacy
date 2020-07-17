@@ -1,11 +1,11 @@
 {
   "name": "server",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "this will run the server side of inventory Tracker",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "server": "nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "author": "Group E",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "express": "^4.17.1",
     "express-validator": "^6.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.21",
+    "mongoose": "^5.9.24",
     "mongoose-unique-validator": "^2.0.3",
     "multer": "^1.4.2",
     "uuid": "^8.2.0"

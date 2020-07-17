@@ -1,32 +1,12 @@
+// Module imports
 import React, { useState } from "react";
-import styled from "@emotion/styled";
-
+// Local imports
 import InventoryDisplay from "./InventoryDisplay";
 import Button from "../UIElements/FormElements/Button";
+// Styling
+import "../../css/Dashboard.css";
 
 const Dashboard = (props) => {
-  // Styling
-  const Container = styled.div`
-    display: flex;
-    margin-top: 10px;
-    flex-direction: column;
-    padding: 20px;
-  `;
-  const Header = styled.div`
-    display: flex;
-    height: 4%;
-    flex-direction: space-around;
-    font-family: Merriweather;
-    margin: 10px;
-  `;
-  const Tools = styled.div`
-    display: flex;
-    flex-direction: row;
-  `;
-  const Body = styled.div`
-    margin-top: 10px;
-  `;
-
   // Initial state
   const [query, setQuery] = useState("");
   const inputText = React.createRef();
@@ -39,13 +19,13 @@ const Dashboard = (props) => {
 
   // Returns
   return (
-    <Container>
-      <Header>
+    <div className="dash-container">
+      <div className="dash-header">
         <h1>
           <b>Item View</b>
         </h1>
         <div style={{ flex: 1 }}></div>
-        <Tools>
+        <div className="dash-tools">
           <Button to={"/:userId/addItem"}>Add Item</Button>
           <Button to={"/:userId/addInventory"}>Add Inventory</Button>
           <form onSubmit={(e) => handleSearch(e)}>
@@ -56,12 +36,12 @@ const Dashboard = (props) => {
             />
             <input type="submit" value="Submit" />
           </form>
-        </Tools>
-      </Header>
-      <Body>
+        </div>
+      </div>
+      <div className="dash-body">
         <InventoryDisplay query={query} />
-      </Body>
-    </Container>
+      </div>
+    </div>
   );
 };
 

@@ -9,12 +9,12 @@ const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();
 
-//POST///////////////////////////////////////////////////////////////////////////////
+//POST//////////////////////////////////////////////////////////////////////////////
 router.post(
   "/signup",
   fileUpload.single("image"),
   [
-    check("name").not().isEmpty(),
+    check("name").notEmpty(),
     check("email").normalizeEmail().isEmail(),
     check("password").isLength({ min: 6 }),
   ],
@@ -23,9 +23,8 @@ router.post(
 
 router.post("/login", usersController.login);
 
-//GET////////////////////////////////////////////////////////////////////////////////
-// Prevent unauthorized access
+//GET///////////////////////////////////////////////////////////////////////////////
 router.use(checkAuth);
-router.get("/", usersController.getUsers);
+router.get("/", usersController.getUser);
 
 module.exports = router;

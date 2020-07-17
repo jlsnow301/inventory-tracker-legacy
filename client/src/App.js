@@ -32,13 +32,13 @@ const App = () => {
         <Route path="/" exact>
           <Dashboard />
         </Route>
-        <Route path="/:userId/addItem">
+        <Route path="/items/:inventoryId/addItem" exact>
           <AddItem />
         </Route>
-        <Route path="/:userId/addInventory">
+        <Route path="/inventories/:userId/addInventory" exact>
           <AddInventory />
         </Route>
-        <Redirect to="/" />
+        <Redirect to="/" exact />
       </Switch>
     );
   } else {
