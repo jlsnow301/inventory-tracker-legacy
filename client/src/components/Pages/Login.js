@@ -1,5 +1,6 @@
+// Module imports
 import React, { useState, useContext } from "react";
-
+// Local imports
 import Input from "../UIElements/FormElements/Input";
 import Button from "../UIElements/FormElements/Button";
 import Card from "../UIElements/Card";
@@ -14,10 +15,11 @@ import {
 import { useForm } from "../Hooks/form-hook";
 import { useHttpClient } from "../Hooks/http-hook";
 import { AuthContext } from "../Functions/auth-context";
-
+// Styling
 import "../../css/Login.css";
 
 const Login = () => {
+  // Initial states
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -111,6 +113,7 @@ const Login = () => {
     }
   };
 
+  // Returns
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />

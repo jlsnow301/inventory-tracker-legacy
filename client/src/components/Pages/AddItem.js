@@ -1,17 +1,21 @@
+// Module imports
 import React from "react";
-
+import Axios from "axios";
+// Local imports
 import Input from "../UIElements/FormElements/Input";
 import Button from "../UIElements/FormElements/Button";
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,
 } from "../Functions/validators";
-//import PostHttp from "../Functions/AxiosHttp";
+import { useAuth } from "../Hooks/auth-hook";
 import { useForm } from "../Hooks/form-hook";
-
+// Styling
 import "../../css/AddForm.css";
 
 const AddItem = (props) => {
+  // Initial states
+  const { token } = useAuth();
   const [formState, inputHandler] = useForm(
     {
       name: {
@@ -49,8 +53,21 @@ const AddItem = (props) => {
   // Takes the item and updates an individual attribute
   const itemSubmitHandler = (event) => {
     event.preventDefault();
-    console.log(formState.inputs);
-    //post axios here
+    Axios.post(
+      `http://localhost:5000/api/inventories/`,
+      {
+        name: formState.inputs.name.value,
+        description: formState.inputs.description.value,
+        category: formState.inputs.category.value,
+        dosage: formState.inputs.dosage.value,
+        quantity: formState.inputs.quantity.value,
+        preparation: formState.inputs.preparation.value,
+        brand: formState.inputs.brand.value,
+      },
+      { headers: { Authorization: `Bearer ${token}` } }
+    ).catch((err) => {
+      console.log(err);
+    });
   };
 
   // Returns

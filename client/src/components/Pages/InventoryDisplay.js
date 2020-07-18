@@ -1,10 +1,10 @@
 // Module imports
 import React, { useState, useEffect } from "react";
+import Axios from "axios";
 // Local imports
 import InventoryCard from "../UIElements/InventoryCard";
 import ErrorModal from "../UIElements/ErrorModal";
 import LoadingSpinner from "../UIElements/LoadingSpinner";
-import Axios from "axios";
 import { useHttpClient } from "../Hooks/http-hook";
 import { useAuth } from "../Hooks/auth-hook";
 // Styling
@@ -42,7 +42,20 @@ const InventoryDisplay = (props) => {
         })
         .catch((err) => console.log(err));
     }
-  }, [sendRequest, userId, token]);
+  }, [userId, token]);
+
+  // Gets a new inventory upon search query
+  useEffect(() => {
+    if (props !== "") {
+      Axios.get(`http://localhost:5000/api/inventories/${props.query}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((res) => {
+          setInventory(res.data.inventories);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [props.query]);
 
   // Returns
   return (
