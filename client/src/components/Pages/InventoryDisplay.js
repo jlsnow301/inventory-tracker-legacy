@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import InventoryCard from "../UIElements/InventoryCard";
 import ErrorModal from "../UIElements/ErrorModal";
 import LoadingSpinner from "../UIElements/LoadingSpinner";
+import Axios from "axios";
 import { useHttpClient } from "../Hooks/http-hook";
 import { useAuth } from "../Hooks/auth-hook";
 // Styling
@@ -13,43 +14,35 @@ const InventoryDisplay = (props) => {
   // Initial states.
   const [inventory, setInventory] = useState([]);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const { userId } = useAuth();
+  const { token, userId } = useAuth();
 
   const GetInventory = () => {
     let cards = [];
     Object.keys(inventory).forEach((key) =>
-      cards.push(<InventoryCard key={key} index={key} item={inventory[key]} />)
+      cards.push(
+        <InventoryCard
+          label="Container"
+          key={key}
+          index={key}
+          item={inventory[key]}
+        />
+      )
     );
     return cards;
   };
 
   // Initially sets the user inventories on display
   useEffect(() => {
-    const fetchInventories = async () => {
-      try {
-        const responseData = await sendRequest(
-          `http://localhost:5000/api/inventories/user/${userId}`
-        );
-        setInventory(responseData.inventories);
-      } catch (err) {}
-    };
-    if (userId) {
-      fetchInventories();
+    if (token) {
+      Axios.get(`http://localhost:5000/api/inventories/user/${userId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((res) => {
+          setInventory(res.data.inventories);
+        })
+        .catch((err) => console.log(err));
     }
-  }, [sendRequest, userId]);
-
-  // // Sets the inventories based on search (currently by ID only)
-  // useEffect(() => {
-  //   const fetchQuery = async () => {
-  //     try {
-  //       const responseData = await sendRequest(
-  //         `http://localhost:5000/api/inventory/${props.query}`
-  //       );
-  //       setInventory(responseData);
-  //     } catch (err) {}
-  //   };
-  //   fetchQuery();
-  // }, [sendRequest, props.query]);
+  }, [sendRequest, userId, token]);
 
   // Returns
   return (

@@ -1,22 +1,9 @@
+// Module imports
 import React from "react";
-import styled from "@emotion/styled";
+// Styling
+import "../../css/InventoryCard.css";
 
-const Card = ({ index, item }) => {
-  // Styling
-  const Container = styled.div`
-    margin: 10px;
-    background: rgb(255, 255, 255);
-    width: 22.5%;
-    height: 300px;
-    border: 2px solid dimgray;
-    border-radius: 8px;
-    overflow: auto;
-  `;
-  const Header = styled.div`
-    margin-left: 10px;
-    margin-bottom: 5px;
-  `;
-
+const InventoryCard = ({ label, index, item }) => {
   index = parseInt(index) + 1;
   // For now, we are simply adding mongodb defaults to hidden keys
   var hiddenKeys = [];
@@ -40,10 +27,10 @@ const Card = ({ index, item }) => {
 
   // Returns
   return (
-    <Container>
-      <Header>
+    <div className="card-container">
+      <div className="card-header">
         <u>
-          <b>Item #</b>
+          <b>{label} #</b>
           {index}
         </u>
         <div style={{ flex: 1 }} />
@@ -54,12 +41,14 @@ const Card = ({ index, item }) => {
           src="./bottle.png"
           alt="Product Icon"
         />
-      </Header>
-      <ol>
-        <DisplayDetails />
-      </ol>
-    </Container>
+      </div>
+      <div className="card-details">
+        <ol>
+          <DisplayDetails />
+        </ol>
+      </div>
+    </div>
   );
 };
 
-export default Card;
+export default InventoryCard;
