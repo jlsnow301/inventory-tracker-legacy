@@ -1,45 +1,38 @@
-import MockData from "../Functions/MockData";
+// Module imports
+import { useState, useCallback } from "react";
 import axios from "axios";
 
-// Returns data from server based on query.
-export const GetHttp = (source, query) => {
-  let data = "";
-  let error = false;
+export const useAxiosClient = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
 
-  axios
-    .get(`http://127.0.0.1:5000/api/${source}${query}`)
-    .then((res) => {
-      data = res.data;
-    })
-    .catch((err) => {
-      console.log(err);
-      error = true;
-    });
+  const sendRequest = useCallback(
+    async (url, method = "GET", body = null, headers = {}) => {
+      setIsLoading(true);
+      await axios({
+        method,
+        url,
+        body,
+        headers,
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(res.message);
+          }
+          setIsLoading(false);
+          return res.data;
+        })
+        .catch((err) => {
+          setError(err.message);
+          setIsLoading(false);
+          throw err;
+        });
+    }
+  );
 
-  if (error) {
-    console.log("Axios reported no errors");
-    return data;
-  } else {
-    console.log("You are receiving mock data because axios returned an error.");
-    return MockData();
-  }
+  const clearError = () => {
+    setError(null);
+  };
+
+  return { isLoading, error, sendRequest, clearError };
 };
-
-export const PostHttp = (target, data) => {
-  let error = false;
-  axios
-    .post(`http://localhost:5000/api/${target}`, data)
-    .then((res) => {
-      if (res.data.status === "1") {
-        console.log("Axios returned no errors.");
-      }
-      return res.data;
-    })
-    .catch((error) => {
-      console.log("Axios returned an error:");
-      console.log(error);
-      throw error;
-    });
-};
-
-export default { GetHttp, PostHttp };
