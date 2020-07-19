@@ -7,27 +7,28 @@ export const useAxiosClient = () => {
   const [error, setError] = useState();
 
   const sendRequest = useCallback(
-    async (url, method = "GET", body = null, headers = {}) => {
+    async (method = "GET", url, data = null, headers = {}) => {
+      let responseData;
       setIsLoading(true);
+      console.log(method, url, data, headers);
       await axios({
         method,
         url,
-        body,
+        data,
         headers,
       })
         .then((res) => {
-          if (!res.ok) {
-            throw new Error(res.message);
-          }
           setIsLoading(false);
-          return res.data;
+          responseData = res.data;
         })
         .catch((err) => {
           setError(err.message);
           setIsLoading(false);
           throw err;
         });
-    }
+      return responseData;
+    },
+    []
   );
 
   const clearError = () => {

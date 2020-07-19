@@ -13,7 +13,7 @@ import {
   VALIDATOR_REQUIRE,
 } from "../Functions/validators";
 import { useForm } from "../Hooks/form-hook";
-import { useHttpClient } from "../Hooks/http-hook";
+import { useAxiosClient } from "../Hooks/axios-hook";
 import { AuthContext } from "../Functions/auth-context";
 // Styling
 import "../../css/Login.css";
@@ -22,7 +22,7 @@ const Login = () => {
   // Initial states
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { isLoading, error, sendRequest, clearError } = useAxiosClient();
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -73,14 +73,11 @@ const Login = () => {
     if (isLoginMode) {
       try {
         const responseData = await sendRequest(
-          "http://localhost:5000/api/users/login",
           "POST",
-          JSON.stringify({
+          "http://localhost:5000/api/users/login",
+          {
             email: formState.inputs.email.value,
             password: formState.inputs.password.value,
-          }),
-          {
-            "Content-Type": "application/json",
           }
         );
         auth.login(
@@ -98,8 +95,8 @@ const Login = () => {
         formData.append("password", formState.inputs.password.value);
         formData.append("image", formState.inputs.image.value);
         const responseData = await sendRequest(
-          "http://localhost:5000/api/users/signup",
           "POST",
+          "http://localhost:5000/api/users/signup",
           formData
         );
 

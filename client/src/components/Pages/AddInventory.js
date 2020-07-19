@@ -1,5 +1,7 @@
+// Module imports
 import React from "react";
-
+import { useHistory } from "react-router-dom";
+// Local imports
 import Input from "../UIElements/FormElements/Input";
 import Button from "../UIElements/FormElements/Button";
 import {
@@ -9,7 +11,7 @@ import {
 import Axios from "axios";
 import { useAuth } from "../Hooks/auth-hook";
 import { useForm } from "../Hooks/form-hook";
-
+// Styling
 import "../../css/AddForm.css";
 
 const AddInventory = (props) => {
@@ -29,6 +31,8 @@ const AddInventory = (props) => {
     false
   );
 
+  const history = useHistory();
+
   // Takes the item and updates an individual attribute
   const inventorySubmitHandler = (event) => {
     event.preventDefault();
@@ -42,6 +46,7 @@ const AddInventory = (props) => {
     ).catch((err) => {
       console.log(err);
     });
+    history.push("/");
   };
 
   // Returns
