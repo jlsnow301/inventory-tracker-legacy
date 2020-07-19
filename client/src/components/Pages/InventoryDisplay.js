@@ -5,16 +5,16 @@ import Axios from "axios";
 import InventoryCard from "../UIElements/InventoryCard";
 import ErrorModal from "../UIElements/ErrorModal";
 import LoadingSpinner from "../UIElements/LoadingSpinner";
-import { useHttpClient } from "../Hooks/http-hook";
 import { useAuth } from "../Hooks/auth-hook";
 // Styling
 import "../../css/InventoryDisplay.css";
 
 const InventoryDisplay = (props) => {
   // Initial states.
-  const [inventory, setInventory] = useState([]);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const { token, userId } = useAuth();
+  const [inventory, setInventory] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const GetInventory = () => {
     let cards = [];
@@ -31,43 +31,51 @@ const InventoryDisplay = (props) => {
     return cards;
   };
 
-  // Initially sets the user inventories on display
   useEffect(() => {
     if (token) {
-      Axios.get(`http://localhost:5000/api/inventories/user/${userId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then((res) => {
-          setInventory(res.data.inventories);
+      setLoading(true);
+      const fetchInventory = async () => {
+        Axios.get(`http://localhost:5000/api/inventories/user/${userId}`, {
+          headers: { Authorization: `Bearer ${token}` },
         })
-        .catch((err) => console.log(err));
+          .then((res) => setInventory(res.data.inventories))
+          .catch((err) => setError(err));
+      };
+      fetchInventory();
+      setLoading(false);
     }
   }, [userId, token]);
 
-  // Gets a new inventory upon search query
   useEffect(() => {
-    if (props !== "") {
-      Axios.get(`http://localhost:5000/api/inventories/${props.query}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then((res) => {
-          setInventory(res.data.inventories);
+    if (props.query !== "") {
+      setLoading(true);
+      const fetchInventory = async () => {
+        Axios.get(`http://localhost:5000/api/inventories/${props.query}`, {
+          headers: { Authorization: `Bearer ${token}` },
         })
-        .catch((err) => console.log(err));
+          .then((res) =>
+            res.data.inventories
+              ? setInventory(res.data.inventories)
+              : console.log(false)
+          )
+          .catch((err) => setError(err));
+      };
+      fetchInventory();
+      setLoading(false);
     }
-  }, [props.query]);
+  }, [props, token]);
 
   // Returns
   return (
     <React.Fragment>
-      <ErrorModal error={error} onClear={clearError} />
+      <ErrorModal error={error} onClear={(error) => !error} />
       <div className="container">
-        {isLoading && (
+        {loading && (
           <div className="center">
             <LoadingSpinner />
           </div>
         )}
-        {!isLoading && inventory && <GetInventory />}
+        {!loading && inventory && <GetInventory />}
       </div>
     </React.Fragment>
   );

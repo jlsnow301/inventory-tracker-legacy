@@ -11,10 +11,11 @@ const User = require("../models/user");
 //GET////////////////////////////////////////////////////////////////////////////////
 const getInventoryById = async (req, res, next) => {
   const inventoryId = req.params.invId;
+  console.log(inventoryId);
 
   let inventory;
   try {
-    inventory = await Inventory.findById(inventoryId);
+    inventory = Inventory.find({ name: inventoryId });
   } catch (err) {
     const error = new HttpError(
       "Something went wrong, could not find the inventory.",
@@ -31,7 +32,7 @@ const getInventoryById = async (req, res, next) => {
     return next(error);
   }
 
-  res.json({ inventory: inventory.toObject({ getters: true }) });
+  res.json({ inventories: inventory.toObject({ getters: true }) });
 };
 
 //GET////////////////////////////////////////////////////////////////////////////////
