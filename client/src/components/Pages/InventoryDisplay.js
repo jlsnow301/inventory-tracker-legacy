@@ -4,52 +4,48 @@ import React, { useState, useEffect } from "react";
 import InventoryCard from "../UIElements/InventoryCard";
 import ErrorModal from "../UIElements/ErrorModal";
 import LoadingSpinner from "../UIElements/LoadingSpinner";
-import { useHttpClient } from "../Hooks/http-hook";
 import { useAuth } from "../Hooks/auth-hook";
+import { useAxiosClient } from "../Hooks/axios-hook";
 // Styling
 import "../../css/InventoryDisplay.css";
 
 const InventoryDisplay = (props) => {
   // Initial states.
+  const { token, userId } = useAuth();
   const [inventory, setInventory] = useState([]);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const { userId } = useAuth();
+  const { isLoading, error, sendRequest, clearError } = useAxiosClient();
 
   const GetInventory = () => {
     let cards = [];
     Object.keys(inventory).forEach((key) =>
-      cards.push(<InventoryCard key={key} index={key} item={inventory[key]} />)
+      cards.push(
+        <InventoryCard
+          label="Container"
+          key={key}
+          index={key}
+          item={inventory[key]}
+        />
+      )
     );
     return cards;
   };
 
-  // Initially sets the user inventories on display
   useEffect(() => {
-    const fetchInventories = async () => {
+    const fetchInventory = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/inventories/user/${userId}`
+          `GET`,
+          `http://localhost:5000/api/inventories/user/${userId}`,
+          null,
+          { Authorization: `Bearer ${token}` }
         );
         setInventory(responseData.inventories);
-      } catch (err) {}
+      } catch (err) {
+        console.log(err);
+      }
     };
-    if (userId) {
-      fetchInventories();
-    }
-  }, [sendRequest, userId]);
-
-  // // Sets the inventories based on search (currently by ID only)
-  // useEffect(() => {
-  //   const fetchQuery = async () => {
-  //     try {
-  //       const responseData = await sendRequest(
-  //         `http://localhost:5000/api/inventory/${props.query}`
-  //       );
-  //       setInventory(responseData);
-  //     } catch (err) {}
-  //   };
-  //   fetchQuery();
-  // }, [sendRequest, props.query]);
+    if (userId) fetchInventory();
+  }, [sendRequest, userId, token]);
 
   // Returns
   return (

@@ -1,5 +1,6 @@
+// Module imports
 import React from "react";
-
+// Local imports
 import Modal from "./Modal";
 import Button from "./FormElements/Button";
 

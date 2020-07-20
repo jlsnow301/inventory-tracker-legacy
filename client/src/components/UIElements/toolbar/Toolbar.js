@@ -1,21 +1,22 @@
 // Module imports
-import React, { useState } from "react";
+import React, { useContext } from "react";
 //Local imports
 import NavLinks from "./NavLinks";
-import { useAuth } from "../../Hooks/auth-hook";
 import Avatar from "./Avatar";
+import { useAuth } from "../../Hooks/auth-hook";
+import { AuthContext } from "../../Functions/auth-context";
 // Styling
 import "../../../css/Toolbar.css";
 
 const Toolbar = (props) => {
   // Initial states
-  const { token, name, image } = useAuth();
-  const [loggedIn, setLoggedIn] = useState(false);
+  const { name, image } = useAuth();
+  const { isLoggedIn } = useContext(AuthContext); // This is probably redundant that I am using a custom hook and context
 
   // Returns
   return (
     <React.Fragment>
-      {!token ? (
+      {!isLoggedIn ? (
         <div className="toolbar-container">
           <div className="toolbar-info">
             <img
