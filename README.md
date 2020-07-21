@@ -2,39 +2,18 @@
 
 Web based inventory management system.
 
-### after pulling things down from github
+### after cloning from github
 
-If your app needs you to reinstall dependencies heres what you should run for both client and server.
-
-## For the Client
-
-npm i reactstrap bootstrap @emotion/styled @emotion/core react-router-dom
-
-[Emotion Styling Documentation](https://emotion.sh/docs/styled).
-[Reactstrap Documentation](https://reactstrap.github.io/).
-[React Routing Tutorial 26:33](https://www.youtube.com/watch?v=XRfD8xIOroA)
-**watch this one at 1.5 or 2x speed**
-
-## For the Server
-
-npm i body-parser concurrently express mongoose @sendgrid/mail
-
-npm i -D nodemon
+We've bundled a handy batch file which will run on Windows PCs: fix-error.bat.
+Follow the prompts. This will install necessary modules for both. 
+You can inspect the code by rightclick->edit (which you should on any batch file before running it).
+MAC USERS: open two terminals, one for client, one for server. in this order: 
+npm install -> npm start
 
 [sendgrid/Mail Documentation](https://www.npmjs.com/package/@sendgrid/mail)
 In order to use SendGrid you'll need an account and an email address that has been approved. You'll use the approved email address/Domain as the FROM address. **If you do not use an approved from email you will get a 401 error :(**
 
-NOTE: You will need to edit the **scripts** portion of your package.json in the server
-
-It should look like this:
-"scripts": {
-"start": "node server.js",
-"server": "nodemon server.js"
-}
-
-When developing and **_needing the server run this command:_**
-
-**npm run server**
+Both client and server can be run with the "npm start" command.
 
 # Resources
 
