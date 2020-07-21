@@ -7,7 +7,8 @@ Web based inventory management system.
 We've bundled a handy batch file which will run on Windows PCs: fix-error.bat.
 Follow the prompts. This will install necessary modules for both. 
 You can inspect the code by rightclick->edit (which you should on any batch file before running it).
-MAC USERS: open two terminals, one for client, one for server. in this order: 
+# MAC USERS: 
+open two terminals, one for client, one for server. in this order: 
 npm install -> npm start
 
 [sendgrid/Mail Documentation](https://www.npmjs.com/package/@sendgrid/mail)
