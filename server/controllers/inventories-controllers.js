@@ -9,14 +9,18 @@ const User = require("../models/user");
 
 // Route controllers
 //GET////////////////////////////////////////////////////////////////////////////////
-const getInventoryById = async (req, res, next) => {
-  const inventoryId = req.params.invId;
-  console.log(inventoryId);
+const getInventoryByName = async (req, res, next) => {
+  const inventoryName = req.params.invName;
+  console.log(inventoryName);
 
   let inventory;
   try {
-    inventory = Inventory.find({ name: inventoryId });
+    Inventory.find({ name: inventoryName }).then(
+      (results) => (inventory = results)
+    );
+    console.log(inventory);
   } catch (err) {
+    console.log(err);
     const error = new HttpError(
       "Something went wrong, could not find the inventory.",
       500
@@ -26,7 +30,7 @@ const getInventoryById = async (req, res, next) => {
 
   if (!inventory) {
     const error = new HttpError(
-      "Could not find inventory for the provided id.",
+      "Could not find inventory with the provided name.",
       404
     );
     return next(error);
@@ -213,7 +217,7 @@ const deleteInventory = async (req, res, next) => {
   });
 };
 
-exports.getInventoryById = getInventoryById;
+exports.getInventoryByName = getInventoryByName;
 exports.getInventoriesByUserId = getInventoriesByUserId;
 exports.createInventory = createInventory;
 exports.updateInventory = updateInventory;

@@ -13,7 +13,7 @@ router.use(checkAuth);
 
 // Route controllers
 //GET////////////////////////////////////////////////////////////////////////////////
-router.get("/:invId", inventoryControllers.getInventoryById);
+router.get("/:invName", inventoryControllers.getInventoryByName);
 
 router.get("/user/:userId", inventoryControllers.getInventoriesByUserId);
 

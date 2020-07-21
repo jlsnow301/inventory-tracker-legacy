@@ -32,10 +32,11 @@ const InventoryDisplay = (props) => {
 
   useEffect(() => {
     const fetchInventory = async () => {
+      let query = props.query === "" ? `user/${userId}` : props.query;
       try {
         const responseData = await sendRequest(
           `GET`,
-          `http://localhost:5000/api/inventories/user/${userId}`,
+          `http://localhost:5000/api/inventories/${query}`,
           null,
           { Authorization: `Bearer ${token}` }
         );
@@ -45,7 +46,7 @@ const InventoryDisplay = (props) => {
       }
     };
     if (userId) fetchInventory();
-  }, [sendRequest, userId, token]);
+  }, [sendRequest, userId, token, props]);
 
   // Returns
   return (
