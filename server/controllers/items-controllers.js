@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 // Local Imports
 const HttpError = require("../models/http-error");
 const Item = require("../models/item");
-const User = require("../models/user");
+const Inventory = require("../models/inventory");
 
 // Route controllers
 //GET////////////////////////////////////////////////////////////////////////////////
@@ -43,7 +43,7 @@ const getItemsByInventoryId = async (req, res, next) => {
 
   let itemInventory;
   try {
-    itemInventory = await User.findById(invId).populate("items");
+    itemInventory = await Inventory.findById(invId).populate("items");
   } catch (err) {
     const error = new HttpError(
       "Fetching items failed, please try again later.",
@@ -52,10 +52,14 @@ const getItemsByInventoryId = async (req, res, next) => {
     return next(error);
   }
 
-  if (!itemInventory || itemInventory.items.length === 0) {
+  if (!itemInventory) {
     return next(
-      new HttpError("Could not find items for the provided inventory id.", 404)
+      new HttpError("Could not find the provided inventory id.", 404)
     );
+  }
+
+  if (itemInventory.items.length === 0) {
+    res.json({ items: {} });
   }
 
   res.json({
