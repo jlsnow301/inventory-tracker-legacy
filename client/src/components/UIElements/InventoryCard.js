@@ -1,17 +1,19 @@
 // Module imports
 import React from "react";
+// Local imports
+import Button from "../UIElements/FormElements/Button";
 // Styling
 import "../../css/InventoryCard.css";
 
-const InventoryCard = ({ label, index, item }) => {
-  index = parseInt(index) + 1;
+const InventoryCard = (props) => {
+  let index = parseInt(props.index) + 1;
   // For now, we are simply adding mongodb defaults to hidden keys
   var hiddenKeys = [];
   hiddenKeys += ["id", "_id", "__v"];
 
   const DisplayDetails = () => {
     var entries = [];
-    for (let [key, value] of Object.entries(item)) {
+    for (let [key, value] of Object.entries(props.item)) {
       if (hiddenKeys.indexOf(key) >= 0) {
         continue;
       }
@@ -25,12 +27,16 @@ const InventoryCard = ({ label, index, item }) => {
     return entries;
   };
 
+  const onClickHandler = () => {
+    props.switch(props.id);
+  };
+
   // Returns
   return (
     <div className="card-container">
       <div className="card-header">
         <u>
-          <b>{label} #</b>
+          <b>{props.label} #</b>
           {index}
         </u>
         <div style={{ flex: 1 }} />
@@ -46,6 +52,9 @@ const InventoryCard = ({ label, index, item }) => {
         <ol>
           <DisplayDetails />
         </ol>
+      </div>
+      <div align="right" className="card-button">
+        <Button onClick={onClickHandler}>OPEN</Button>
       </div>
     </div>
   );

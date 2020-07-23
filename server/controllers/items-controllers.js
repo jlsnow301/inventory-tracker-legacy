@@ -8,17 +8,18 @@ const mongoose = require("mongoose");
 // Local Imports
 const HttpError = require("../models/http-error");
 const Item = require("../models/item");
-const User = require("../models/user");
+const Inventory = require("../models/inventory");
 
 // Route controllers
 //GET////////////////////////////////////////////////////////////////////////////////
-const getItemById = async (req, res, next) => {
-  const itemId = req.params.itemId;
+const getItemByName = async (req, res, next) => {
+  const itemName = req.params.itemName;
 
   let item;
   try {
-    item = await Item.findById(itemId);
+    Item.find({ name: itemName }).then((results) => (item = results));
   } catch (err) {
+    console.log(err);
     const error = new HttpError(
       "Something went wrong, could not find the item.",
       500
@@ -28,7 +29,7 @@ const getItemById = async (req, res, next) => {
 
   if (!item) {
     const error = new HttpError(
-      "Could not find item for the provided id.",
+      "Could not find item for the provided name.",
       404
     );
     return next(error);
@@ -43,7 +44,7 @@ const getItemsByInventoryId = async (req, res, next) => {
 
   let itemInventory;
   try {
-    itemInventory = await User.findById(invId).populate("items");
+    itemInventory = await Inventory.findById(invId).populate("items");
   } catch (err) {
     const error = new HttpError(
       "Fetching items failed, please try again later.",
@@ -52,10 +53,14 @@ const getItemsByInventoryId = async (req, res, next) => {
     return next(error);
   }
 
-  if (!itemInventory || itemInventory.items.length === 0) {
+  if (!itemInventory) {
     return next(
-      new HttpError("Could not find items for the provided inventory id.", 404)
+      new HttpError("Could not find the provided inventory id.", 404)
     );
+  }
+
+  if (itemInventory.items.length === 0) {
+    return res.json({ items: {} });
   }
 
   res.json({
@@ -224,7 +229,7 @@ const deleteItem = async (req, res, next) => {
   });
 };
 
-exports.getItemById = getItemById;
+exports.getItemByName = getItemByName;
 exports.getItemsByInventoryId = getItemsByInventoryId;
 exports.createItem = createItem;
 exports.updateItem = updateItem;

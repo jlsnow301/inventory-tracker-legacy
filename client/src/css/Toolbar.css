@@ -12,9 +12,13 @@
   justify-content: row;
 }
 .toolbar-avatar {
-  width: 13%;
+  display: block;
+  border-radius: 50%;
+  width: 15%;
   height: 100%;
+  object-fit: cover;
 }
+
 .toolbar-name {
   margin-left: 10px;
   margin-top: 10px;
