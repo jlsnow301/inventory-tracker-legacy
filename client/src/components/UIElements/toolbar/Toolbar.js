@@ -11,7 +11,7 @@ import "../../../css/Toolbar.css";
 const Toolbar = (props) => {
   // Initial states
   const { name, image } = useAuth();
-  const { isLoggedIn } = useContext(AuthContext); // This is probably redundant that I am using a custom hook and context
+  const { isLoggedIn } = useContext(AuthContext);
 
   // Returns
   return (

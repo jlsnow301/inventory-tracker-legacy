@@ -9,26 +9,51 @@ import "../../css/Dashboard.css";
 
 const Dashboard = (props) => {
   // Initial state
-  const [query, setQuery] = useState("");
-  const inputText = React.createRef();
   const { userId } = useAuth();
+  const [query, setQuery] = useState("");
+  const [target, setTarget] = useState("");
+  const [itemView, setItemView] = useState(false);
+  const inputText = React.createRef();
 
   // Changes the query, which is passed to inventory display.
   const handleSearch = (e) => {
     e.preventDefault();
     setQuery(inputText.current.value);
   };
-  // <Button to={`/items/${inventoryId}/add`}>Add Item</Button> Disabled for now
+
+  const switchModeHandler = (targetId) => {
+    setTarget(targetId);
+    if (itemView) setItemView(false);
+    else setItemView(true);
+  };
+
+  let searchUrl;
+  // A tad confusing but one of 4 possibilities.
+  // A: default view inside of a container.
+  // B: searching for an item inside of a container.
+  // C: default view of all containers.
+  // D: searching for a specific container.
+  if (itemView) {
+    searchUrl = query === "" ? `items/inventory/${target}` : `items/${query}`;
+  } else {
+    searchUrl =
+      query === "" ? `inventories/user/${userId}` : `inventories/${query}`;
+  }
+
   // Returns
   return (
     <div className="dash-container">
       <div className="dash-header">
         <h2>
-          <b>Inventory View</b>
+          {itemView && <b>Item View</b>}
+          {!itemView && <b>Inventory View</b>}
         </h2>
         <div style={{ flex: 1 }}></div>
         <div className="dash-tools">
-          <Button to={`/inventories/${userId}/add`}>Add Inventory</Button>
+          {itemView && <Button to={`/items/${target}/add`}>Add Item</Button>}
+          {!itemView && (
+            <Button to={`/inventories/${userId}/add`}>Add Inventory</Button>
+          )}
           <form onSubmit={(e) => handleSearch(e)}>
             <input
               type="text"
@@ -40,7 +65,7 @@ const Dashboard = (props) => {
         </div>
       </div>
       <div className="dash-body">
-        <InventoryDisplay query={query} />
+        <InventoryDisplay query={searchUrl} switch={switchModeHandler} />
       </div>
     </div>
   );

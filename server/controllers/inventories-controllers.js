@@ -18,7 +18,6 @@ const getInventoryByName = async (req, res, next) => {
     Inventory.find({ name: inventoryName }).then(
       (results) => (inventory = results)
     );
-    console.log(inventory);
   } catch (err) {
     console.log(err);
     const error = new HttpError(

@@ -11,10 +11,8 @@ import "../../css/InventoryDisplay.css";
 
 const InventoryDisplay = (props) => {
   // Initial states.
-  const { token, userId } = useAuth();
-  const [itemView, setItemView] = useState(false);
+  const { token } = useAuth();
   const [inventory, setInventory] = useState([]);
-  const [invId, setInvId] = useState("");
   const { isLoading, error, sendRequest, clearError } = useAxiosClient();
 
   const GetInventory = () => {
@@ -27,28 +25,11 @@ const InventoryDisplay = (props) => {
           key={key}
           index={key}
           item={inventory[key]}
-          examine={switchModeHandler}
+          switch={props.switch}
         />
       )
     );
     return cards;
-  };
-
-  let query;
-  if (!itemView) {
-    query =
-      props.query === ""
-        ? `inventories/user/${userId}`
-        : `inventories/${props.query}`;
-  } else {
-    query =
-      props.query === "" ? `items/inventory/${invId}` : `items/${props.query}`;
-  }
-
-  const switchModeHandler = (invId) => {
-    setInvId(invId);
-    if (itemView) setItemView(false);
-    else setItemView(true);
   };
 
   useEffect(() => {
@@ -56,7 +37,7 @@ const InventoryDisplay = (props) => {
       try {
         const responseData = await sendRequest(
           `GET`,
-          `http://localhost:5000/api/${query}`,
+          `http://localhost:5000/api/${props.query}`,
           null,
           { Authorization: `Bearer ${token}` }
         );
@@ -65,8 +46,8 @@ const InventoryDisplay = (props) => {
         console.log(err);
       }
     };
-    if (userId) fetchInventory();
-  }, [sendRequest, userId, token, query]);
+    if (token) fetchInventory();
+  }, [sendRequest, token, props]);
 
   // Returns
   return (

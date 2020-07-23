@@ -12,13 +12,14 @@ const Inventory = require("../models/inventory");
 
 // Route controllers
 //GET////////////////////////////////////////////////////////////////////////////////
-const getItemById = async (req, res, next) => {
-  const itemId = req.params.itemId;
+const getItemByName = async (req, res, next) => {
+  const itemName = req.params.itemName;
 
   let item;
   try {
-    item = await Item.findById(itemId);
+    Item.find({ name: itemName }).then((results) => (item = results));
   } catch (err) {
+    console.log(err);
     const error = new HttpError(
       "Something went wrong, could not find the item.",
       500
@@ -28,7 +29,7 @@ const getItemById = async (req, res, next) => {
 
   if (!item) {
     const error = new HttpError(
-      "Could not find item for the provided id.",
+      "Could not find item for the provided name.",
       404
     );
     return next(error);
@@ -59,7 +60,7 @@ const getItemsByInventoryId = async (req, res, next) => {
   }
 
   if (itemInventory.items.length === 0) {
-    res.json({ items: {} });
+    return res.json({ items: {} });
   }
 
   res.json({
@@ -228,7 +229,7 @@ const deleteItem = async (req, res, next) => {
   });
 };
 
-exports.getItemById = getItemById;
+exports.getItemByName = getItemByName;
 exports.getItemsByInventoryId = getItemsByInventoryId;
 exports.createItem = createItem;
 exports.updateItem = updateItem;

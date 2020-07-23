@@ -28,7 +28,7 @@ const InventoryCard = (props) => {
   };
 
   const onClickHandler = () => {
-    props.examine(props.id);
+    props.switch(props.id);
   };
 
   // Returns

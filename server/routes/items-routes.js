@@ -14,7 +14,7 @@ router.use(checkAuth);
 
 // Route controllers
 //GET////////////////////////////////////////////////////////////////////////////////
-router.get("/:itemId", itemControllers.getItemById);
+router.get("/:itemName", itemControllers.getItemByName);
 
 router.get("/inventory/:invId", itemControllers.getItemsByInventoryId);
 
