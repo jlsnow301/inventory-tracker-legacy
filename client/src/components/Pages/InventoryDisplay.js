@@ -14,23 +14,7 @@ const InventoryDisplay = (props) => {
   const { token } = useAuth();
   const [inventory, setInventory] = useState([]);
   const { isLoading, error, sendRequest, clearError } = useAxiosClient();
-
-  const GetInventory = () => {
-    let cards = [];
-    Object.keys(inventory).forEach((key) =>
-      cards.push(
-        <InventoryCard
-          label="Container"
-          id={inventory[key].id}
-          key={key}
-          index={key}
-          item={inventory[key]}
-          switch={props.switch}
-        />
-      )
-    );
-    return cards;
-  };
+  let count = 0;
 
   useEffect(() => {
     const fetchInventory = async () => {
@@ -59,7 +43,16 @@ const InventoryDisplay = (props) => {
             <LoadingSpinner />
           </div>
         )}
-        {!isLoading && inventory && <GetInventory />}
+        {inventory.map((card) => (
+          <InventoryCard
+            label="Container"
+            id={card.id}
+            key={card.id}
+            index={count++}
+            item={card}
+            switch={props.switch}
+          />
+        ))}
       </div>
     </React.Fragment>
   );
