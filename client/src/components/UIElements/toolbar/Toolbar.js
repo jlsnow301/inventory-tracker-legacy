@@ -16,11 +16,11 @@ const Toolbar = (props) => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      setClassName(`toolbar-avatar`);
       setAvatar(`http://localhost:5000/${image}`);
+      setClassName(`toolbar-avatar`);
     } else {
-      setClassName(`toolbar-company`);
       setAvatar(`./logo1.png`);
+      setClassName(`toolbar-company`);
     }
   }, [isLoggedIn, image]);
 
