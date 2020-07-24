@@ -25,10 +25,15 @@ import "./css/App.css";
 
 const App = () => {
   // Initial login states
-  const { token, login, logout, userId } = useAuth();
+  const { token, login, logout, userId, name, image } = useAuth();
+  // Default toolbar states
+  let className = `toolbar-company`;
+  let avatar = `./logo1.png`;
 
   let routes;
   if (token) {
+    className = `toolbar-avatar`;
+    avatar = `http://localhost:5000/${image}`;
     routes = (
       <Switch>
         <Route path="/" exact>
@@ -74,7 +79,7 @@ const App = () => {
       }}
     >
       <Router>
-        <Toolbar />
+        <Toolbar name={name} image={avatar} className={className} />
         <main>{routes}</main>
       </Router>
     </AuthContext.Provider>
