@@ -39,11 +39,11 @@ const App = () => {
         <Route path="/" exact>
           <Dashboard />
         </Route>
-        <Route path="/items/:inventoryId/add" exact>
-          <AddItem />
-        </Route>
         <Route path="/inventories/:userId/add" exact>
           <AddInventory />
+        </Route>
+        <Route path="/items/:inventoryId/add" exact>
+          <AddItem />
         </Route>
         <Redirect to="/" exact />
       </Switch>

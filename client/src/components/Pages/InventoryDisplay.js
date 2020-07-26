@@ -1,9 +1,9 @@
 // Module imports
 import React, { useState, useEffect } from "react";
 // Local imports
-import InventoryCard from "../UIElements/InventoryCard";
 import ErrorModal from "../UIElements/ErrorModal";
 import LoadingSpinner from "../UIElements/LoadingSpinner";
+import InventoryList from "../UIElements/InventoryList";
 import { useAuth } from "../Hooks/auth-hook";
 import { useAxiosClient } from "../Hooks/axios-hook";
 // Styling
@@ -14,7 +14,6 @@ const InventoryDisplay = (props) => {
   const { token } = useAuth();
   const [inventory, setInventory] = useState([]);
   const { isLoading, error, sendRequest, clearError } = useAxiosClient();
-  let count = 0;
 
   useEffect(() => {
     const fetchInventory = async () => {
@@ -43,16 +42,9 @@ const InventoryDisplay = (props) => {
             <LoadingSpinner />
           </div>
         )}
-        {inventory.map((card) => (
-          <InventoryCard
-            label="Container"
-            id={card.id}
-            key={card.id}
-            index={count++}
-            item={card}
-            switch={props.switch}
-          />
-        ))}
+        {!isLoading && inventory && (
+          <InventoryList inventory={inventory} switch={props.switch} />
+        )}
       </div>
     </React.Fragment>
   );

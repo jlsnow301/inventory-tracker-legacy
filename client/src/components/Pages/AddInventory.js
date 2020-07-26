@@ -1,5 +1,6 @@
 // Module imports
 import React from "react";
+import Axios from "axios";
 import { useHistory } from "react-router-dom";
 // Local imports
 import Input from "../UIElements/FormElements/Input";
@@ -8,7 +9,6 @@ import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,
 } from "../Functions/validators";
-import Axios from "axios";
 import { useAuth } from "../Hooks/auth-hook";
 import { useForm } from "../Hooks/form-hook";
 // Styling
