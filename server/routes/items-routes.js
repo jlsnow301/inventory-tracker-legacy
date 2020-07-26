@@ -20,7 +20,7 @@ router.get("/inventory/:invId", itemControllers.getItemsByInventoryId);
 
 //POST///////////////////////////////////////////////////////////////////////////////
 router.post(
-  "/:invId/add",
+  "/:invId",
   fileUpload.single("image"),
   [
     check("name").notEmpty(),
