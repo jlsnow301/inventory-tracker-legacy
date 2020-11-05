@@ -1,42 +1,52 @@
+// Module imports
 import React, { useState, useEffect } from "react";
-
-import styled from "@emotion/styled";
-import InventoryCard from "../UIElements/InventoryCard";
-import GetHttp from "../Functions/AxiosHttp";
+// Local imports
+import ErrorModal from "../UIElements/ErrorModal";
+import LoadingSpinner from "../UIElements/LoadingSpinner";
+import InventoryList from "../UIElements/InventoryList";
+import { useAuth } from "../Hooks/auth-hook";
+import { useAxiosClient } from "../Hooks/axios-hook";
+// Styling
+import "../../css/InventoryDisplay.css";
 
 const InventoryDisplay = (props) => {
-  // Styling
-  const Container = styled.div`
-    display: flex;
-    background: rgb(235, 235, 235);
-    flex-direction: row;
-    flex-wrap: wrap;
-    border: 2px solid rgb(120, 120, 120);
-    justify-content: space-around;
-    height: 775px;
-    overflow: auto;
-  `;
-
   // Initial states.
+  const { token } = useAuth();
   const [inventory, setInventory] = useState([]);
-
-  const GetInventory = () => {
-    let cards = [];
-    Object.keys(inventory).forEach((key) =>
-      cards.push(<InventoryCard key={key} index={key} item={inventory[key]} />)
-    );
-    return cards;
-  };
+  const { isLoading, error, sendRequest, clearError } = useAxiosClient();
 
   useEffect(() => {
-    setInventory(GetHttp("inventory", `/${props.query}`));
-  }, [props.query]);
+    const fetchInventory = async () => {
+      try {
+        const responseData = await sendRequest(
+          `GET`,
+          `http://localhost:5000/api/${props.query}`,
+          null,
+          { Authorization: `Bearer ${token}` }
+        );
+        setInventory(responseData.inventories);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    if (token) fetchInventory();
+  }, [sendRequest, token, props]);
 
   // Returns
   return (
-    <Container>
-      <GetInventory />
-    </Container>
+    <React.Fragment>
+      <ErrorModal error={error} onClear={clearError} />
+      <div className="container">
+        {isLoading && (
+          <div className="center">
+            <LoadingSpinner />
+          </div>
+        )}
+        {!isLoading && inventory && (
+          <InventoryList inventory={inventory} switch={props.switch} />
+        )}
+      </div>
+    </React.Fragment>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -19,31 +19,33 @@ import About from "./components/Pages/About";
 import Login from "./components/Pages/Login";
 // Context
 import { AuthContext } from "./components/Functions/auth-context";
+import { useAuth } from "./components/Hooks/auth-hook";
+// Styling
+import "./css/App.css";
 
 const App = () => {
   // Initial login states
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const login = useCallback(() => {
-    setIsLoggedIn(true);
-  }, []);
-  const logout = useCallback(() => {
-    setIsLoggedIn(true);
-  }, []);
+  const { token, login, logout, userId, name, image } = useAuth();
+  // Default toolbar states
+  let className = `toolbar-company`;
+  let avatar = `./logo1.png`;
 
   let routes;
-  if (isLoggedIn) {
+  if (token) {
+    className = `toolbar-avatar`;
+    avatar = `http://localhost:5000/${image}`;
     routes = (
       <Switch>
         <Route path="/" exact>
           <Dashboard />
         </Route>
-        <Route path="/:userId/addItem">
-          <AddItem />
-        </Route>
-        <Route path="/:userId/addInventory">
+        <Route path="/inventories/:userId/add" exact>
           <AddInventory />
         </Route>
-        <Redirect to="/" />
+        <Route path="/items/:inventoryId/add" exact>
+          <AddItem />
+        </Route>
+        <Redirect to="/" exact />
       </Switch>
     );
   } else {
@@ -68,10 +70,16 @@ const App = () => {
   // Returns
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}
+      value={{
+        isLoggedIn: !!token,
+        token: token,
+        userId: userId,
+        login: login,
+        logout: logout,
+      }}
     >
       <Router>
-        <Toolbar />
+        <Toolbar name={name} image={avatar} className={className} />
         <main>{routes}</main>
       </Router>
     </AuthContext.Provider>

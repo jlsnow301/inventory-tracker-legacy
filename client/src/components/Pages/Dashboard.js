@@ -1,34 +1,18 @@
+// Module imports
 import React, { useState } from "react";
-import styled from "@emotion/styled";
-
+// Local imports
 import InventoryDisplay from "./InventoryDisplay";
 import Button from "../UIElements/FormElements/Button";
+import { useAuth } from "../Hooks/auth-hook";
+// Styling
+import "../../css/Dashboard.css";
 
 const Dashboard = (props) => {
-  // Styling
-  const Container = styled.div`
-    display: flex;
-    margin-top: 10px;
-    flex-direction: column;
-    padding: 20px;
-  `;
-  const Header = styled.div`
-    display: flex;
-    height: 4%;
-    flex-direction: space-around;
-    font-family: Merriweather;
-    margin: 10px;
-  `;
-  const Tools = styled.div`
-    display: flex;
-    flex-direction: row;
-  `;
-  const Body = styled.div`
-    margin-top: 10px;
-  `;
-
   // Initial state
+  const { userId } = useAuth();
   const [query, setQuery] = useState("");
+  const [target, setTarget] = useState("");
+  const [itemView, setItemView] = useState(false);
   const inputText = React.createRef();
 
   // Changes the query, which is passed to inventory display.
@@ -37,17 +21,39 @@ const Dashboard = (props) => {
     setQuery(inputText.current.value);
   };
 
+  const switchModeHandler = (targetId) => {
+    setTarget(targetId);
+    if (itemView) setItemView(false);
+    else setItemView(true);
+  };
+
+  let searchUrl;
+  // A tad confusing but one of 4 possibilities.
+  // A: default view inside of a container.
+  // B: searching for an item inside of a container.
+  // C: default view of all containers.
+  // D: searching for a specific container.
+  if (itemView) {
+    searchUrl = query === "" ? `items/inventory/${target}` : `items/${query}`;
+  } else {
+    searchUrl =
+      query === "" ? `inventories/user/${userId}` : `inventories/${query}`;
+  }
+
   // Returns
   return (
-    <Container>
-      <Header>
-        <h1>
-          <b>Item View</b>
-        </h1>
+    <div className="dash-container">
+      <div className="dash-header">
+        <h2>
+          {itemView && <b>Item View</b>}
+          {!itemView && <b>Inventory View</b>}
+        </h2>
         <div style={{ flex: 1 }}></div>
-        <Tools>
-          <Button to={"/:userId/addItem"}>Add Item</Button>
-          <Button to={"/:userId/addInventory"}>Add Inventory</Button>
+        <div className="dash-tools">
+          {itemView && <Button to={`/items/${target}/add`}>Add Item</Button>}
+          {!itemView && (
+            <Button to={`/inventories/${userId}/add`}>Add Inventory</Button>
+          )}
           <form onSubmit={(e) => handleSearch(e)}>
             <input
               type="text"
@@ -56,12 +62,12 @@ const Dashboard = (props) => {
             />
             <input type="submit" value="Submit" />
           </form>
-        </Tools>
-      </Header>
-      <Body>
-        <InventoryDisplay query={query} />
-      </Body>
-    </Container>
+        </div>
+      </div>
+      <div className="dash-body">
+        <InventoryDisplay query={searchUrl} switch={switchModeHandler} />
+      </div>
+    </div>
   );
 };
 

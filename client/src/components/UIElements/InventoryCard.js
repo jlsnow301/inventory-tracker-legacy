@@ -1,30 +1,19 @@
+// Module imports
 import React from "react";
-import styled from "@emotion/styled";
+// Local imports
+import Button from "../UIElements/FormElements/Button";
+// Styling
+import "../../css/InventoryCard.css";
 
-const Card = ({ index, item }) => {
-  // Styling
-  const Container = styled.div`
-    margin: 10px;
-    background: rgb(255, 255, 255);
-    width: 22.5%;
-    height: 300px;
-    border: 2px solid dimgray;
-    border-radius: 8px;
-    overflow: auto;
-  `;
-  const Header = styled.div`
-    margin-left: 10px;
-    margin-bottom: 5px;
-  `;
-
-  index = parseInt(index) + 1;
+const InventoryCard = (props) => {
+  let index = parseInt(props.index) + 1;
   // For now, we are simply adding mongodb defaults to hidden keys
   var hiddenKeys = [];
   hiddenKeys += ["id", "_id", "__v"];
 
   const DisplayDetails = () => {
     var entries = [];
-    for (let [key, value] of Object.entries(item)) {
+    for (let [key, value] of Object.entries(props.item)) {
       if (hiddenKeys.indexOf(key) >= 0) {
         continue;
       }
@@ -38,12 +27,16 @@ const Card = ({ index, item }) => {
     return entries;
   };
 
+  const onClickHandler = () => {
+    props.switch(props.id);
+  };
+
   // Returns
   return (
-    <Container>
-      <Header>
+    <div className="card-container">
+      <div className="card-header">
         <u>
-          <b>Item #</b>
+          <b>{props.label} #</b>
           {index}
         </u>
         <div style={{ flex: 1 }} />
@@ -54,12 +47,17 @@ const Card = ({ index, item }) => {
           src="./bottle.png"
           alt="Product Icon"
         />
-      </Header>
-      <ol>
-        <DisplayDetails />
-      </ol>
-    </Container>
+      </div>
+      <div className="card-details">
+        <ol>
+          <DisplayDetails />
+        </ol>
+      </div>
+      <div align="right" className="card-button">
+        <Button onClick={onClickHandler}>OPEN</Button>
+      </div>
+    </div>
   );
 };
 
-export default Card;
+export default InventoryCard;

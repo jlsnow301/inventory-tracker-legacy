@@ -1,18 +1,22 @@
+// Module imports
 import React from "react";
-
+import Axios from "axios";
+import { useHistory } from "react-router-dom";
+// Local imports
 import Input from "../UIElements/FormElements/Input";
 import Button from "../UIElements/FormElements/Button";
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,
 } from "../Functions/validators";
-//import PostHttp from "../Functions/AxiosHttp";
+import { useAuth } from "../Hooks/auth-hook";
 import { useForm } from "../Hooks/form-hook";
-
+// Styling
 import "../../css/AddForm.css";
 
 const AddInventory = (props) => {
   // Initial states
+  const { token } = useAuth();
   const [formState, inputHandler] = useForm(
     {
       name: {
@@ -23,39 +27,26 @@ const AddInventory = (props) => {
         value: "",
         isValid: false,
       },
-      owner: {
-        value: "",
-        isValid: false,
-      },
-      history: {
-        value: "",
-        isValid: false,
-      },
-      items: {
-        value: "",
-        isValid: false,
-      },
-      access: {
-        value: "",
-        isValid: false,
-      },
-      inventoryCount: {
-        value: "",
-        isValid: false,
-      },
-      date: {
-        value: "",
-        isValid: false,
-      },
     },
     false
-  );  
+  );
+
+  const history = useHistory();
 
   // Takes the item and updates an individual attribute
   const inventorySubmitHandler = (event) => {
     event.preventDefault();
-    console.log(formState.inputs);
-    //post axios here
+    Axios.post(
+      `http://localhost:5000/api/inventories/`,
+      {
+        name: formState.inputs.name.value,
+        description: formState.inputs.description.value,
+      },
+      { headers: { Authorization: `Bearer ${token}` } }
+    ).catch((err) => {
+      console.log(err);
+    });
+    history.push("/");
   };
 
   // Returns
@@ -76,56 +67,6 @@ const AddInventory = (props) => {
         label="Description"
         validators={[VALIDATOR_MINLENGTH(5)]}
         errorText="Please enter a valid description (at least 5 characters)."
-        onInput={inputHandler}
-      />
-      <Input
-        id="owner"
-        element="textarea"
-        label="Owner"
-        validators={[]}
-        errorText="Placeholder."
-        onInput={inputHandler}
-      />
-      <Input
-        id="history"
-        element="input"
-        type="text"
-        label="History"
-        validators={[]}
-        errorText="Placeholder."
-        onInput={inputHandler}
-      />
-      <Input
-        id="items"
-        element="input"
-        type="text"
-        label="Items"
-        validators={[]}
-        errorText="Placeholder."
-        onInput={inputHandler}
-      />
-      <Input
-        id="access"
-        element="textarea"
-        label="Access Level"
-        validators={[]}
-        errorText="Placeholder."
-        onInput={inputHandler}
-      />
-      <Input
-        id="inventoryCount"
-        element="textarea"
-        label="Inventory Count"
-        validators={[]}
-        errorText="Placeholder."
-        onInput={inputHandler}
-      />
-      <Input
-        id="date"
-        element="textarea"
-        label="Date"
-        validators={[]}
-        errorText="Placeholder."
         onInput={inputHandler}
       />
       <Button type="submit" disabled={!formState.isValid}>
