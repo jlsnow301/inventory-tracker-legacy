@@ -10,7 +10,7 @@ import { createContext } from "react";
  * @param {string} User name string
  * @param {string} User id from the server
  */
-interface authValues {
+interface AuthValues {
   isLoggedIn: boolean;
   token: string | null;
   login: (encryptedToken: string, expiryDate: Date) => void;
@@ -21,7 +21,7 @@ interface authValues {
 }
 
 /** Provides the empty states to be overwritten by useAuth */
-export const AuthContext = createContext<authValues>({
+export const AuthContext = createContext<AuthValues>({
   isLoggedIn: false,
   token: null,
   login: () => {},
