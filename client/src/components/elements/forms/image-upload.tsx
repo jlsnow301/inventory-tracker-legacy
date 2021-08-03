@@ -13,10 +13,10 @@ interface Props {
 
 const ImageUpload: React.FC<Props> = (props: Props) => {
   const [file, setFile] = useState<Blob>();
-  const [previewUrl, setPreviewUrl] = useState<string | ArrayBuffer>();
+  const [previewUrl, setPreviewUrl] = useState<string>();
   const [isValid, setIsValid] = useState(false);
 
-  const filePickerRef = useRef();
+  const filePickerRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (!file) {
@@ -26,13 +26,13 @@ const ImageUpload: React.FC<Props> = (props: Props) => {
 
     fileReader.onload = () => {
       if (fileReader.result) {
-        setPreviewUrl(fileReader.result);
+        setPreviewUrl(fileReader.result.toString());
       }
     };
     fileReader.readAsDataURL(file);
   }, [file]);
 
-  const pickedHandler = (event: Event) => {
+  const pickedHandler = (event: React.FormEvent) => {
     let pickedFile;
     let fileIsValid = isValid;
     let target = event.target as HTMLInputElement;
@@ -54,7 +54,7 @@ const ImageUpload: React.FC<Props> = (props: Props) => {
 
   const pickImageHandler = () => {
     if (filePickerRef && filePickerRef.current) {
-      filePickerRef.current.click();
+      filePickerRef.current!.click();
     }
   };
 
