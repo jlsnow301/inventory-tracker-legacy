@@ -11,7 +11,8 @@ interface Props {
   onInput: (id: string, pickedFile: File, fileIsValid: boolean) => void;
 }
 
-const ImageUpload: React.FC<Props> = (props: Props) => {
+/** Image uploading for user profiles. */
+const ImageUpload: React.FC<Props> = (props) => {
   const [file, setFile] = useState<Blob>();
   const [previewUrl, setPreviewUrl] = useState<string>();
   const [isValid, setIsValid] = useState(false);

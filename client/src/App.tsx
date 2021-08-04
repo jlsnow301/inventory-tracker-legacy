@@ -43,9 +43,10 @@ export const App: React.FC = () => {
       value={{
         isLoggedIn: !!userData.token,
         token: userData.token,
-        login: login,
-        logout: logout,
+        login,
+        logout,
         email: userData.email,
+        image: userData.image,
         name: userData.name,
         userId: userData.userId,
       }}>

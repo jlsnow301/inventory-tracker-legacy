@@ -13,6 +13,7 @@ let logoutTimer: ReturnType<typeof setTimeout>;
 interface tokenObject {
   user: {
     email: string;
+    image: string;
     name: string;
     userId: string;
   };
@@ -26,6 +27,7 @@ interface tokenObject {
 interface authResponse {
   userData: {
     email: string | null;
+    image: string | null;
     name: string | null;
     userId: string | null;
     token: string | null;
@@ -45,12 +47,14 @@ interface authResponse {
 export const useAuth = (): authResponse => {
   const [userData, setUserData] = useState<{
     email: string | null;
+    image: string | null;
     name: string | null;
     userId: string | null;
     token: string | null;
     tokenExpiry: Date | null;
   }>({
     email: null,
+    image: null,
     name: null,
     userId: null,
     token: null,
@@ -100,6 +104,7 @@ export const useAuth = (): authResponse => {
   const logout = useCallback(() => {
     setUserData({
       email: null,
+      image: null,
       name: null,
       userId: null,
       token: null,

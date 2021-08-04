@@ -16,6 +16,7 @@ interface AuthValues {
   login: (encryptedToken: string, expiryDate: Date) => void;
   logout: () => void;
   email: string | null;
+  image: string | null;
   name: string | null;
   userId: string | null;
 }
@@ -27,6 +28,7 @@ export const AuthContext = createContext<AuthValues>({
   login: () => {},
   logout: () => {},
   email: null,
+  image: null,
   name: null,
   userId: null,
 });

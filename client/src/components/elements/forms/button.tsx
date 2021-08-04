@@ -13,9 +13,12 @@ interface Button {
   type?: React.ButtonHTMLAttributes<HTMLButtonElement>["type"];
 }
 
+/** Interface for buttons which feature the "href" value. */
 interface HrefButton extends Button {
   href: string;
 }
+
+/** Interface for buttons which use the "to" value. Uses react-router-dom */
 interface LinkButton extends Button {
   to: string;
 }
@@ -34,9 +37,7 @@ interface LinkButton extends Button {
  *
  * @returns A react object: A button, or a link of some type.
  */
-const Button: React.FC<Button | HrefButton | LinkButton> = (
-  props: Button | HrefButton | LinkButton
-) => {
+const Button: React.FC<Button | HrefButton | LinkButton> = (props) => {
   if (isHref(props)) {
     return (
       <a
