@@ -51,13 +51,6 @@
   color: #ef233c;
 }
 
-.home-serviceOne {
-}
-.home-serviceTwo {
-}
-.home-serviceThree {
-}
-
 .home-gallery {
   grid-template-columns: repeat(3, 1fr);
   height: auto;

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import { AuthContext } from "../functions/auth-context";
 
-import "../../css/navLinks.css";
+import "../../css/navlinks.css";
 
 /** Type for the getlinks function. Provides modularity for links */
 interface LinkFunction {

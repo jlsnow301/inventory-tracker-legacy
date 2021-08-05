@@ -8,13 +8,13 @@ import {
 } from "react-router-dom";
 
 import { About } from "./components/pages/about";
-import { AddItem } from "./components/pages/addItem";
-import { AddInventory } from "./components/pages/addInventory";
+import { AddItem } from "./components/pages/add-item";
+import { AddInventory } from "./components/pages/add-inventory";
 import { AuthContext } from "./components/functions/auth-context";
 import { Contact } from "./components/pages/contact";
 import { Dashboard } from "./components/pages/dashboard";
 import { Home } from "./components/pages/home";
-import { ItemView } from "./components/pages/itemView";
+import { ItemView } from "./components/pages/item-view";
 import { Login } from "./components/pages/login";
 import { Toolbar } from "./components/navigation/toolbar";
 import { useAuth } from "./components/hooks/auth-hook";
