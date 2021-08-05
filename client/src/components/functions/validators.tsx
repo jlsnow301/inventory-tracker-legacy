@@ -6,7 +6,7 @@ const VALIDATOR_TYPE_MAX: string = "MAX";
 const VALIDATOR_TYPE_EMAIL: string = "EMAIL";
 const VALIDATOR_TYPE_FILE: string = "FILE";
 
-interface Validator {
+export interface Validator {
   type: string;
   value?: number;
 }
