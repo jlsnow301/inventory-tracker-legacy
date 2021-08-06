@@ -1,0 +1,15 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
+import "../../css/Backdrop.css";
+
+interface Props {
+  onClick: () => void;
+}
+
+export const Backdrop: React.FC<Props> = (props) => {
+  return ReactDOM.createPortal(
+    <div className="backdrop" onClick={props.onClick}></div>,
+    document.getElementById("backdrop-hook")!
+  );
+};
