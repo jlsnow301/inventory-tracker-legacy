@@ -29,7 +29,7 @@ export const NavLinks: React.FC = () => {
 /** Upon reading the user login state, returns the proper navlinks
  * @returns {Object} A react fragment containing multiple nav links.
  */
-const getLinks: LinkFunction = () => {
+const getLinks: LinkFunction = (): {} => {
   const { isLoggedIn, userId, logout } = useContext(AuthContext);
 
   if (isLoggedIn) {
