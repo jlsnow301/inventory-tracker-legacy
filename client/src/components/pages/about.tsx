@@ -13,7 +13,6 @@ export const About: React.FC = () => {
             <img src="./aboutBanner.jpg" width=" 100% " alt="banner" />
           </div>
         </Grid.Row>
-
         <Grid.Row columns={2}>
           <Grid.Column>
             <h1>volutpat</h1>

@@ -1,21 +1,21 @@
-.Container {
-  margin-left: 30px;
+.container {
+  margin-left: 30 px;
 }
 
-.ImgBox {
+.imgBox {
   align-content: center;
 }
 
-.ImgIcon {
+.imgIcon {
   width: 100px;
   margin-left: 20%;
   margin-bottom: 15%;
 }
 
-.Banner {
+.banner {
   width: 100%;
 }
 
-.Icon {
+.icon {
   font-size: 30px;
 }

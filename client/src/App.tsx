@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   BrowserRouter as Router,
   Route,
@@ -19,19 +18,7 @@ import { Login } from "./components/pages/login";
 import { Toolbar } from "./components/navigation/toolbar";
 import { useAuth } from "./components/hooks/auth-hook";
 
-import "./css/App.css";
-
-interface authResponse {
-  token: {
-    email: string;
-    name: string;
-    userId: string;
-    token: string;
-    tokenExpiry: Date;
-  };
-  login: () => void;
-  logout: () => void;
-}
+import "./css/app.css";
 
 export const App: React.FC = () => {
   const { userData, login, logout } = useAuth();
@@ -97,7 +84,7 @@ const getRoutes = (token: boolean): {} => {
         <Route path="/login">
           <Login />
         </Route>
-        <Redirect to="/login" />
+        <Redirect to="/" />
       </Switch>
     );
   }

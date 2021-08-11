@@ -7,21 +7,23 @@ import "../../css/navlinks.css";
 
 /** Type for the getlinks function. Provides modularity for links */
 interface LinkFunction {
-  (isLoggedIn: boolean, logout: () => void): {};
+  (): void;
 }
 
 /** Provides buttons to connect to other pages
  * @returns {Object} An unordered list with modular list items
  */
 export const NavLinks: React.FC = () => {
+  let links = getLinks();
+
   return (
     <ul className="nav-links">
       <li>
         <NavLink to="/" exact>
           HOME
         </NavLink>
+        {links}
       </li>
-      {getLinks}
     </ul>
   );
 };
