@@ -31,7 +31,15 @@ module.exports = {
       },
     ],
   },
-
+  devServer: {
+    compress: true,
+    historyApiFallback: true,
+    hot: false,
+    open: false,
+    port: 3000,
+    stats: "minimal",
+    watchContentBase: true,
+  },
   // File extensions to support resolving
   resolve: {
     extensions: [".ts", ".tsx", ".js"],

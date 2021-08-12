@@ -2,7 +2,7 @@ import React, { CSSProperties, ReactElement } from "react";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 
-import { Backdrop } from "./backdrop";
+import Backdrop from "./backdrop";
 
 import "../../css/modal.css";
 
@@ -22,7 +22,7 @@ interface ModalProps extends OverlayProps {
   onCancel: () => void;
 }
 
-export const Modal: React.FC<ModalProps> = (props) => {
+const Modal: React.FC<ModalProps> = (props) => {
   return (
     <React.Fragment>
       {props.show && <Backdrop onClick={props.onCancel} />}
@@ -59,3 +59,5 @@ const ModalOverlay: React.FC<OverlayProps> = (props) => {
   );
   return ReactDOM.createPortal(content, document.getElementById("modal-hook")!);
 };
+
+export default Modal;

@@ -1,21 +1,8 @@
-.container {
-  margin-left: 30 px;
+.about {
+  display: flex;
+  margin: 0 1rem 0 1rem;
 }
 
-.imgBox {
-  align-content: center;
-}
-
-.imgIcon {
-  width: 100px;
-  margin-left: 20%;
-  margin-bottom: 15%;
-}
-
-.banner {
+.about-banner {
   width: 100%;
-}
-
-.icon {
-  font-size: 30px;
 }

@@ -8,10 +8,12 @@ interface Props {
   style: CSSProperties;
 }
 
-export const Card: React.FC<Props> = (props) => {
+const Card: React.FC<Props> = (props) => {
   return (
     <div className={`card ${props.className}`} style={props.style}>
       {props.children}
     </div>
   );
 };
+
+export default Card;

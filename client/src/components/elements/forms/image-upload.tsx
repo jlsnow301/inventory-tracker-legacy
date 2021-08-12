@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 
-import Button from "./button";
+import Button from "../button";
 
 import "../../../css/imageUpload.css";
 

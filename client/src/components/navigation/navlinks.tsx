@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
 
 import { AuthContext } from "../functions/auth-context";
+import Button from "../elements/button";
 
 import "../../css/navlinks.css";
 
@@ -13,59 +13,41 @@ interface LinkFunction {
 /** Provides buttons to connect to other pages
  * @returns {Object} An unordered list with modular list items
  */
-export const NavLinks: React.FC = () => {
+const NavLinks: React.FC = () => {
   let links = getLinks();
 
   return (
-    <ul className="nav-links">
-      <li>
-        <NavLink to="/" exact>
-          HOME
-        </NavLink>
-        {links}
-      </li>
-    </ul>
+    <div className="nav-links">
+      <Button to="/">HOME</Button>
+      {links}
+    </div>
   );
 };
 
 /** Upon reading the user login state, returns the proper navlinks
  * @returns {Object} A react fragment containing multiple nav links.
  */
-const getLinks: LinkFunction = (): {} => {
+const getLinks = () => {
   const { isLoggedIn, userId, logout } = useContext(AuthContext);
 
   if (isLoggedIn) {
     return (
-      <React.Fragment>
-        <li>
-          <NavLink to={`/${userId}/advanced`}>ADVANCED</NavLink>
-        </li>
-        <li>
-          <NavLink to={`/${userId}/overview`}>OVERVIEW</NavLink>
-        </li>
-
-        <li>
-          <NavLink to={`/${userId}/settings`}>SETTINGS</NavLink>
-        </li>
-        <li>
-          <button onClick={logout}>LOGOUT</button>
-        </li>
-      </React.Fragment>
+      <>
+        <Button to={`/${userId}/advanced`}>ADVANCED</Button>
+        <Button to={`/${userId}/overview`}>OVERVIEW</Button>
+        <Button to={`/${userId}/settings`}>SETTINGS</Button>
+        <button onClick={logout}>LOGOUT</button>
+      </>
     );
   } else {
     return (
-      <React.Fragment>
-        <li>
-          <NavLink to="/about">ABOUT</NavLink>
-        </li>
-
-        <li>
-          <NavLink to="/contact">CONTACT</NavLink>
-        </li>
-        <li>
-          <NavLink to="/login">LOGIN</NavLink>
-        </li>
-      </React.Fragment>
+      <>
+        <Button to="/about">ABOUT</Button>
+        <Button to="/contact">CONTACT</Button>
+        <Button to="/login">LOGIN</Button>
+      </>
     );
   }
 };
+
+export default NavLinks;

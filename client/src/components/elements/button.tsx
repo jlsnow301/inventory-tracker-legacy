@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "../../../css/Button.css";
+import "../../css/Button.css";
 
 interface Button {
   children: {};
@@ -52,7 +52,6 @@ const Button: React.FC<Button | HrefButton | LinkButton> = (props) => {
     return (
       <Link
         to={props.to}
-        // Note that exact was here, and typescript doesn't like it.
         className={`button button--${props.size || "default"} ${
           props.inverse && "button--inverse"
         } ${props.danger && "button--danger"}`}>

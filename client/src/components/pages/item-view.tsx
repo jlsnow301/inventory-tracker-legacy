@@ -1,5 +1,7 @@
 import React from "react";
 
-export const ItemView: React.FC = () => {
+const ItemView: React.FC = () => {
   return <div></div>;
 };
+
+export default ItemView;

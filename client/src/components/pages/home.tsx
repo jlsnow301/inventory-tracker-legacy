@@ -2,7 +2,7 @@ import React from "react";
 
 import "../../css/home.css";
 
-export const Home: React.FC = () => {
+const Home: React.FC = () => {
   return (
     <div className="home-main">
       <div className="home-intro">
@@ -42,7 +42,11 @@ export const Home: React.FC = () => {
           <div className="home-photos">
             <div>
               <div className="home-imgOne">
-                <img src="./redBg1.png" width=" 100% " alt="Pharmaceuticals" />
+                <img
+                  src="./public/redBg1.png"
+                  width=" 100% "
+                  alt="Pharmaceuticals"
+                />
               </div>
             </div>
           </div>
@@ -117,3 +121,5 @@ export const Home: React.FC = () => {
     </div>
   );
 };
+
+export default Home;

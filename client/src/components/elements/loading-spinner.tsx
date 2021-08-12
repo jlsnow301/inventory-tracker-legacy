@@ -7,10 +7,12 @@ interface Props {
 }
 
 /** Generates a loading spinner for axios requests, etc */
-export const LoadingSpinner: React.FC<Props> = (props) => {
+const LoadingSpinner: React.FC<Props> = (props) => {
   return (
     <div className={`${props.asOverlay && "loading-spinner__overlay"}`}>
       <div className="lds-dual-ring"></div>
     </div>
   );
 };
+
+export default LoadingSpinner;
