@@ -1,6 +1,8 @@
 # inventory-tracker
 
 Web based inventory management system.
+Designed to be modular.
+Project primarily written in TypeScript React and Deno (NodeJS sister).
 
 ### after cloning from github
 ### Windows:
