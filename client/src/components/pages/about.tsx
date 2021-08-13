@@ -1,6 +1,4 @@
 import React from "react";
-import { Grid } from "semantic-ui-react";
-import { MailOutline, LogoTwitter, LogoGithub } from "react-ionicons";
 
 import "../../css/about.css";
 

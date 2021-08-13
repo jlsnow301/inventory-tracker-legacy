@@ -6,9 +6,9 @@ import "../../../css/imageUpload.css";
 
 interface Props {
   id: string;
-  center?: string;
+  center?: boolean;
   errorText?: string;
-  onInput: (id: string, pickedFile: File, fileIsValid: boolean) => void;
+  onInput: (id: string, value: File, isValid: boolean) => void;
 }
 
 /** Image uploading for user profiles. */

@@ -38,9 +38,9 @@ interface Props {
   element: string;
   errorText: string;
   id: string;
-  initialValue: string;
-  initialValid: boolean;
-  onInput: (id: string, value: string, isValid: boolean) => {};
+  initialValue?: string;
+  initialValid?: boolean;
+  onInput: (id: string, value: string, isValid: boolean) => void;
   label?: string;
   placeholder?: string;
   rows?: number;
@@ -49,7 +49,7 @@ interface Props {
 }
 
 /** A custom input component that allows validation, css reaction to validation, etc. */
-export const Input: React.FC<Props> = (props) => {
+const Input: React.FC<Props> = (props) => {
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: props.initialValue || "",
     isTouched: false,
@@ -109,3 +109,5 @@ export const Input: React.FC<Props> = (props) => {
     </div>
   );
 };
+
+export default Input;

@@ -6,6 +6,7 @@ import "../../css/Button.css";
 interface Button {
   children: {};
   danger?: boolean;
+  dark?: boolean;
   disabled?: boolean;
   inverse?: boolean;
   onClick?: () => void;

@@ -5,7 +5,7 @@ import "../../css/Card.css";
 
 interface Props {
   className: string;
-  style: CSSProperties;
+  style?: CSSProperties;
 }
 
 const Card: React.FC<Props> = (props) => {

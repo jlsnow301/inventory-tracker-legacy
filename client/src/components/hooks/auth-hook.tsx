@@ -24,17 +24,19 @@ interface tokenObject {
  * @param {Function} login Decodes the user data and stores locally
  * @param {Function} logout Clears user data in state and locally
  */
-interface authResponse {
-  userData: {
-    email: string | null;
-    image: string | null;
-    name: string | null;
-    userId: string | null;
-    token: string | null;
-    tokenExpiry: Date | null;
-  };
+interface AuthResponse {
+  userData: UserData;
   login: (encryptedToken: string, expirationDate: Date) => void;
   logout: () => void;
+}
+
+export interface UserData {
+  email: string | null;
+  image: string | null;
+  name: string | null;
+  userId: string | null;
+  token: string | null;
+  tokenExpiry: Date | null;
 }
 
 /** A custom hook that gives userData, login, logout functionality
@@ -44,15 +46,8 @@ interface authResponse {
  *
  * logout: Clears user data in state and locally
  */
-export const useAuth = (): authResponse => {
-  const [userData, setUserData] = useState<{
-    email: string | null;
-    image: string | null;
-    name: string | null;
-    userId: string | null;
-    token: string | null;
-    tokenExpiry: Date | null;
-  }>({
+export const useAuth = (): AuthResponse => {
+  const [userData, setUserData] = useState<UserData>({
     email: null,
     image: null,
     name: null,

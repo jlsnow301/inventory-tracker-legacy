@@ -1,26 +1,21 @@
 import { useState, useCallback } from "react";
 import axios, { Method } from "axios";
 
-/** Interface for sendRequest. Requires a bit of data beforehand:
- * @param {string} url The requested URL
- * @param {Method} method A string (axios preset) for the request type. Accepts GET, get, Push, etc.
- * @param {Object} data Any data objects that you would like to send as a package.
- * @param {Object} headers Any headers, can be empty. Ex: Authentication: Bearer ${token}
- */
-interface sendParams {
-  (url: string, method?: Method, data?: {} | null, headers?: {}): Promise<void>;
-}
-
 /** The response package to be imported elsewhere.
  * @param {boolean} isLoading a boolean that details whether axios is working on a request
  * @param {string | null} error contains an error message if axios receives one
  * @param {sendParams} sendRequest Async callback function that makes an HTTP request using specified parameters
  * @param {Function} clearError Erases the current error. Ex: User presses "OK"
  */
-interface axiosResponse {
+interface AxiosHook {
   isLoading: boolean;
   error: string | null;
-  sendRequest: sendParams;
+  sendRequest: (
+    url: string,
+    method?: Method,
+    data?: {} | null,
+    headers?: {}
+  ) => Promise<any>;
   clearError: () => void;
 }
 
@@ -39,11 +34,11 @@ interface axiosResponse {
  *
  * clearError: A function that erases the current error. Ex: User presses "OK"
  */
-export const useAxios = (): axiosResponse => {
+export const useAxios = (): AxiosHook => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const sendRequest = useCallback<sendParams>(
+  const sendRequest = useCallback(
     async (url, method = "GET", data = null, headers = {}) => {
       setIsLoading(true);
       console.log(method, url, data, headers);
