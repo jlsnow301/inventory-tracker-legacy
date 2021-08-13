@@ -1,4 +1,3 @@
-import { ServerStreamFileResponseOptions } from "http2";
 import { useCallback, useReducer } from "react";
 
 type Action =
