@@ -18,25 +18,6 @@ import {
 
 import "../css/login.css";
 
-interface LoginForm {
-  email: {
-    value: string;
-    isValid: boolean;
-  };
-  password: {
-    value: string;
-    isValid: boolean;
-  };
-  image?: {
-    value: string;
-    isValid: boolean;
-  };
-  name?: {
-    value: string;
-    isValid: boolean;
-  };
-}
-
 const LoginScreen: React.FC = () => {
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
@@ -70,7 +51,7 @@ const LoginScreen: React.FC = () => {
           name: undefined,
           password: undefined,
         },
-        formState.inputs.email.isValid && formState.inputs.password.isValid
+        formState.inputs.email!.isValid && formState.inputs.password!.isValid
       );
     } else {
       setFormData(
@@ -101,23 +82,27 @@ const LoginScreen: React.FC = () => {
 
     if (isLoginMode) {
       try {
-        const responseData = await sendRequest(
+        const responseData: UserData = await sendRequest(
           "http://localhost:5000/api/users",
           "POST",
           {
-            email: formState.inputs.email.value,
-            password: formState.inputs.password.value,
+            /** TODO: Ensure these are not null */
+            email: formState.inputs.email!.value,
+            password: formState.inputs.password!.value,
           }
         );
-        auth.login(responseData.token);
+        if (responseData.token) {
+          auth.login(responseData.token);
+        }
       } catch (err) {}
     } else {
       try {
         const formData = new FormData();
-        formData.append("email", formState.inputs.email.value);
-        formData.append("image", formState.inputs.image.value);
-        formData.append("name", formState.inputs.name.value);
-        formData.append("password", formState.inputs.password.value);
+        /** TODO: Ensure these are not null */
+        formData.append("email", formState.inputs.email!.value!);
+        formData.append("image", formState.inputs.image!.value!);
+        formData.append("name", formState.inputs.name!.value!);
+        formData.append("password", formState.inputs.password!.value!);
         const responseData = await sendRequest(
           "http://localhost:5000/api/users/create",
           "POST",

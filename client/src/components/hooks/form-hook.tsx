@@ -8,25 +8,27 @@ type Action =
       value: string;
       isValid: boolean;
     }
-  | { type: "SET_DATA"; inputs: any; formIsValid: boolean };
+  | { type: "SET_DATA"; inputs: Inputs; formIsValid: boolean };
 
 interface State {
-  inputs: any;
+  inputs: Inputs;
   isValid: boolean;
 }
 
+interface Inputs {
+  [inputId: string]: Input | undefined;
+}
+
 interface Input {
-  inputId: {
-    value: string;
-    isValid: boolean;
-  };
+  value: string | null;
+  isValid: boolean;
 }
 
 interface FormHook {
-  (initialInputs: any, initialFormValidity: boolean): [
+  (initialInputs: Inputs, initialFormValidity: boolean): [
     formState: State,
     inputHandler: (id: string, value: File | string, isValid: boolean) => void,
-    setFormData: (inputData: State, formValidity: boolean) => void
+    setFormData: (inputData: Inputs, formValidity: boolean) => void
   ];
 }
 

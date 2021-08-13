@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import axios, { Method } from "axios";
 
-/** The response package to be imported elsewhere.
+/** The function package to be imported elsewhere.
  * @param {boolean} isLoading a boolean that details whether axios is working on a request
  * @param {string | null} error contains an error message if axios receives one
  * @param {sendParams} sendRequest Async callback function that makes an HTTP request using specified parameters
@@ -10,14 +10,17 @@ import axios, { Method } from "axios";
 interface AxiosHook {
   isLoading: boolean;
   error: string | null;
-  sendRequest: (
-    url: string,
-    method: Method,
-    expectation: {},
-    data?: {},
-    headers?: {}
-  ) => Promise<any>;
+  sendRequest: SendRequest;
   clearError: () => void;
+}
+
+export interface SendRequest {
+  (
+    url: string,
+    method?: Method,
+    data?: {} | null,
+    headers?: {} | null
+  ): Promise<any>;
 }
 
 /** Self contained axios hook that returns loading and error states.
@@ -39,13 +42,8 @@ export const useAxios = (): AxiosHook => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const sendRequest = useCallback(
-    async (
-      url: string,
-      method: Method = "GET",
-      data: {} | null = null,
-      headers: {} = {}
-    ) => {
+  const sendRequest = useCallback<SendRequest>(
+    async (url, method = "GET", data = null, headers = null) => {
       setIsLoading(true);
       console.log(method, url, data, headers);
       await axios({ method, url, data, headers })
