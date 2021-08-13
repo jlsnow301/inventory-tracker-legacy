@@ -12,8 +12,9 @@ interface AxiosHook {
   error: string | null;
   sendRequest: (
     url: string,
-    method?: Method,
-    data?: {} | null,
+    method: Method,
+    expectation: {},
+    data?: {},
     headers?: {}
   ) => Promise<any>;
   clearError: () => void;
@@ -39,7 +40,12 @@ export const useAxios = (): AxiosHook => {
   const [error, setError] = useState<string | null>(null);
 
   const sendRequest = useCallback(
-    async (url, method = "GET", data = null, headers = {}) => {
+    async (
+      url: string,
+      method: Method = "GET",
+      data: {} | null = null,
+      headers: {} = {}
+    ) => {
       setIsLoading(true);
       console.log(method, url, data, headers);
       await axios({ method, url, data, headers })
