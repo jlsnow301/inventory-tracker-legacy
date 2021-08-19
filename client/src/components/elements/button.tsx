@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { Link } from "react-router-dom";
 
 import "../../css/Button.css";
@@ -9,9 +9,13 @@ interface Button {
   dark?: boolean;
   disabled?: boolean;
   inverse?: boolean;
-  onClick?: () => void;
   size?: string;
-  type?: React.ButtonHTMLAttributes<HTMLButtonElement>["type"];
+}
+
+/** Interface for buttons which use an action or type. */
+interface ActionButton extends Button {
+  type: React.ButtonHTMLAttributes<HTMLButtonElement>["type"];
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 /** Interface for buttons which feature the "href" value. */
@@ -38,7 +42,7 @@ interface LinkButton extends Button {
  *
  * @returns A react object: A button, or a link of some type.
  */
-const Button: React.FC<Button | HrefButton | LinkButton> = (props) => {
+const Button: React.FC<ActionButton | HrefButton | LinkButton> = (props) => {
   if (isHref(props)) {
     return (
       <a
@@ -59,7 +63,7 @@ const Button: React.FC<Button | HrefButton | LinkButton> = (props) => {
         {props.children}
       </Link>
     );
-  } else
+  } else if (isAction(props))
     return (
       <button
         className={`button button--${props.size || "default"} ${
@@ -71,6 +75,7 @@ const Button: React.FC<Button | HrefButton | LinkButton> = (props) => {
         {props.children}
       </button>
     );
+  else return <button>Error!</button>;
 };
 
 export default Button;
@@ -78,13 +83,26 @@ export default Button;
 /** Type checks props to ensure we have the switch functionality
  * This checks for the "href" attribute
  */
-const isHref = (prop: Button | HrefButton | LinkButton): prop is HrefButton => {
+const isHref = (
+  prop: ActionButton | HrefButton | LinkButton
+): prop is HrefButton => {
   return (prop as HrefButton).href !== undefined;
 };
 
 /** Type checks props to ensure we have the switch functionality
  * This checks for the "to" attribute
  */
-const isLink = (prop: Button | HrefButton | LinkButton): prop is LinkButton => {
+const isLink = (
+  prop: ActionButton | HrefButton | LinkButton
+): prop is LinkButton => {
   return (prop as LinkButton).to !== undefined;
+};
+
+/** Type checks props to ensure we have the switch functionality
+ * This checks for the "onClick" attribute
+ */
+const isAction = (
+  prop: ActionButton | HrefButton | LinkButton
+): prop is ActionButton => {
+  return (prop as ActionButton).type !== undefined;
 };

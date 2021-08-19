@@ -13,7 +13,7 @@ import { createContext } from "react";
 interface AuthValues {
   isLoggedIn: boolean;
   token: string | null;
-  login: (encryptedToken: string, expiryDate?: Date) => void;
+  login: (encryptedToken: string, expirationDate?: Date) => void;
   logout: () => void;
   email: string | null;
   image: string | null;

@@ -1,7 +1,8 @@
 import React, { useReducer, useEffect } from "react";
 
 import { validate, Validator } from "../../functions/validators";
-import "../../../css/";
+
+import "../../../css/input.css";
 
 type Action =
   | { type: "CHANGE"; value: string; validators: Validator[] }

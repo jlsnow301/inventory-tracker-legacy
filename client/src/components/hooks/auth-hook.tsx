@@ -26,7 +26,7 @@ interface tokenObject {
  */
 interface AuthResponse {
   userData: UserData;
-  login: (encryptedToken: string, expirationDate: Date) => void;
+  login: (encryptedToken: string, expirationDate?: Date) => void;
   logout: () => void;
 }
 
@@ -63,7 +63,7 @@ export const useAuth = (): AuthResponse => {
    * @param {string} encryptedToken - Received from the server. Encrypted user object.
    * @param {Date} expirationDate - If this was locally stored (ie: close the browser, reopen) it will use this to stay logged in.
    */
-  const login = useCallback((encryptedToken: string, expirationDate: Date) => {
+  const login = useCallback((encryptedToken: string, expirationDate?: Date) => {
     let decryptedToken: tokenObject = jwt(encryptedToken);
 
     /**

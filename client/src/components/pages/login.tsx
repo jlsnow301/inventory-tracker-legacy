@@ -16,7 +16,7 @@ import {
   VALIDATOR_REQUIRE,
 } from "../functions/validators";
 
-import "../css/login.css";
+import "../../css/login.css";
 
 const LoginScreen: React.FC = () => {
   const auth = useContext(AuthContext);
@@ -114,65 +114,63 @@ const LoginScreen: React.FC = () => {
   };
 
   return (
-    <section className="landing">
-      <div className="dark-overlay">
-        <div className="landing-inner">
-          <h1 className="x-large">Cuddly Octo Doodle</h1>
-          <ErrorModal error={error!} onClear={clearError} />
-          <Card className="authentication">
-            {isLoading && <LoadingSpinner asOverlay />}
-            <h2 style={{ color: "black" }}>Login Required</h2>
-            <hr />
-            <form onSubmit={authSubmitHandler}>
-              <Input
-                element="input"
-                id="email"
-                type="email"
-                label="E-Mail"
-                validators={[VALIDATOR_EMAIL()]}
-                errorText="Please enter a valid email address."
+    <>
+      <ErrorModal error={error!} onClear={clearError} />
+      <Card className="authentication">
+        {isLoading && <LoadingSpinner asOverlay />}
+        <h2 style={{ color: "black" }}>Login Required</h2>
+        <hr />
+        <form onSubmit={authSubmitHandler}>
+          <Input
+            element="input"
+            id="email"
+            type="email"
+            label="E-Mail"
+            validators={[VALIDATOR_EMAIL()]}
+            errorText="Please enter a valid email address."
+            onInput={inputHandler}
+          />
+          {!isLoginMode && (
+            <>
+              <ImageUpload
+                center
+                id="image"
                 onInput={inputHandler}
+                errorText="Please provide an image."
               />
-              {!isLoginMode && (
-                <>
-                  <ImageUpload
-                    center
-                    id="image"
-                    onInput={inputHandler}
-                    errorText="Please provide an image."
-                  />
 
-                  <Input
-                    element="input"
-                    id="name"
-                    type="text"
-                    label="Your Name"
-                    validators={[VALIDATOR_REQUIRE()]}
-                    errorText="Please enter a name."
-                    onInput={inputHandler}
-                  />
-                </>
-              )}
               <Input
                 element="input"
-                id="password"
-                type="password"
-                label="Password"
-                validators={[VALIDATOR_MINLENGTH(5)]}
-                errorText="Please enter a valid password, at least 5 characters."
+                id="name"
+                type="text"
+                label="Your Name"
+                validators={[VALIDATOR_REQUIRE()]}
+                errorText="Please enter a name."
                 onInput={inputHandler}
               />
-              <Button dark disabled={!formState.isValid} type="submit">
-                {isLoginMode ? "LOGIN" : "SIGNUP"}
-              </Button>
-            </form>
-            <Button dark onClick={switchModeHandler}>
-              SWITCH TO {isLoginMode ? "SIGNUP" : "LOGIN"}
-            </Button>
-          </Card>
-        </div>
-      </div>
-    </section>
+            </>
+          )}
+          <Input
+            element="input"
+            id="password"
+            type="password"
+            label="Password"
+            validators={[VALIDATOR_MINLENGTH(5)]}
+            errorText="Please enter a valid password, at least 5 characters."
+            onInput={inputHandler}
+          />
+          <Button
+            disabled={!formState.isValid}
+            onClick={() => null}
+            type="submit">
+            {isLoginMode ? "LOGIN" : "SIGNUP"}
+          </Button>
+        </form>
+        <Button onClick={switchModeHandler} type="button">
+          SWITCH TO {isLoginMode ? "SIGNUP" : "LOGIN"}
+        </Button>
+      </Card>
+    </>
   );
 };
 
