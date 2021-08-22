@@ -2,8 +2,16 @@ import path from "path";
 import webpack from "webpack";
 import "webpack-dev-server";
 import HtmlWebPackPlugin from "html-webpack-plugin";
+import WebpackDevServer from "webpack-dev-server";
 
-const config: webpack.Configuration = {
+interface Configuration extends webpack.Configuration {
+  devServer?: devServer | undefined;
+}
+interface devServer extends WebpackDevServer.Configuration {
+  static?: boolean | string | string[] | number | undefined;
+}
+
+const config: Configuration = {
   mode: "development",
   entry: "./src/index.tsx",
   module: {
@@ -37,14 +45,14 @@ const config: webpack.Configuration = {
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
   },
   devServer: {
-    contentBase: path.join(__dirname, "build"),
     compress: true,
     historyApiFallback: true,
     port: 3000,
+    static: path.join(__dirname, "./"),
   },
 };
 

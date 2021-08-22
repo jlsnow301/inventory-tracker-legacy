@@ -9,7 +9,7 @@ import "../../css/toolbar.css";
  *
  * If logged in: Displays "{username}`s inventory" */
 const Toolbar: React.FC = () => {
-  let bannerInfo = getInfo();
+  let bannerInfo = GetInfo();
 
   return (
     <div className="toolbar-main">
@@ -21,7 +21,7 @@ const Toolbar: React.FC = () => {
 
 export default Toolbar;
 
-const getInfo = () => {
+const GetInfo = () => {
   const { isLoggedIn, name, image } = useContext(AuthContext);
 
   if (isLoggedIn) {
