@@ -6,6 +6,11 @@ import {
   Switch,
 } from "react-router-dom";
 
+import { AuthContext } from "./components/functions/auth-context";
+import { useAuth } from "./components/hooks/auth-hook";
+import LoadingSpinner from "./components/elements/loading-spinner";
+import "./css/app.css";
+
 const About = React.lazy(() => import("./components/pages/about"));
 const AddItem = React.lazy(() => import("./components/pages/add-item"));
 const AddInventory = React.lazy(
@@ -18,11 +23,6 @@ const ItemView = React.lazy(() => import("./components/pages/item-view"));
 
 const Login = React.lazy(() => import("./components/pages/login"));
 const Toolbar = React.lazy(() => import("./components/navigation/toolbar"));
-import { AuthContext } from "./components/functions/auth-context";
-import { useAuth } from "./components/hooks/auth-hook";
-import LoadingSpinner from "./components/elements/loading-spinner";
-
-import "./css/app.css";
 
 const App: React.FC = () => {
   const { userData, login, logout } = useAuth();
