@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import "../../css/Backdrop.css";
+import "../css/backdrop.css";
 
 interface Props {
   onClick: () => void;

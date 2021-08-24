@@ -1,7 +1,7 @@
 import React from "react";
 import { CSSProperties } from "react";
 
-import "../../css/Card.css";
+import "../css/card.css";
 
 interface Props {
   className: string;

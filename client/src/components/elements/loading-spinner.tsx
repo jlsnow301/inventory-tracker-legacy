@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../../css/loading-spinner.css";
+import "../css/loading-spinner.css";
 
 interface Props {
   asOverlay: boolean;

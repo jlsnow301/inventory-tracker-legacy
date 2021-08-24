@@ -16,7 +16,8 @@ import {
   VALIDATOR_REQUIRE,
 } from "../functions/validators";
 
-import "../../css/login.css";
+import "../css/login.css";
+import "../css/static-page.css";
 
 const LoginScreen: React.FC = () => {
   const auth = useContext(AuthContext);
@@ -114,8 +115,11 @@ const LoginScreen: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="static-main">
       <ErrorModal error={error!} onClear={clearError} />
+      <div className="static-intro">
+        <h1>login</h1>
+      </div>
       <Card className="authentication">
         {isLoading && <LoadingSpinner asOverlay />}
         <h2 style={{ color: "black" }}>Login Required</h2>
@@ -170,7 +174,7 @@ const LoginScreen: React.FC = () => {
           SWITCH TO {isLoginMode ? "SIGNUP" : "LOGIN"}
         </Button>
       </Card>
-    </>
+    </div>
   );
 };
 

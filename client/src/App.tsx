@@ -5,11 +5,16 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 
 import { AuthContext } from "./components/functions/auth-context";
 import { useAuth } from "./components/hooks/auth-hook";
 import LoadingSpinner from "./components/elements/loading-spinner";
-import "./css/app.css";
+
+/** Icons */
+library.add(fab, fas);
 
 const About = React.lazy(() => import("./components/pages/about"));
 const AddItem = React.lazy(() => import("./components/pages/add-item"));

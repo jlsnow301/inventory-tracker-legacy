@@ -1,7 +1,7 @@
 import React from "react";
 
 import Modal from "./modal";
-import Button from "./button";
+import ModButton from "./button";
 
 interface Props {
   onClear: () => void;
@@ -15,9 +15,9 @@ const ErrorModal: React.FC<Props> = (props) => {
       header="An Error Occurred!"
       show={!!props.error}
       footer={
-        <Button onClick={props.onClear} type="button">
+        <ModButton onClick={props.onClear} type="button">
           Okay
-        </Button>
+        </ModButton>
       }>
       <p>{props.error}</p>
     </Modal>

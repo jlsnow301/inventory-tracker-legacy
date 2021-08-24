@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 
 import Button from "../button";
 
-import "../../../css/image-upload.css";
+import "../../css/image-upload.css";
 
 interface Props {
   id: string;

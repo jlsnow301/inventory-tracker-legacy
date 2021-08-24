@@ -1,6 +1,6 @@
 .toolbar-main {
   display: flex;
-  background: #bd0028;
+  background: var(--strawberry);
   height: 3rem;
   padding: 1rem;
   justify-content: space-between;

@@ -4,7 +4,7 @@ import { CSSTransition } from "react-transition-group";
 
 import Backdrop from "./backdrop";
 
-import "../../css/modal.css";
+import "../css/modal.css";
 
 interface OverlayProps {
   header: string;

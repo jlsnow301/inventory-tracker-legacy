@@ -1,24 +1,19 @@
 import React, { useContext } from "react";
 
 import { AuthContext } from "../functions/auth-context";
-import Button from "../elements/button";
+import ModButton from "../elements/button";
 
-import "../../css/navlinks.css";
-
-/** Type for the getlinks function. Provides modularity for links */
-interface LinkFunction {
-  (): void;
-}
+import "../css/navlinks.css";
 
 /** Provides buttons to connect to other pages
  * @returns {Object} An unordered list with modular list items
  */
 const NavLinks: React.FC = () => {
-  let links = getLinks();
+  let links: JSX.Element = GetLinks();
 
   return (
     <div className="nav-links">
-      <Button to="/">HOME</Button>
+      <ModButton to="/">HOME</ModButton>
       {links}
     </div>
   );
@@ -27,24 +22,24 @@ const NavLinks: React.FC = () => {
 /** Upon reading the user login state, returns the proper navlinks
  * @returns {Object} A react fragment containing multiple nav links.
  */
-const getLinks = () => {
+const GetLinks = (): JSX.Element => {
   const { isLoggedIn, userId, logout } = useContext(AuthContext);
 
   if (isLoggedIn) {
     return (
       <>
-        <Button to={`/${userId}/advanced`}>ADVANCED</Button>
-        <Button to={`/${userId}/overview`}>OVERVIEW</Button>
-        <Button to={`/${userId}/settings`}>SETTINGS</Button>
+        <ModButton to={`/${userId}/advanced`}>ADVANCED</ModButton>
+        <ModButton to={`/${userId}/overview`}>OVERVIEW</ModButton>
+        <ModButton to={`/${userId}/settings`}>SETTINGS</ModButton>
         <button onClick={logout}>LOGOUT</button>
       </>
     );
   } else {
     return (
       <>
-        <Button to="/about">ABOUT</Button>
-        <Button to="/contact">CONTACT</Button>
-        <Button to="/login">LOGIN</Button>
+        <ModButton to="/about">ABOUT</ModButton>
+        <ModButton to="/contact">CONTACT</ModButton>
+        <ModButton to="/login">LOGIN</ModButton>
       </>
     );
   }
