@@ -67,7 +67,7 @@ const LoginScreen: React.FC = () => {
             isValid: false,
           },
         },
-        false
+        formState.inputs.email!.isValid && formState.inputs.password!.isValid
       );
     }
     setIsLoginMode((prevMode) => !prevMode);
