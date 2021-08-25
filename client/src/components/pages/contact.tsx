@@ -10,11 +10,10 @@ const Contact: React.FC = () => {
       <div className="static-intro">
         <h1>contact</h1>
       </div>
-      <div>
+      <div className="static-box">
         <div className="static-services">
-          <div className="static-line" />
           <div className="static-serviceTitle">Anthony</div>
-          Software Dev. Bachelor's in Computer Science, NSC 2021
+          Software Dev
           <div>
             <ModButton href="https://github.com/AnthonySDi">
               <FontAwesomeIcon
@@ -34,12 +33,9 @@ const Contact: React.FC = () => {
             </ModButton>
           </div>
         </div>
-      </div>
-      <div>
+
         <div className="static-services">
-          <div className="static-line" />
-          <div className="static-serviceTitle">Margarita</div>
-          Software Dev. Bachelor's in Computer Science, NSC 2021
+          <div className="static-serviceTitle">Margarita</div>Software Dev
           <div>
             <ModButton href="https://github.com/MargaritaYatina">
               <FontAwesomeIcon
@@ -59,12 +55,9 @@ const Contact: React.FC = () => {
             </ModButton>
           </div>
         </div>
-      </div>
-      <div>
+
         <div className="static-services">
-          <div className="static-line" />
-          <div className="static-serviceTitle">Selena</div>
-          Software Dev. Bachelor's in Computer Science, NSC 2021
+          <div className="static-serviceTitle">Selena</div>Software Dev
           <div>
             <ModButton href="https://github.com/selinapn">
               <FontAwesomeIcon
@@ -84,12 +77,9 @@ const Contact: React.FC = () => {
             </ModButton>
           </div>
         </div>
-      </div>
-      <div>
+
         <div className="static-services">
-          <div className="static-line" />
-          <div className="static-serviceTitle">Jeremiah</div>
-          Software Dev. Bachelor's in Computer Science, NSC 2021
+          <div className="static-serviceTitle">Jeremiah</div>Software Dev
           <div>
             <ModButton href="https://github.com/jlsnow301">
               <FontAwesomeIcon
@@ -108,7 +98,6 @@ const Contact: React.FC = () => {
               />
             </ModButton>
           </div>
-          <div className="static-line" />
         </div>
       </div>
     </div>

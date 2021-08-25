@@ -8,9 +8,8 @@ const About: React.FC = () => {
       <div className="static-intro">
         <h1>about</h1>
       </div>
-      <div>
-        <div className="static-services">
-          <div className="static-line" />
+      <div className="static-services">
+        <div className="static-box">
           <div className="static-serviceTitle">Members</div>
           <div className="static-text">
             Crafted with care by four students fulfilling their bachelor's
@@ -21,9 +20,9 @@ const About: React.FC = () => {
           </div>
         </div>
       </div>
-      <div>
-        <div className="static-services">
-          <div className="static-line" />
+
+      <div className="static-services">
+        <div className="static-box">
           <div className="static-serviceTitle">Technology</div>
           <div className="static-text">
             This website was built using TypeScript React, all in modern ES6
@@ -33,9 +32,9 @@ const About: React.FC = () => {
           </div>
         </div>
       </div>
-      <div>
-        <div className="static-services">
-          <div className="static-line" />
+
+      <div className="static-services">
+        <div className="static-box">
           <div className="static-serviceTitle">Values Learned</div>
           <div className="static-text">
             For most, this was a learning experience in the frustration of
@@ -46,7 +45,6 @@ const About: React.FC = () => {
             had been solo programming in white-on-black terminals since the
             beginning of the computer science course.
           </div>
-          <div className="static-line" />
         </div>
       </div>
       <div className="static-photos">
