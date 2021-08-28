@@ -37,22 +37,21 @@ app.use(userRoutes.routes());
 app.use(userRoutes.allowedMethods());
 
 /** Error handling */
-app.use((_ctx, _next) => {
-  const error = new HttpError("Could not find this route.", 404);
-  throw error;
-});
+app.use((_ctx, _next) => {});
 
-app.use(async (_ctx, next) => {
+app.use(async (ctx, next) => {
   try {
     await next();
   } catch (err) {
     if (isHttpError(err)) {
       switch (err.status) {
         case Status.NotFound:
-          // handle NotFound
+          ctx.response.status = 404;
+          ctx.response.body = "Not found!";
           break;
         default:
-        // handle other statuses
+          ctx.response.status = err.status || 500;
+          ctx.response.body = err.message || "Unknown Error Occured";
       }
     } else {
       // rethrow if you can't handle the error
