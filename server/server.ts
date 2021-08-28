@@ -1,12 +1,21 @@
-import { Application } from "https://deno.land/x/oak@v9.0.0/mod.ts";
+import {
+  Application,
+  isHttpError,
+  Status,
+} from "https://deno.land/x/oak@v9.0.0/mod.ts";
 
 import { connect } from "./helpers/db.ts";
+import fileRoutes from "./routes/files.ts";
+import HttpError from "./models/http-error.ts";
 import inventoryRoutes from "./routes/inventories.ts";
 import itemRoutes from "./routes/items.ts";
 import userRoutes from "./routes/users.ts";
 
 connect();
 const app = new Application();
+
+app.use(fileRoutes.routes());
+app.use(fileRoutes.allowedMethods());
 
 /** Affix headers */
 app.use(async (ctx, next) => {
@@ -27,5 +36,40 @@ app.use(itemRoutes.allowedMethods());
 app.use(userRoutes.routes());
 app.use(userRoutes.allowedMethods());
 
-app.listen({ port: 5000 });
-console.log("Now running");
+/** Error handling */
+app.use((_ctx, _next) => {
+  const error = new HttpError("Could not find this route.", 404);
+  throw error;
+});
+
+app.use(async (_ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    if (isHttpError(err)) {
+      switch (err.status) {
+        case Status.NotFound:
+          // handle NotFound
+          break;
+        default:
+        // handle other statuses
+      }
+    } else {
+      // rethrow if you can't handle the error
+      throw err;
+    }
+  }
+});
+
+app.addEventListener("error", (evt) => {
+  // Will log the thrown error to the console.
+  console.log(evt.error);
+});
+
+const port = 5000;
+
+app.addEventListener("listen", () => {
+  console.log(`Listening on localhost:${port}`);
+});
+
+app.listen({ port });
