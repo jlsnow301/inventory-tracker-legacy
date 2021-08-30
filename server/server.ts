@@ -37,8 +37,6 @@ app.use(userRoutes.routes());
 app.use(userRoutes.allowedMethods());
 
 /** Error handling */
-app.use((_ctx, _next) => {});
-
 app.use(async (ctx, next) => {
   try {
     await next();
