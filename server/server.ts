@@ -1,39 +1,24 @@
-import {
-  Application,
-  isHttpError,
-  Status,
-} from "https://deno.land/x/oak@v9.0.0/mod.ts";
+import { Application } from "https://deno.land/x/oak@v9.0.0/mod.ts";
 
 import { connect } from "./helpers/db.ts";
+import errorHandler from "./controllers/error-handler.ts";
 import fileRoutes from "./routes/files.ts";
 import inventoryRoutes from "./routes/inventories.ts";
 import itemRoutes from "./routes/items.ts";
 import userRoutes from "./routes/users.ts";
+import _404 from "./controllers/404.ts";
 
-connect();
+try {
+  connect();
+} catch (err) {
+  console.log(err);
+  throw new Error("Could not connect to db!");
+}
+
 const app = new Application();
 
 /** Error handling */
-app.use(async (ctx, next) => {
-  try {
-    await next();
-  } catch (err) {
-    if (isHttpError(err)) {
-      switch (err.status) {
-        case Status.NotFound:
-          ctx.response.status = 404;
-          ctx.response.body = err.message || "Not found!";
-          break;
-        default:
-          ctx.response.status = err.status || 500;
-          ctx.response.body = err.message || "Unknown Error Occured";
-      }
-    } else {
-      // rethrow if you can't handle the error
-      throw err;
-    }
-  }
-});
+app.use(errorHandler);
 
 /** File handling */
 app.use(fileRoutes.routes());
@@ -58,6 +43,10 @@ app.use(itemRoutes.allowedMethods());
 app.use(userRoutes.routes());
 app.use(userRoutes.allowedMethods());
 
+/** 404 */
+app.use(_404);
+
+/** Listeners */
 app.addEventListener("error", (evt) => {
   // Will log the thrown error to the console.
   console.log(evt.error);

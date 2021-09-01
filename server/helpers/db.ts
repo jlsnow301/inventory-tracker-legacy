@@ -6,16 +6,14 @@ import { MONGO_URI } from "../config/keys.ts";
 
 let database: Database;
 
-export async function connect() {
+export const connect = async () => {
   const client = new MongoClient();
 
   await client.connect(MONGO_URI);
 
-  const _database = client.database("inventory_manager");
-}
+  database = client.database("inventory_manager");
+};
 
-function getDb() {
+export const getDatabase = () => {
   return database;
-}
-
-export default getDb;
+};

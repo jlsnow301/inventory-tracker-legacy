@@ -3,17 +3,13 @@ import { RouterContext } from "https://deno.land/x/oak@v9.0.0/mod.ts";
 import { Inventory } from "../models/inventory.ts";
 import HttpError from "../models/http-error.ts";
 
-type RContext = RouterContext<
-  Record<string | number, string | undefined>,
-  Record<string, number>
->;
-
 /**  Get all inventories */
-export const getInventories = async (ctx: RContext) => {
+export const getInventories = async (ctx: RouterContext) => {
   let inventories;
   try {
     inventories = await Inventory.findAll();
-  } catch (_err) {
+  } catch (err) {
+    console.log(err);
     throw new HttpError("Could not fetch inventories!", 500);
   }
 
@@ -24,8 +20,35 @@ export const getInventories = async (ctx: RContext) => {
   ctx.response.body = { inventories: inventories };
 };
 
+/** Find an inventory */
+export const getInventoryById = async (ctx: RouterContext) => {
+  let id, inventory;
+  try {
+    id = ctx.params.inventoryId;
+  } catch (_err) {
+    throw new HttpError("Could not fetch inventory!", 500);
+  }
+
+  if (!id) {
+    throw new HttpError("No inventory input!", 403);
+  }
+
+  try {
+    inventory = await Inventory.findOne(id);
+  } catch (err) {
+    console.log(err);
+    throw new HttpError("Could not fetch inventory!", 500);
+  }
+
+  if (!inventory) {
+    throw new HttpError("Inventory not found!", 404);
+  }
+
+  ctx.response.body = { inventory };
+};
+
 /** Add a new inventory */
-export const addInventory = async (ctx: RContext) => {
+export const addInventory = async (ctx: RouterContext) => {
   let data, body, title, desc;
   try {
     data = await ctx.request.body();
@@ -54,7 +77,7 @@ export const addInventory = async (ctx: RContext) => {
 };
 
 /** Update an inventory */
-export const updateInventory = async (ctx: RContext) => {
+export const updateInventory = async (ctx: RouterContext) => {
   let id;
   try {
     id = ctx.params.inventoryId;
@@ -96,7 +119,7 @@ export const updateInventory = async (ctx: RContext) => {
 };
 
 /** Delete an inventory */
-export const deleteInventory = async (ctx: RContext) => {
+export const deleteInventory = async (ctx: RouterContext) => {
   let id;
   try {
     id = ctx.params.inventoryId;

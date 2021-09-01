@@ -2,6 +2,7 @@ import { Router } from "https://deno.land/x/oak@v9.0.0/mod.ts";
 
 import {
   getInventories,
+  getInventoryById,
   addInventory,
   updateInventory,
   deleteInventory,
@@ -10,6 +11,8 @@ import {
 const router = new Router();
 
 router.get("/inventory", getInventories);
+
+router.get("/inventory/:inventoryId", getInventoryById);
 
 router.post("/inventory", addInventory);
 

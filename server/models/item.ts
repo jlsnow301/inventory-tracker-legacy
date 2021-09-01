@@ -1,6 +1,6 @@
 import { Bson } from "https://deno.land/x/mongo@v0.25.0/mod.ts";
 
-import getDatabase from "../helpers/db.ts";
+import { getDatabase } from "../helpers/db.ts";
 
 interface Data {
   title: string;
