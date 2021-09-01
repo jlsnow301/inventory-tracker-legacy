@@ -16,7 +16,15 @@ export class User {
   }
 
   static async findAll() {
-    return await getDatabase().collection("users").find();
+    return await getDatabase()
+      .collection("users")
+      .find({}, { noCursorTimeout: false });
+  }
+
+  static async findOne(id: string) {
+    return await getDatabase()
+      .collection("inventories")
+      .findOne({ _id: new Bson.ObjectId(id) }, { noCursorTimeout: false });
   }
 
   static async update(id: string, data: Data) {
