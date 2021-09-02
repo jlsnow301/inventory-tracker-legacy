@@ -5,8 +5,6 @@ import { getDatabase } from "../helpers/db.ts";
 interface Data {
   title: string;
   description: string;
-  imageUrl: string;
-  url: string;
 }
 
 export class Item {
@@ -18,7 +16,8 @@ export class Item {
   static async findAll() {
     return await getDatabase()
       .collection("items")
-      .find({}, { noCursorTimeout: false });
+      .find({}, { noCursorTimeout: false })
+      .toArray();
   }
 
   static async findOne(id: string) {

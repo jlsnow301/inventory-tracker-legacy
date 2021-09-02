@@ -5,7 +5,7 @@ import HttpError from "../models/http-error.ts";
 
 /**  Get all inventories */
 export const getInventories = async (ctx: RouterContext) => {
-  let inventories;
+  let inventories: unknown[];
   try {
     inventories = await Inventory.findAll();
   } catch (err) {
@@ -13,7 +13,7 @@ export const getInventories = async (ctx: RouterContext) => {
     throw new HttpError("Could not fetch inventories!", 500);
   }
 
-  if (!inventories) {
+  if (!inventories.length) {
     throw new HttpError("Could not find inventories!", 404);
   }
 
@@ -44,7 +44,7 @@ export const getInventoryById = async (ctx: RouterContext) => {
     throw new HttpError("Inventory not found!", 404);
   }
 
-  ctx.response.body = { inventory };
+  ctx.response.body = { inventory: inventory };
 };
 
 /** Add a new inventory */

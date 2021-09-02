@@ -12,7 +12,6 @@ export class Inventory {
     const id: Bson.Document = await getDatabase()
       .collection("inventories")
       .insertOne(data);
-
     return { id: id.$oid };
   }
 

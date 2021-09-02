@@ -3,10 +3,10 @@ import { Bson } from "https://deno.land/x/mongo@v0.25.0/mod.ts";
 import { getDatabase } from "../helpers/db.ts";
 
 interface Data {
-  title: string;
-  description: string;
-  imageUrl: string;
-  url: string;
+  email: string;
+  image: string;
+  name: string;
+  password: string;
 }
 
 export class User {
@@ -18,7 +18,8 @@ export class User {
   static async findAll() {
     return await getDatabase()
       .collection("users")
-      .find({}, { noCursorTimeout: false });
+      .find({}, { noCursorTimeout: false })
+      .toArray();
   }
 
   static async findOne(id: string) {

@@ -2,6 +2,7 @@ import { Router } from "https://deno.land/x/oak@v9.0.0/mod.ts";
 
 import {
   getItems,
+  getItemById,
   addItem,
   updateItem,
   deleteItem,
@@ -10,6 +11,8 @@ import {
 const router = new Router();
 
 router.get("/item", getItems);
+
+router.get("/item/:itemId", getItemById);
 
 router.post("/item", addItem);
 
