@@ -37,7 +37,6 @@ const GetLinks = (): JSX.Element => {
   } else {
     return (
       <>
-        <ModButton to="/about">ABOUT</ModButton>
         <ModButton to="/contact">CONTACT</ModButton>
         <ModButton to="/login">LOGIN</ModButton>
       </>

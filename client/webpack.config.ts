@@ -4,6 +4,7 @@ import "webpack-dev-server";
 import HtmlWebPackPlugin from "html-webpack-plugin";
 import WebpackDevServer from "webpack-dev-server";
 
+/** Override fixes a conflict with the newer version of tsnode */
 interface Configuration extends webpack.Configuration {
   devServer?: devServer | undefined;
 }

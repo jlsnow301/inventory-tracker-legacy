@@ -35,7 +35,7 @@ const GetInfo = (): JSX.Element => {
     return (
       <div className="toolbar-info">
         <img src={"./public/inventory-256.png"} alt="Inventory Manager Logo" />
-        <h1>INVENTORY MANAGER</h1>
+        <h1>INVENTORY TRACKER</h1>
       </div>
     );
   }

@@ -16,7 +16,6 @@ import LoadingSpinner from "./components/elements/loading-spinner";
 /** Icons */
 library.add(fab, fas);
 
-const About = React.lazy(() => import("./components/pages/about"));
 const AddItem = React.lazy(() => import("./components/pages/add-item"));
 const AddInventory = React.lazy(
   () => import("./components/pages/add-inventory")
@@ -84,9 +83,6 @@ const getRoutes = (token: boolean): {} => {
       <Switch>
         <Route path="/" exact>
           <Home />
-        </Route>
-        <Route path="/about" exact>
-          <About />
         </Route>
         <Route path="/contact" exact>
           <Contact />

@@ -12,91 +12,99 @@ const Contact: React.FC = () => {
       </div>
       <div className="static-box">
         <div className="static-services">
-          <div className="static-serviceTitle">Anthony</div>
-          Software Dev
+          <div className="static-serviceTitle">Anthony: Backend Dev</div>
+
           <div>
-            <ModButton href="https://github.com/AnthonySDi">
-              <FontAwesomeIcon
-                className="static-contact"
-                size="2x"
-                style={{ marginRight: -0.5 }}
-                icon={["fab", "github"]}
-              />
-            </ModButton>
-            <ModButton href="mailto:anthonyrsdig@gmail.com">
-              <FontAwesomeIcon
-                className="static-contact"
-                size="2x"
-                style={{ marginRight: -0.5 }}
-                icon={["fas", "envelope-open-text"]}
-              />
-            </ModButton>
+            <div className="static-contrast">
+              <ModButton href="https://github.com/AnthonySDi">
+                <FontAwesomeIcon
+                  className="static-contact"
+                  size="2x"
+                  style={{ marginRight: -0.5 }}
+                  icon={["fab", "github"]}
+                />
+              </ModButton>
+              <ModButton href="mailto:anthonyrsdig@gmail.com">
+                <FontAwesomeIcon
+                  className="static-contact"
+                  size="2x"
+                  style={{ marginRight: -0.5 }}
+                  icon={["fas", "envelope-open-text"]}
+                />
+              </ModButton>
+            </div>
           </div>
         </div>
 
         <div className="static-services">
-          <div className="static-serviceTitle">Margarita</div>Software Dev
+          <div className="static-serviceTitle">Margarita: Frontend Dev</div>
           <div>
-            <ModButton href="https://github.com/MargaritaYatina">
-              <FontAwesomeIcon
-                className="static-contact"
-                size="2x"
-                style={{ marginRight: -0.5 }}
-                icon={["fab", "github"]}
-              />
-            </ModButton>
-            <ModButton href="pearlmargaret2012@gmail.com">
-              <FontAwesomeIcon
-                className="static-contact"
-                size="2x"
-                style={{ marginRight: -0.5 }}
-                icon={["fas", "envelope-open-text"]}
-              />
-            </ModButton>
+            <div className="static-contrast">
+              <ModButton href="https://github.com/MargaritaYatina">
+                <FontAwesomeIcon
+                  className="static-contact"
+                  size="2x"
+                  style={{ marginRight: -0.5 }}
+                  icon={["fab", "github"]}
+                />
+              </ModButton>
+              <ModButton href="pearlmargaret2012@gmail.com">
+                <FontAwesomeIcon
+                  className="static-contact"
+                  size="2x"
+                  style={{ marginRight: -0.5 }}
+                  icon={["fas", "envelope-open-text"]}
+                />
+              </ModButton>
+            </div>
           </div>
         </div>
 
         <div className="static-services">
-          <div className="static-serviceTitle">Selena</div>Software Dev
+          <div className="static-serviceTitle">Selena: UI Experience</div>
           <div>
-            <ModButton href="https://github.com/selinapn">
-              <FontAwesomeIcon
-                className="static-contact"
-                size="2x"
-                style={{ marginRight: -0.5 }}
-                icon={["fab", "github"]}
-              />
-            </ModButton>
-            <ModButton href="selina.pn@outlook.com">
-              <FontAwesomeIcon
-                className="static-contact"
-                size="2x"
-                style={{ marginRight: -0.5 }}
-                icon={["fas", "envelope-open-text"]}
-              />
-            </ModButton>
+            <div className="static-contrast">
+              <ModButton href="https://github.com/selinapn">
+                <FontAwesomeIcon
+                  className="static-contact"
+                  size="2x"
+                  style={{ marginRight: -0.5 }}
+                  icon={["fab", "github"]}
+                />
+              </ModButton>
+              <ModButton href="selina.pn@outlook.com">
+                <FontAwesomeIcon
+                  className="static-contact"
+                  size="2x"
+                  style={{ marginRight: -0.5 }}
+                  icon={["fas", "envelope-open-text"]}
+                />
+              </ModButton>
+            </div>
           </div>
         </div>
 
         <div className="static-services">
-          <div className="static-serviceTitle">Jeremiah</div>Software Dev
+          <div className="static-serviceTitle">Jeremiah: Coordinator</div>
           <div>
-            <ModButton href="https://github.com/jlsnow301">
-              <FontAwesomeIcon
-                className="static-contact"
-                size="2x"
-                style={{ marginRight: -0.5 }}
-                icon={["fab", "github"]}
-              />
-            </ModButton>
-            <ModButton href="mailto:jlsnow.301@gmail.com">
-              <FontAwesomeIcon
-                className="static-contact"
-                size="2x"
-                style={{ marginRight: -0.5 }}
-                icon={["fas", "envelope-open-text"]}
-              />
-            </ModButton>
+            <div className="static-contrast">
+              <ModButton href="https://github.com/jlsnow301">
+                <FontAwesomeIcon
+                  className="static-contact"
+                  size="2x"
+                  style={{ marginRight: -0.5 }}
+                  icon={["fab", "github"]}
+                />
+              </ModButton>
+              <ModButton href="mailto:jlsnow.301@gmail.com">
+                <FontAwesomeIcon
+                  className="static-contact"
+                  size="2x"
+                  style={{ marginRight: -0.5 }}
+                  icon={["fas", "envelope-open-text"]}
+                />
+              </ModButton>
+            </div>
           </div>
         </div>
       </div>

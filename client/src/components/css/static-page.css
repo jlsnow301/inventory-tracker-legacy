@@ -54,10 +54,14 @@
 
 .static-photos {
   display: flex;
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  justify-content: center;
+  background-color: var(--burnt);
+  border-radius: 10px;
+  border: 2px solid var(--strawberry);
+  overflow: auto;
+  padding: 2rem;
   filter: grayscale(35%);
+  margin: 1rem 0 1rem 0;
+  width: fit-content;
 }
 
 .static-contact {
@@ -65,12 +69,34 @@
 }
 
 .static-text {
-  font-size: large;
-}
-
-.static-box {
-  background-color: var(--toasty);
   border: 2px solid var(--strawberry);
   padding: 1rem;
   border-radius: 10px;
+  background-color: var(--burnt);
+  font-size: large;
+  margin: 0 1rem 0 0;
+  padding: 2rem;
+  width: 30rem;
+}
+
+.static-box {
+  display: flex;
+  background-color: var(--toasty);
+  border: 2px solid var(--strawberry);
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 0 0 1rem 0;
+  flex-wrap: wrap;
+}
+
+.static-contrast {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--burnt);
+  border: 2px solid var(--strawberry);
+  padding: 1rem 0.4rem 1rem 1rem;
+  border-radius: 10px;
+  width: 12rem;
 }

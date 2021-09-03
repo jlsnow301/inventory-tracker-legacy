@@ -84,10 +84,9 @@ const LoginScreen: React.FC = () => {
     if (isLoginMode) {
       try {
         const responseData: UserData = await sendRequest(
-          "http://localhost:5000/api/users",
+          "http://localhost:5000/api/auth/login",
           "POST",
           {
-            /** TODO: Ensure these are not null */
             email: formState.inputs.email!.value,
             password: formState.inputs.password!.value,
           }
@@ -98,18 +97,19 @@ const LoginScreen: React.FC = () => {
       } catch (err) {}
     } else {
       try {
-        const formData = new FormData();
-        /** TODO: Ensure these are not null */
-        formData.append("email", formState.inputs.email!.value!);
-        formData.append("image", formState.inputs.image!.value!);
-        formData.append("name", formState.inputs.name!.value!);
-        formData.append("password", formState.inputs.password!.value!);
         const responseData = await sendRequest(
-          "http://localhost:5000/api/users/create",
+          "http://localhost:5000/api/auth/signup",
           "POST",
-          formData
+          {
+            email: formState.inputs.email!.value!,
+            image: formState.inputs.image!.value!,
+            name: formState.inputs.name!.value!,
+            password: formState.inputs.password!.value!,
+          }
         );
-        auth.login(responseData.token);
+        if (responseData.token) {
+          auth.login(responseData.token);
+        }
       } catch (err) {}
     }
   };
