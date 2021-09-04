@@ -95,7 +95,7 @@ export async function updateUser(ctx: RouterContext) {
   };
 }
 
-/** Delete an user */
+/** Delete an existing user */
 export const deleteUser = async (ctx: RouterContext) => {
   let id;
   try {

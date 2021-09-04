@@ -1,5 +1,6 @@
 import { Application } from "https://deno.land/x/oak@v9.0.0/mod.ts";
 
+import authRoutes from "./routes/auth.ts";
 import { connect } from "./helpers/db.ts";
 import errorHandler from "./controllers/error-handler.ts";
 import fileRoutes from "./routes/files.ts";
@@ -36,6 +37,8 @@ app.use(async (ctx, next) => {
 });
 
 /** Routes */
+app.use(authRoutes.routes());
+app.use(authRoutes.allowedMethods());
 app.use(inventoryRoutes.routes());
 app.use(inventoryRoutes.allowedMethods());
 app.use(itemRoutes.routes());
